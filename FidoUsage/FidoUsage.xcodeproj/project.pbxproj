@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9F374A70AC735D182D8764B /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E44DDDB61BAC9E9600870334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDB51BAC9E9600870334 /* AppDelegate.swift */; };
-		E44DDDB81BAC9E9600870334 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDB71BAC9E9600870334 /* ViewController.swift */; };
+		E44DDDB81BAC9E9600870334 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDB71BAC9E9600870334 /* RootViewController.swift */; };
 		E44DDDBB1BAC9E9600870334 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44DDDB91BAC9E9600870334 /* Main.storyboard */; };
 		E44DDDBE1BAC9E9600870334 /* FidoUsage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDBC1BAC9E9600870334 /* FidoUsage.xcdatamodeld */; };
 		E44DDDC01BAC9E9600870334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E44DDDBF1BAC9E9600870334 /* Assets.xcassets */; };
 		E44DDDC31BAC9E9600870334 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44DDDC11BAC9E9600870334 /* LaunchScreen.storyboard */; };
 		E44DDDCE1BAC9E9600870334 /* FidoUsageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDCD1BAC9E9600870334 /* FidoUsageTests.swift */; };
 		E44DDDD91BAC9E9600870334 /* FidoUsageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */; };
+		E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE71691BACA2D200176D77 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71661BACA2D200176D77 /* Colors.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71671BACA2D200176D77 /* Constant.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71681BACA2D200176D77 /* Locator.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71701BACA4C200176D77 /* UsageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE71791BACB3A600176D77 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71771BACB3A600176D77 /* Client.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE717A1BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71781BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FidoUsage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.debug.xcconfig"; sourceTree = "<group>"; };
 		E44DDDB21BAC9E9600870334 /* FidoUsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FidoUsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44DDDB51BAC9E9600870334 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E44DDDB71BAC9E9600870334 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E44DDDB71BAC9E9600870334 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E44DDDBA1BAC9E9600870334 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E44DDDBD1BAC9E9600870334 /* FidoUsage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FidoUsage.xcdatamodel; sourceTree = "<group>"; };
 		E44DDDBF1BAC9E9600870334 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +60,15 @@
 		E44DDDD41BAC9E9600870334 /* FidoUsageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FidoUsageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FidoUsageUITests.swift; sourceTree = "<group>"; };
 		E44DDDDA1BAC9E9600870334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		E4BE71661BACA2D200176D77 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E4BE71671BACA2D200176D77 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		E4BE71681BACA2D200176D77 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
+		E4BE71701BACA4C200176D77 /* UsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
+		E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageAsset.swift"; sourceTree = "<group>"; };
+		E4BE71771BACB3A600176D77 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		E4BE71781BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoSessionSourceHTMLParser.swift; sourceTree = "<group>"; };
+		F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F374A70AC735D182D8764B /* Pods_FidoUsage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99C9518EC9F9C11D8B3A2E39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E44DDDA91BAC9E9600870334 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +112,8 @@
 				E44DDDCC1BAC9E9600870334 /* FidoUsageTests */,
 				E44DDDD71BAC9E9600870334 /* FidoUsageUITests */,
 				E44DDDB31BAC9E9600870334 /* Products */,
+				FED0B634428961BF3BE9F88C /* Pods */,
+				99C9518EC9F9C11D8B3A2E39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,8 +131,13 @@
 			isa = PBXGroup;
 			children = (
 				E44DDDB51BAC9E9600870334 /* AppDelegate.swift */,
-				E44DDDB71BAC9E9600870334 /* ViewController.swift */,
+				E44DDDB71BAC9E9600870334 /* RootViewController.swift */,
 				E44DDDB91BAC9E9600870334 /* Main.storyboard */,
+				E4BE71721BACA68600176D77 /* Extensions */,
+				E4BE71651BACA2D200176D77 /* Utility */,
+				E4BE71761BACB3A600176D77 /* Network */,
+				E44DDDEA1BACA24100870334 /* Controllers */,
+				E4BE716C1BACA47900176D77 /* Components */,
 				E44DDDBF1BAC9E9600870334 /* Assets.xcassets */,
 				E44DDDC11BAC9E9600870334 /* LaunchScreen.storyboard */,
 				E44DDDC41BAC9E9600870334 /* Info.plist */,
@@ -128,6 +164,74 @@
 			path = FidoUsageUITests;
 			sourceTree = "<group>";
 		};
+		E44DDDEA1BACA24100870334 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E4BE71651BACA2D200176D77 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E4BE71661BACA2D200176D77 /* Colors.swift */,
+				E4BE71671BACA2D200176D77 /* Constant.swift */,
+				E4BE71681BACA2D200176D77 /* Locator.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		E4BE716C1BACA47900176D77 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E4BE716F1BACA4C200176D77 /* Usage */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E4BE716F1BACA4C200176D77 /* Usage */ = {
+			isa = PBXGroup;
+			children = (
+				E4BE71701BACA4C200176D77 /* UsageViewController.swift */,
+				E4BE71751BACA74500176D77 /* Views */,
+			);
+			path = Usage;
+			sourceTree = "<group>";
+		};
+		E4BE71721BACA68600176D77 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E4BE71751BACA74500176D77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4BE71761BACB3A600176D77 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E4BE71771BACB3A600176D77 /* Client.swift */,
+				E4BE71781BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FED0B634428961BF3BE9F88C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */,
+				F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44DDDDD1BAC9E9600870334 /* Build configuration list for PBXNativeTarget "FidoUsage" */;
 			buildPhases = (
+				96B16A7CDFFDA7CE88A4CD4D /* Check Pods Manifest.lock */,
 				E44DDDAE1BAC9E9600870334 /* Sources */,
 				E44DDDAF1BAC9E9600870334 /* Frameworks */,
 				E44DDDB01BAC9E9600870334 /* Resources */,
+				7B25C959B398E8C3617FBD96 /* Embed Pods Frameworks */,
+				C532BD92ED67C55CE0824548 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,14 +360,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7B25C959B398E8C3617FBD96 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96B16A7CDFFDA7CE88A4CD4D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C532BD92ED67C55CE0824548 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E44DDDAE1BAC9E9600870334 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E44DDDB81BAC9E9600870334 /* ViewController.swift in Sources */,
+				E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */,
+				E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */,
+				E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */,
+				E4BE71691BACA2D200176D77 /* Colors.swift in Sources */,
+				E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */,
+				E44DDDB81BAC9E9600870334 /* RootViewController.swift in Sources */,
 				E44DDDBE1BAC9E9600870334 /* FidoUsage.xcdatamodeld in Sources */,
+				E4BE717A1BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift in Sources */,
 				E44DDDB61BAC9E9600870334 /* AppDelegate.swift in Sources */,
+				E4BE71791BACB3A600176D77 /* Client.swift in Sources */,
+				E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,9 +561,11 @@
 		};
 		E44DDDDE1BAC9E9600870334 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FidoUsage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.honghaoz.FidoUsage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,9 +574,11 @@
 		};
 		E44DDDDF1BAC9E9600870334 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FidoUsage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.honghaoz.FidoUsage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -485,6 +652,7 @@
 				E44DDDDF1BAC9E9600870334 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E44DDDE01BAC9E9600870334 /* Build configuration list for PBXNativeTarget "FidoUsageTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +661,7 @@
 				E44DDDE21BAC9E9600870334 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E44DDDE31BAC9E9600870334 /* Build configuration list for PBXNativeTarget "FidoUsageUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +670,7 @@
 				E44DDDE51BAC9E9600870334 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

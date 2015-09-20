@@ -1,0 +1,78 @@
+{
+  "name": "ChouTi",
+  "version": "1.0",
+  "summary": "Chou Ti (抽屉) - My personal toolkit for iOS/OSX development.",
+  "description": "Chou Ti (抽屉) - My personal toolkit for iOS/OSX development.\nIt contains common classes, extensions used in multiple projects",
+  "homepage": "https://github.com/honghaoz/ChouTi",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Honghao Zhang": "zhh358@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/honghaoz/ChouTi.git",
+    "tag": "1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "public_header_files": "Source/**/**/*.h",
+  "source_files": "Source/iOS/**/",
+  "default_subspecs": "UIChouTi",
+  "subspecs": [
+    {
+      "name": "UIChouTi",
+      "summary": "A set of common UI views & utilities.",
+      "dependencies": {
+        "ChouTi/Extensions": [
+
+        ],
+        "ChouTi/Protocols": [
+
+        ],
+        "ChouTi/CollectionViewLayouts": [
+
+        ],
+        "ChouTi/SlideController": [
+
+        ],
+        "ChouTi/AutoLinesLabel": [
+
+        ]
+      }
+    },
+    {
+      "name": "Extensions",
+      "summary": "Extensions of UIKit",
+      "source_files": "Source/iOS/Extensions/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "Protocols",
+      "summary": "Protocols",
+      "source_files": "Source/iOS/Protocols/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "CollectionViewLayouts",
+      "summary": "A collection of UICollectionView Layouts",
+      "source_files": "Source/iOS/CollectionViewLayouts/*/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "SlideController",
+      "summary": "A left/right slide container view controller",
+      "source_files": "Source/iOS/SlideController/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "AutoLinesLabel",
+      "summary": "UILabel with contentInset and probide auto lines on iOS7",
+      "source_files": "Source/iOS/AutoLinesLabel/*.*",
+      "frameworks": "UIKit"
+    }
+  ]
+}

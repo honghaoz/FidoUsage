@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8684DD7147B16178F2C50D9F4E5370E0E99435AB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8684DD7147B16178F2C50D9F4E5370E0E99435AB" : 0,
+    "AB5814BF1313D2BB57451A561AAEFD4744C25E30" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DFDF23B8-872F-4748-B319-FBEBAF827521",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8684DD7147B16178F2C50D9F4E5370E0E99435AB" : "FidoUsage\/",
+    "AB5814BF1313D2BB57451A561AAEFD4744C25E30" : "FidoUsage\/Submodules\/ChouTi\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FidoUsage",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FidoUsage\/FidoUsage.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/honghaoz\/FidoUsage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8684DD7147B16178F2C50D9F4E5370E0E99435AB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/honghaoz\/ChouTi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AB5814BF1313D2BB57451A561AAEFD4744C25E30"
+    }
+  ]
+}

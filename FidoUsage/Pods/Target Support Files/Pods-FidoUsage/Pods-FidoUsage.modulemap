@@ -1,0 +1,6 @@
+framework module Pods_FidoUsage {
+  umbrella header "Pods-FidoUsage-umbrella.h"
+
+  export *
+  module * { export * }
+}
