@@ -45,6 +45,28 @@ class UsageViewController : UIViewController {
 		    // Fallback on earlier versions
 		}
 	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		Locator.client.gotoViewUsagePage { succeed, resultHTMLString in
+			if succeed {
+				guard let viewUsageHTMLString = resultHTMLString else {
+					log.error("Get viewUsageHTMLString failed")
+					return
+				}
+				
+				let sections = Locator.fidoParser.parseUsageSections(viewUsageHTMLString)
+				log.debug(sections)
+				
+				for (index, section) in sections.enumerate() {
+					Locator.client.showUsagePageForSection(section, completion: { (succeed, sectionHTMLString) in
+						Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: index)
+					})
+				}
+			}
+		}
+	}
 }
 
 extension UsageViewController : UITableViewDataSource {

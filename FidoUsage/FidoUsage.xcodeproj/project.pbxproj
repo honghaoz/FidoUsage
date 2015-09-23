@@ -17,13 +17,16 @@
 		E44DDDCE1BAC9E9600870334 /* FidoUsageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDCD1BAC9E9600870334 /* FidoUsageTests.swift */; };
 		E44DDDD91BAC9E9600870334 /* FidoUsageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */; };
 		E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A76511BB1D28700F601F8 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E49A76541BB1D2B600F601F8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49A76531BB1D2B600F601F8 /* Login.storyboard */; settings = {ASSET_TAGS = (); }; };
+		E49A76571BB1F30A00F601F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A76561BB1F30A00F601F8 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		E4BE71691BACA2D200176D77 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71661BACA2D200176D77 /* Colors.swift */; settings = {ASSET_TAGS = (); }; };
 		E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71671BACA2D200176D77 /* Constant.swift */; settings = {ASSET_TAGS = (); }; };
 		E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71681BACA2D200176D77 /* Locator.swift */; settings = {ASSET_TAGS = (); }; };
 		E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71701BACA4C200176D77 /* UsageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */; settings = {ASSET_TAGS = (); }; };
 		E4BE71791BACB3A600176D77 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71771BACB3A600176D77 /* Client.swift */; settings = {ASSET_TAGS = (); }; };
-		E4BE717A1BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71781BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift */; settings = {ASSET_TAGS = (); }; };
+		E4BE717A1BACB3A600176D77 /* FidoHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71781BACB3A600176D77 /* FidoHTMLParser.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,13 +64,16 @@
 		E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FidoUsageUITests.swift; sourceTree = "<group>"; };
 		E44DDDDA1BAC9E9600870334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		E49A76511BB1D28700F601F8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E49A76531BB1D2B600F601F8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E49A76561BB1F30A00F601F8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E4BE71661BACA2D200176D77 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E4BE71671BACA2D200176D77 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E4BE71681BACA2D200176D77 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		E4BE71701BACA4C200176D77 /* UsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
 		E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageAsset.swift"; sourceTree = "<group>"; };
 		E4BE71771BACB3A600176D77 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		E4BE71781BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoSessionSourceHTMLParser.swift; sourceTree = "<group>"; };
+		E4BE71781BACB3A600176D77 /* FidoHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FidoHTMLParser.swift; sourceTree = "<group>"; };
 		F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +142,7 @@
 				E4BE71721BACA68600176D77 /* Extensions */,
 				E4BE71651BACA2D200176D77 /* Utility */,
 				E4BE71761BACB3A600176D77 /* Network */,
+				E49A76551BB1F2F100F601F8 /* Model */,
 				E44DDDEA1BACA24100870334 /* Controllers */,
 				E4BE716C1BACA47900176D77 /* Components */,
 				E44DDDBF1BAC9E9600870334 /* Assets.xcassets */,
@@ -172,6 +179,23 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		E49A76501BB1D26F00F601F8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E49A76531BB1D2B600F601F8 /* Login.storyboard */,
+				E49A76511BB1D28700F601F8 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E49A76551BB1F2F100F601F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E49A76561BB1F30A00F601F8 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E4BE71651BACA2D200176D77 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +209,7 @@
 		E4BE716C1BACA47900176D77 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E49A76501BB1D26F00F601F8 /* Login */,
 				E4BE716F1BACA4C200176D77 /* Usage */,
 			);
 			path = Components;
@@ -218,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				E4BE71771BACB3A600176D77 /* Client.swift */,
-				E4BE71781BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift */,
+				E4BE71781BACB3A600176D77 /* FidoHTMLParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -338,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49A76541BB1D2B600F601F8 /* Login.storyboard in Resources */,
 				E44DDDC31BAC9E9600870334 /* LaunchScreen.storyboard in Resources */,
 				E44DDDC01BAC9E9600870334 /* Assets.xcassets in Resources */,
 				E44DDDBB1BAC9E9600870334 /* Main.storyboard in Resources */,
@@ -413,6 +439,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49A76571BB1F30A00F601F8 /* User.swift in Sources */,
+				E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */,
 				E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */,
 				E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */,
 				E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */,
@@ -420,7 +448,7 @@
 				E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */,
 				E44DDDB81BAC9E9600870334 /* RootViewController.swift in Sources */,
 				E44DDDBE1BAC9E9600870334 /* FidoUsage.xcdatamodeld in Sources */,
-				E4BE717A1BACB3A600176D77 /* InfoSessionSourceHTMLParser.swift in Sources */,
+				E4BE717A1BACB3A600176D77 /* FidoHTMLParser.swift in Sources */,
 				E44DDDB61BAC9E9600870334 /* AppDelegate.swift in Sources */,
 				E4BE71791BACB3A600176D77 /* Client.swift in Sources */,
 				E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */,

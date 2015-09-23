@@ -344,8 +344,14 @@ public struct Loggerithm {
         }
         
         let functionString = showFunctionName ? function : ""
-		
-        let message = String(format: format, arguments: args)
+        
+        let message: String
+        if args.count == 0 {
+            message = format
+        } else {
+            message = String(format: format, arguments: args)
+        }
+        
         let infoString = "\(dateTime)\(levelString)\(fileLine)\(functionString)".stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " "))
         
         let logString = infoString + (infoString.isEmpty ? "" : ": ") + "\(message)"

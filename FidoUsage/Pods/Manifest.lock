@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (2.0.1)
+  - Alamofire (2.0.2)
   - ChouTi (1.0):
     - ChouTi/UIChouTi (= 1.0)
   - ChouTi/AutoLinesLabel (1.0)
@@ -31,7 +31,7 @@ EXTERNAL SOURCES:
     :path: "../Submodules/ChouTi/"
 
 SPEC CHECKSUMS:
-  Alamofire: 1d8e208d616fbbfd2391b15eae766d07c96cdc49
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   ChouTi: 18b0f1adc89d4ec620c09d9e2831439d7a0e9fc4
   Ji: 477ec17f9abe9d7f016d714f7b5da8c3c67a2e15
   Loggerithm: 23ec82a8f7907832758cb93f15c33a85de0ed99b

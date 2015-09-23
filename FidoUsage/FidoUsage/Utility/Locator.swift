@@ -17,25 +17,30 @@ class Locator {
 		return UIApplication.sharedApplication().delegate as! AppDelegate
 	}
 	
-//    // MARK: - Root View Controller
-//    private lazy var _rootViewController: RootViewController = {
-//		if let controller = Locator.appDelegate.window?.rootViewController as?  RootViewController {
-//			return controller
-//		} else {
-//			log.error("Getting root view controller failed.")
-//			return RootViewController(centerViewController: UIViewController())
-//		}
-//    }()
-//	
-//    class var rootViewController: RootViewController {
-//		set {
-//			sharedInstance._rootViewController = newValue
-//		}
-//		
-//		get {
-//			return sharedInstance._rootViewController
-//		}
-//    }
+	class var client: Client { return Client.sharedInstance }
+	class var fidoParser: FidoHTMLParser { return FidoHTMLParser.sharedInstance }
+	
+	class var user: User { return User.sharedInstance }
+	
+    // MARK: - Root View Controller
+    private lazy var _rootViewController: RootViewController = {
+		if let controller = Locator.appDelegate.window?.rootViewController as?  RootViewController {
+			return controller
+		} else {
+			log.error("Getting root view controller failed.")
+			return RootViewController()
+		}
+    }()
+	
+    class var rootViewController: RootViewController {
+		set {
+			sharedInstance._rootViewController = newValue
+		}
+		
+		get {
+			return sharedInstance._rootViewController
+		}
+    }
 //
 //	// MARK: - Left Menu View Controller
 //	private lazy var _leftMenuViewController: LeftMenuViewController = {
@@ -46,7 +51,16 @@ class Locator {
 //	class var leftMenuViewController: LeftMenuViewController {
 //		return sharedInstance._leftMenuViewController
 //	}
-//	
+	
+	// MARK: - Login View Controller
+	private lazy var _loginViewController: LoginViewController = {
+		return UIViewController.viewControllerInStoryboard("Login", viewControllerName: "LoginViewController") as! LoginViewController
+	}()
+	
+	class var loginViewController: LoginViewController {
+		return sharedInstance._loginViewController
+	}
+	
 	// MARK: - Usage View Controller
 	private lazy var _usageViewController: UsageViewController = {
 		return UIViewController.viewControllerInStoryboard("Main", viewControllerName: "UsageViewController") as! UsageViewController
