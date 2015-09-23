@@ -59,11 +59,35 @@ class UsageViewController : UIViewController {
 				let sections = Locator.fidoParser.parseUsageSections(viewUsageHTMLString)
 				log.debug(sections)
 				
-				for (index, section) in sections.enumerate() {
-					Locator.client.showUsagePageForSection(section, completion: { (succeed, sectionHTMLString) in
-						Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: index)
+//				for (index, section) in sections.enumerate() {
+//					Locator.client.showUsagePageForSection(section, completion: { (succeed, sectionHTMLString) in
+////						Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: index)
+//					})
+//				}
+				
+//				Locator.client.showUsagePageForSection("Voice", completion: { (succeed, sectionHTMLString) in
+					Locator.fidoParser.parseUsageDetail(viewUsageHTMLString, forSectionIndex: 0)
+//				})
+				
+				
+				Locator.client.showUsagePageForSection("Data", completion: { (succeed, sectionHTMLString) in
+//					Locator.client.showUsagePageForSection("Messaging", completion: { (succeed, sectionHTMLString) in
+//						Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 0)
+//					})
+//					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 1)
+					
+					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 0)
+					
+//					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 2)
+					
+					Locator.client.showUsagePageForSection("Messaging", completion: { (succeed, sectionHTMLString1) in
+						Locator.fidoParser.parseUsageDetail(sectionHTMLString1!, forSectionIndex: 1)
 					})
-				}
+				})
+				
+//				Locator.client.showUsagePageForSection("Messaging", completion: { (succeed, sectionHTMLString) in
+//					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 0)
+//				})
 			}
 		}
 	}

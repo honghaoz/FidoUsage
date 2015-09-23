@@ -79,19 +79,20 @@ class FidoHTMLParser {
 		// Get usage details
 		// Get table
 		var table = [String: String]()
-		if let usageNode = ji.xPath("//ul[@class='usageContent']")?.first {
-			let liNode = usageNode.childrenWithName("li")[sectionIndex]
+		log.debug("//ul[@class='usageContent']/li[\(sectionIndex + 1)]")
+		if let liNode = ji.xPath("//ul[@class='usageContent']/li[\(sectionIndex + 1)]")?.first {
+			print("sectionIndex: \(sectionIndex)")
+			print(liNode["id"])
 			let headers = getTableHeadersForLiNode(liNode)
-			log.debug(headers)
-			let contents = getTableContentsForLiNode(liNode, headers: headers)
 			
-			log.debug(headers)
-			log.debug(contents)
+			print(headers)
+			let contents = getTableContentsForLiNode(liNode, headers: headers)
+			print(contents)
 		}
 		
 //		log.debug(tableContents)
 		
-		log.debug(resultsDict)
+//		log.debug(resultsDict)
 		
 		return resultsDict
 	}
@@ -105,8 +106,6 @@ class FidoHTMLParser {
 				}
 			}
 		}
-		
-		log.debug(tableHeaders)
 		return tableHeaders
 	}
 	
@@ -115,14 +114,13 @@ class FidoHTMLParser {
 		
 		//div[@class="clearBoth font12px"]/div[1]/div[1]
 		
-		let divs = liNode.xPath(".//div[@class='clearBoth font12px']/div[1]/div[1]")
-		for i in 0 ..< headers.count {
-			if let contentString = divs[i].content?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
-				tableContents.append(contentString)
+		if let div = liNode.xPath(".//div[@class='clearBoth font12px']/div[1]/div[1]").first {
+			for i in 0 ..< headers.count {
+				if let contentString = div.childrenWithName("div")[i].content?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
+					tableContents.append(contentString)
+				}
 			}
 		}
-		
-		log.debug(tableContents)
 		return tableContents
 	}
 }
