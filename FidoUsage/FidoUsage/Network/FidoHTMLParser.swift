@@ -36,8 +36,6 @@ class FidoHTMLParser {
 			results[key] = value
 		}
 		
-		log.debug(resultsDict)
-		
 		return resultsDict
 	}
 	
@@ -64,37 +62,48 @@ class FidoHTMLParser {
 			}
 		}
 		
-		log.debug(tabs)
 		return tabs
 	}
 	
-	func parseUsageDetail(viewUsageHTMLString: String, forSectionIndex sectionIndex: Int) -> [String: String] {
-		log.debug("")
-		var resultsDict = [String: String]()
+	func parseUsageDetail(viewUsageHTMLString: String) -> [String: String] {
+		var table = [String: String]()
 		guard let ji = Ji(htmlString: viewUsageHTMLString) else {
 			log.error("Setup Ji doc failed")
-			return resultsDict
+			return table
 		}
 		
 		// Get usage details
-		// Get table
-		var table = [String: String]()
-		log.debug("//ul[@class='usageContent']/li[\(sectionIndex + 1)]")
-		if let liNode = ji.xPath("//ul[@class='usageContent']/li[\(sectionIndex + 1)]")?.first {
-			print("sectionIndex: \(sectionIndex)")
-			print(liNode["id"])
-			let headers = getTableHeadersForLiNode(liNode)
-			
-			print(headers)
-			let contents = getTableContentsForLiNode(liNode, headers: headers)
-			print(contents)
+		guard let liNodes = ji.xPath("//ul[@class='usageContent']/li") else {
+			log.error("liNodes not found")
+			return table
 		}
 		
-//		log.debug(tableContents)
+		let currentVisibleLiNodes = liNodes.filter { $0["class"] != "hideLink" }
 		
-//		log.debug(resultsDict)
+		if currentVisibleLiNodes.count == 0 {
+			log.error("No visible liNode found")
+			return table
+		}
 		
-		return resultsDict
+		if currentVisibleLiNodes.count > 1 {
+			log.warning("More than 1 visible liNodes (\(currentVisibleLiNodes.count)) found")
+		}
+		
+		let currentLiNode = currentVisibleLiNodes.first!
+		
+		let headers = getTableHeadersForLiNode(currentLiNode)
+		let contents = getTableContentsForLiNode(currentLiNode, headers: headers)
+		
+		if headers.count != contents.count {
+			log.error("headers.count != contents.count")
+			return table
+		}
+		
+		for (index, header) in headers.enumerate() {
+			table[header] = contents[index]
+		}
+
+		return table
 	}
 	
 	private func getTableHeadersForLiNode(liNode: JiNode) -> [String] {
@@ -111,8 +120,6 @@ class FidoHTMLParser {
 	
 	private func getTableContentsForLiNode(liNode: JiNode, headers: [String]) -> [String] {
 		var tableContents = [String]()
-		
-		//div[@class="clearBoth font12px"]/div[1]/div[1]
 		
 		if let div = liNode.xPath(".//div[@class='clearBoth font12px']/div[1]/div[1]").first {
 			for i in 0 ..< headers.count {

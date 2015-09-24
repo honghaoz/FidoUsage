@@ -16,4 +16,4 @@ let DEBUG = true
 let DEBUG = false
 #endif
 
-var log = Loggerithm()
+let log = Loggerithm()

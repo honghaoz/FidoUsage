@@ -12,6 +12,8 @@ class UsageViewController : UIViewController {
 
 	let tableView = UITableView(frame: CGRectZero, style: .Grouped)
 	
+	var data = [String: [String: String]]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -49,46 +51,43 @@ class UsageViewController : UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		Locator.client.gotoViewUsagePage { succeed, resultHTMLString in
-			if succeed {
-				guard let viewUsageHTMLString = resultHTMLString else {
-					log.error("Get viewUsageHTMLString failed")
-					return
-				}
-				
-				let sections = Locator.fidoParser.parseUsageSections(viewUsageHTMLString)
-				log.debug(sections)
-				
-//				for (index, section) in sections.enumerate() {
-//					Locator.client.showUsagePageForSection(section, completion: { (succeed, sectionHTMLString) in
-////						Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: index)
-//					})
-//				}
-				
-//				Locator.client.showUsagePageForSection("Voice", completion: { (succeed, sectionHTMLString) in
-					Locator.fidoParser.parseUsageDetail(viewUsageHTMLString, forSectionIndex: 0)
-//				})
-				
-				
-				Locator.client.showUsagePageForSection("Data", completion: { (succeed, sectionHTMLString) in
-//					Locator.client.showUsagePageForSection("Messaging", completion: { (succeed, sectionHTMLString) in
-//						Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 0)
-//					})
-//					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 1)
-					
-					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 0)
-					
-//					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 2)
-					
-					Locator.client.showUsagePageForSection("Messaging", completion: { (succeed, sectionHTMLString1) in
-						Locator.fidoParser.parseUsageDetail(sectionHTMLString1!, forSectionIndex: 1)
-					})
-				})
-				
-//				Locator.client.showUsagePageForSection("Messaging", completion: { (succeed, sectionHTMLString) in
-//					Locator.fidoParser.parseUsageDetail(sectionHTMLString!, forSectionIndex: 0)
-//				})
+		log.info("Goto View Usage Page ...")
+		Locator.client.gotoViewUsagePage { (succeed, sections) in
+			guard let sections = sections else {
+				log.error("Sections are emtpy")
+				return
 			}
+			log.debug("Usage Sections: \(sections)")
+			
+			var startIndex = 0
+			
+			log.info("Getting section: \(sections[startIndex])")
+			Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+				log.debug(table)
+				
+				self.data[sections[startIndex]] = table
+				self.tableView.reloadData()
+				if startIndex < sections.count {
+					startIndex++
+					log.info("Getting section: \(sections[startIndex])")
+					Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+						log.debug(table)
+						
+						self.data[sections[startIndex]] = table
+						self.tableView.reloadData()
+						if startIndex < sections.count {
+							startIndex++
+							log.info("Getting section: \(sections[startIndex])")
+							Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+								log.debug(table)
+								
+								self.data[sections[startIndex]] = table
+								self.tableView.reloadData()
+							})
+						}
+					})
+				}
+			})
 		}
 	}
 }
@@ -122,16 +121,16 @@ extension UsageViewController : UITableViewDataSource {
 			switch indexPath.row {
 			case 0:
 				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.detailTextLabel?.text = data["Voice"]?["Type"]
 			case 1:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Included"
+				cell.detailTextLabel?.text = data["Voice"]?["Included"]
 			case 2:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Used"
+				cell.detailTextLabel?.text = data["Voice"]?["Used"]
 			case 3:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Remaining"
+				cell.detailTextLabel?.text = data["Voice"]?["Remaining"]
 			default:
 				break
 			}
@@ -139,16 +138,16 @@ extension UsageViewController : UITableViewDataSource {
 			switch indexPath.row {
 			case 0:
 				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.detailTextLabel?.text = data["Data"]?["Type"]
 			case 1:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Included"
+				cell.detailTextLabel?.text = data["Data"]?["Included"]
 			case 2:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Used"
+				cell.detailTextLabel?.text = data["Data"]?["Used"]
 			case 3:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Remaining"
+				cell.detailTextLabel?.text = data["Data"]?["Remaining"]
 			default:
 				break
 			}
@@ -156,16 +155,16 @@ extension UsageViewController : UITableViewDataSource {
 			switch indexPath.row {
 			case 0:
 				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.detailTextLabel?.text = data["Messaging"]?["Type"]
 			case 1:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Included"
+				cell.detailTextLabel?.text = data["Messaging"]?["Included"]
 			case 2:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Used"
+				cell.detailTextLabel?.text = data["Messaging"]?["Used"]
 			case 3:
-				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = "Anytime"
+				cell.textLabel?.text = "Remaining"
+				cell.detailTextLabel?.text = data["Messaging"]?["Remaining"]
 			default:
 				break
 			}

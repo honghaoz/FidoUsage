@@ -47,20 +47,15 @@ class LoginViewController: UIViewController {
 			return
 		}
 		
-		Locator.client.loginWithNumber(number, password: password) {[unowned self] (succeed, resultHTMLString) in
+		log.info("Login with number: \(number)")
+		Locator.client.loginWithNumber(number, password: password) {[unowned self] (succeed, resultDict) in
 			if succeed {
-				guard let homeHTMLString = resultHTMLString else {
-					log.error("homeHTMLString is nil")
-					return
-				}
-				log.debug("Succeed")
+				log.debug("Login Results: \(resultDict)")
 				
 				self.user.isLoggedIn = true
 				self.user.number = number
 				self.user.password = password
 				self.user.save()
-				
-				Locator.fidoParser.parseAccountDetails(homeHTMLString)
 				
 				self.dismissViewControllerAnimated(true, completion: {_ in
 					Locator.rootViewController.showUsageViewController()
