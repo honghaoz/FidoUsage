@@ -23,11 +23,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 		self.preferredContentSize = CGSize(width: 0, height: 37)
     }
 	
-	override func viewWillAppear(animated: Bool) {
+	func update() {
 		let user = User.sharedInstance
 		if user.load() {
 			log.debug("User info loaded")
-			let client = Client.sharedInstance
+			let client = FidoClient.sharedInstance
 			let number = user.number
 			let password = user.password
 			
@@ -70,6 +70,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 	}
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+		log.info()
+		
+		update()
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed

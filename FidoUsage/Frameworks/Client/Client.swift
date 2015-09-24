@@ -13,11 +13,11 @@ import Loggerithm
 
 let log = Loggerithm()
 
-public class Client {
+public class FidoClient {
     static let loginURL = "https://www.fido.ca/web/Fido.portal?_nfpb=true&_windowLabel=FidoSignIn_1_1&FidoSignIn_1_1_actionOverride=%2Fcom%2Ffido%2Fportlets%2Fecare%2Faccount%2Fsignin%2FsignIn"
 	static let viewUsageURL = "https://www.fido.ca/web/page/portal/Fido/Ecare_MSSPostPaid"
 	static let sectionUsageURL = "https://www.fido.ca/web/Fido.portal?_nfpb=true&_windowLabel=mobileSelfServe_1_2&mobileSelfServe_1_2_actionOverride=%2Fcom%2Ffido%2Fportlets%2Fecare%2FmobileSelfServeUsage%2FmanagePostPaidUsage"
-    static public let sharedInstance = Client()
+    static public let sharedInstance = FidoClient()
 	
 	let fidoParser = FidoHTMLParser()
 	
@@ -34,7 +34,7 @@ public class Client {
 
 
 // MARK: - Login
-extension Client {
+extension FidoClient {
 	public func loginWithNumber(number: String, password: String, completion: ((Bool, [String: String]?) -> Void)? = nil) {
 		switch currentPage {
 		case .Login:
@@ -71,7 +71,7 @@ extension Client {
 			"FidoSignIn_1_1{actionForm.loginAsGAM}": "false"
 		]
 		
-		Alamofire.request(.POST, Client.loginURL, parameters: parameters).responseString { [unowned self] (_, _, result) in
+		Alamofire.request(.POST, self.dynamicType.loginURL, parameters: parameters).responseString { [unowned self] (_, _, result) in
 			if !result.isSuccess {
 				log.error("Login: network request failed!")
 				completion?(false, nil)
@@ -99,7 +99,7 @@ extension Client {
 }
 
 // MARK: - View Usage
-extension Client {
+extension FidoClient {
 	public func gotoViewUsagePage(completion: ((Bool, [String]?) -> Void)? = nil) {
 		switch currentPage {
 		case .ViewUsage(_):
@@ -131,7 +131,7 @@ extension Client {
 	}
 	
 	private func GETViewUsagePage(completion: ((Bool, String?) -> Void)? = nil) {
-		Alamofire.request(.GET, Client.viewUsageURL, parameters: nil).responseString(completionHandler: { [unowned self] (_, _, result) in
+		Alamofire.request(.GET, self.dynamicType.viewUsageURL, parameters: nil).responseString(completionHandler: { [unowned self] (_, _, result) in
 			if !result.isSuccess {
 				log.error("View Usage: network request failed!")
 				completion?(false, nil)
@@ -177,7 +177,7 @@ extension Client {
 	
 	private func POSTViewUsagePageForSection(section: String, completion: ((Bool, String?) -> Void)? = nil) {
 		let parameters = ["selectedUsageType": section]
-		Alamofire.request(.POST, Client.sectionUsageURL, parameters: parameters).responseString(completionHandler: { (_, _, result) in
+		Alamofire.request(.POST, self.dynamicType.sectionUsageURL, parameters: parameters).responseString(completionHandler: { (_, _, result) in
 			if !result.isSuccess {
 				log.error("View Usage: network request failed!")
 				completion?(false, nil)

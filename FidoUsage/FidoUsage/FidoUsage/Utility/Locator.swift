@@ -19,7 +19,7 @@ class Locator {
 		return UIApplication.sharedApplication().delegate as! AppDelegate
 	}
 	
-	class var client: Client { return Client.sharedInstance }
+	class var client: FidoClient { return FidoClient.sharedInstance }
 	class var fidoParser: FidoHTMLParser { return FidoHTMLParser.sharedInstance }
 	
 	class var user: User { return User.sharedInstance }

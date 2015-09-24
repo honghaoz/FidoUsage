@@ -223,7 +223,7 @@ public struct Loggerithm {
     
     - returns: The string logged out.
     */
-    public func info(format: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__, args: CVarArgType...) -> String?
+    public func info(format: String = "", function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__, args: CVarArgType...) -> String?
     {
         if .Info >= logLevel {
             return log(.Info, function: function, file: file, line: line, format: format, args: args)
