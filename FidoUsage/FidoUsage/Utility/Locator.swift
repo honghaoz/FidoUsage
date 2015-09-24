@@ -9,6 +9,7 @@
 import UIKit
 import ChouTi
 import CoreData
+import Client
 
 class Locator {
     static let sharedInstance = Locator()
