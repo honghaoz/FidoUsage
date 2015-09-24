@@ -36,10 +36,16 @@
         "ChouTi/CollectionViewLayouts": [
 
         ],
+        "ChouTi/Animators": [
+
+        ],
         "ChouTi/SlideController": [
 
         ],
         "ChouTi/AutoLinesLabel": [
+
+        ],
+        "ChouTi/SegmentedControl": [
 
         ]
       }
@@ -54,6 +60,12 @@
       "name": "Protocols",
       "summary": "Protocols",
       "source_files": "Source/iOS/Protocols/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "Animators",
+      "summary": "A set of customized view controller transition animators",
+      "source_files": "Source/iOS/Animators/*.*",
       "frameworks": "UIKit"
     },
     {
@@ -72,6 +84,12 @@
       "name": "AutoLinesLabel",
       "summary": "UILabel with contentInset and probide auto lines on iOS7",
       "source_files": "Source/iOS/AutoLinesLabel/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "SegmentedControl",
+      "summary": "Customized Segmented Control, with underscore bars",
+      "source_files": "Source/iOS/SegmentedControl/*.*",
       "frameworks": "UIKit"
     }
   ]

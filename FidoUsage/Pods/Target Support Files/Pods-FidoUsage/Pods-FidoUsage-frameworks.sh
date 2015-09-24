@@ -56,10 +56,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-FidoUsage/ChouTi.framework'
   install_framework 'Pods-FidoUsage/Ji.framework'
   install_framework 'Pods-FidoUsage/Loggerithm.framework'
+  install_framework 'Pods-FidoUsage/OMGHTTPURLRQ.framework'
+  install_framework 'Pods-FidoUsage/PromiseKit.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-FidoUsage/Alamofire.framework'
   install_framework 'Pods-FidoUsage/ChouTi.framework'
   install_framework 'Pods-FidoUsage/Ji.framework'
   install_framework 'Pods-FidoUsage/Loggerithm.framework'
+  install_framework 'Pods-FidoUsage/OMGHTTPURLRQ.framework'
+  install_framework 'Pods-FidoUsage/PromiseKit.framework'
 fi
