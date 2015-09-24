@@ -1661,6 +1661,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48812F818F8B54DEF9D30DF3C127F55D /* Alamofire-Private.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2.0.2;
 				DEFINES_MODULE = YES;
@@ -1689,6 +1690,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48812F818F8B54DEF9D30DF3C127F55D /* Alamofire-Private.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2.0.2;
 				DEFINES_MODULE = YES;
@@ -1743,6 +1745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F5CB19C55C39D82C12AF2ED311A2FE9 /* Loggerithm-Private.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.3.0;
 				DEFINES_MODULE = YES;
@@ -1798,6 +1801,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B32E33C347C91C5100C02F04415BCE16 /* Ji-Private.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEFINES_MODULE = YES;
@@ -1952,6 +1956,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F5CB19C55C39D82C12AF2ED311A2FE9 /* Loggerithm-Private.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.3.0;
 				DEFINES_MODULE = YES;
@@ -1979,6 +1984,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B32E33C347C91C5100C02F04415BCE16 /* Ji-Private.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEFINES_MODULE = YES;
