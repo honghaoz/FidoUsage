@@ -10,6 +10,7 @@ import UIKit
 import ChouTi
 import CoreData
 import Client
+import User
 
 class Locator {
     static let sharedInstance = Locator()
@@ -42,16 +43,6 @@ class Locator {
 			return sharedInstance._rootViewController
 		}
     }
-//
-//	// MARK: - Left Menu View Controller
-//	private lazy var _leftMenuViewController: LeftMenuViewController = {
-//		let controller = UIViewController.viewControllerInStoryboard("Main", viewControllerName: "LeftMenuViewController") as! LeftMenuViewController
-//		return controller
-//	}()
-//	
-//	class var leftMenuViewController: LeftMenuViewController {
-//		return sharedInstance._leftMenuViewController
-//	}
 	
 	// MARK: - Login View Controller
 	private lazy var _loginViewController: LoginViewController = {
@@ -74,15 +65,4 @@ class Locator {
 	class var usageNavigationController: BaseNavigationController {
 		return BaseNavigationController(rootViewController: usageViewController)
 	}
-//
-//	// MARK: - Ticket View Controller
-//	private lazy var _ticketViewController: TicketViewController = { return TicketViewController() }()
-//	
-//	class var ticketViewController: TicketViewController {
-//		return sharedInstance._ticketViewController
-//	}
-//	
-//	class var ticketNavigationController: BaseNavigationController {
-//		return BaseNavigationController(rootViewController: ticketViewController)
-//	}
 }

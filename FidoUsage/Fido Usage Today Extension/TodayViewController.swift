@@ -8,8 +8,9 @@
 
 import UIKit
 import NotificationCenter
-import Client
 import Loggerithm
+import Client
+import User
 
 let log = Loggerithm()
 
@@ -19,32 +20,54 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		log.debug("haha")
-		
-		let client = Client.sharedInstance
-		let number = "5197812862"
-		let password = "Zhh358279765099"
-		
-		log.info("Login with number: \(number)")
-		client.loginWithNumber(number, password: password) { [unowned self] (succeed, resultDict) in
-			if succeed {
-				log.debug("Login Results: \(resultDict)")
-				
-				self.helloLabel.text = resultDict!["Account holder"]
-				
-				log.info("Goto View Usage Page ...")
-				client.gotoViewUsagePage { (succeed, sections) in
-					guard let sections = sections else {
-						log.error("Sections are emtpy")
-						return
-					}
-					log.debug("Usage Sections: \(sections)")
-				}
-			} else {
-				log.error("")
-			}
-		}
+		self.preferredContentSize = CGSize(width: 0, height: 37)
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		let user = User.sharedInstance
+		if user.load() {
+			log.debug("User info loaded")
+			let client = Client.sharedInstance
+			let number = user.number
+			let password = user.password
+			
+			log.info("Logging in with number: \(number)")
+			helloLabel.text = "Logging in with number: \(number)"
+			client.loginWithNumber(number, password: password) { [unowned self] (succeed, resultDict) in
+				if succeed {
+					log.debug("Login Results: \(resultDict)")
+					
+					self.helloLabel.text = String(format: "Logged in as: %@", resultDict!["Account holder"]!)
+					
+					log.info("Goto View Usage Page ...")
+					client.gotoViewUsagePage { (succeed, sections) in
+						guard let sections = sections else {
+							log.error("Sections are emtpy")
+							return
+						}
+						log.debug("Usage Sections: \(sections)")
+						
+						client.showViewUsgaeForSection(sections[1], completion: { (succeed, table) in
+							let used = table!["Used"]!
+							let remaining = table!["Remaining"]!
+							
+							self.helloLabel.text = "Used: \(used)   Remaining: \(remaining)"
+							log.debug(self.helloLabel.text)
+						})
+					}
+				} else {
+					log.error("")
+				}
+			}
+		} else {
+			log.debug("User info is not existed")
+			self.helloLabel.text  = "User info is not existed"
+		}
+	}
+	
+	func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+		return UIEdgeInsetsZero
+	}
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
@@ -55,5 +78,4 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         completionHandler(NCUpdateResult.NewData)
     }
-    
 }

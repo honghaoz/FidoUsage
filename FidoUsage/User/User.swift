@@ -7,21 +7,29 @@
 //
 
 import Foundation
+import Loggerithm
+let log = Loggerithm()
 
-class User {
-	static let sharedInstance = User()
+public class User {
+	static public let sharedInstance = User()
 	
-	var number = ""
-	var password = ""
-	var isRemembered: Bool = true
-	var isLoggedIn: Bool = false
+	public var number = ""
+	public var password = ""
+	public var isRemembered: Bool = true
+	public var isLoggedIn: Bool = false
 	
 	private let numberKey = "Username"
 	private let passwordKey = "Password"
 	private let isRememberedKey = "Remembered"
 	
-	func save() {
-		let defaults = NSUserDefaults.standardUserDefaults()
+	let defaults = NSUserDefaults(suiteName: "group.com.honghaoz.fidoUsage")
+	
+	public func save() {
+		guard let defaults = defaults else {
+			log.error("defaults is nil")
+			return
+		}
+		
 		defaults.setBool(isRemembered, forKey: isRememberedKey)
 		defaults.setObject(number, forKey: numberKey)
 		defaults.setObject(password, forKey: passwordKey)
@@ -29,8 +37,12 @@ class User {
 	}
 	
 	
-	func load() -> Bool {
-		let defaults = NSUserDefaults.standardUserDefaults()
+	public func load() -> Bool {
+		guard let defaults = defaults else {
+			log.error("defaults is nil")
+			return false
+		}
+		
 		self.isRemembered = defaults.boolForKey(isRememberedKey)
 		if self.isRemembered {
 			if let number = defaults.objectForKey(numberKey) as? String {
