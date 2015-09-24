@@ -1,5 +1,5 @@
 //
-//  Client.swift
+//  FidoClient.swift
 //  FidoUsage
 //
 //  Created by Honghao Zhang on 2015-08-12.
@@ -29,7 +29,9 @@ public class FidoClient {
 	
 	var currentPage: Page = .Login
 	var currentHTMLString: String?
+	
 	var accountInformationDictionary: [String: String]?
+	var usageSections: [String]?
 }
 
 
@@ -103,7 +105,7 @@ extension FidoClient {
 	public func gotoViewUsagePage(completion: ((Bool, [String]?) -> Void)? = nil) {
 		switch currentPage {
 		case .ViewUsage(_):
-			// TODO:
+			completion?(true, self.usageSections)
 			return
 		default:
 			GETViewUsagePage({ [unowned self] (succeed, htmlString) in
@@ -115,6 +117,7 @@ extension FidoClient {
 					}
 					
 					let sections = self.fidoParser.parseUsageSections(htmlString)
+					self.usageSections = sections
 					if sections.count == 0 {
 						log.error("Sections are zero")
 						completion?(false, [])

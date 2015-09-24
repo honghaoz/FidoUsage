@@ -17,7 +17,7 @@
 		E4495D4B1BB3AFA20052CECE /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D4A1BB3AFA20052CECE /* ClientTests.swift */; };
 		E4495D4F1BB3AFA20052CECE /* Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; };
 		E4495D501BB3AFA20052CECE /* Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E4495D5A1BB3AFCD0052CECE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D581BB3AFCD0052CECE /* Client.swift */; settings = {ASSET_TAGS = (); }; };
+		E4495D5A1BB3AFCD0052CECE /* FidoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D581BB3AFCD0052CECE /* FidoClient.swift */; settings = {ASSET_TAGS = (); }; };
 		E4495D5B1BB3AFCD0052CECE /* FidoHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */; settings = {ASSET_TAGS = (); }; };
 		E4495D5D1BB3B0FD0052CECE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D5C1BB3B0FD0052CECE /* Alamofire.framework */; };
 		E4495D5F1BB3B17C0052CECE /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D5E1BB3B17C0052CECE /* Ji.framework */; };
@@ -154,7 +154,7 @@
 		E4495D431BB3AFA20052CECE /* ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4495D4A1BB3AFA20052CECE /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		E4495D4C1BB3AFA20052CECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4495D581BB3AFCD0052CECE /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		E4495D581BB3AFCD0052CECE /* FidoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FidoClient.swift; sourceTree = "<group>"; };
 		E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FidoHTMLParser.swift; sourceTree = "<group>"; };
 		E4495D5C1BB3B0FD0052CECE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		E4495D5E1BB3B17C0052CECE /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "Pods/../build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 			children = (
 				E4495D3C1BB3AFA20052CECE /* Client.h */,
 				E4495D3E1BB3AFA20052CECE /* Info.plist */,
-				E4495D581BB3AFCD0052CECE /* Client.swift */,
+				E4495D581BB3AFCD0052CECE /* FidoClient.swift */,
 				E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */,
 			);
 			path = Client;
@@ -865,7 +865,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4495D5A1BB3AFCD0052CECE /* Client.swift in Sources */,
+				E4495D5A1BB3AFCD0052CECE /* FidoClient.swift in Sources */,
 				E4495D5B1BB3AFCD0052CECE /* FidoHTMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

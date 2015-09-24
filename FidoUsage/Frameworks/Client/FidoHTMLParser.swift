@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ChouTi
 import Ji
 
 public class FidoHTMLParser {
@@ -24,11 +25,11 @@ public class FidoHTMLParser {
 			return resultsDict
 		}
 		
-		if let fidoNumber = ji.xPath("//div[@id='fidoNumberDetails']/span/text()")?.first?.content?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
+		if let fidoNumber = ji.xPath("//div[@id='fidoNumberDetails']/span/text()")?.first?.content?.trimmed() {
 			resultsDict[fidoNumberKey] = fidoNumber
 		}
 		
-		if let accountHolder = ji.xPath("//div[@id='accountName']")?.first?.value?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
+		if let accountHolder = ji.xPath("//div[@id='accountName']")?.first?.value?.trimmed() {
 			resultsDict[accountHolderKey] = accountHolder
 		}
 		
@@ -110,7 +111,7 @@ public class FidoHTMLParser {
 		var tableHeaders = [String]()
 		if let tableHeaderNode = liNode.xPath(".//div[@class='tableHeader']").first {
 			for node in tableHeaderNode {
-				if let headerText = node.value?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) where !headerText.isEmpty {
+				if let headerText = node.value?.trimmed() where !headerText.isEmpty {
 					tableHeaders.append(headerText)
 				}
 			}
@@ -123,7 +124,7 @@ public class FidoHTMLParser {
 		
 		if let div = liNode.xPath(".//div[@class='clearBoth font12px']/div[1]/div[1]").first {
 			for i in 0 ..< headers.count {
-				if let contentString = div.childrenWithName("div")[i].content?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
+				if let contentString = div.childrenWithName("div")[i].content?.trimmed() {
 					tableContents.append(contentString)
 				}
 			}
@@ -131,3 +132,5 @@ public class FidoHTMLParser {
 		return tableContents
 	}
 }
+
+
