@@ -132,5 +132,3 @@ public class FidoHTMLParser {
 		return tableContents
 	}
 }
-
-

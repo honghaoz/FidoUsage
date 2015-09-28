@@ -315,8 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				E4495D6C1BB46AC40052CECE /* User.h */,
-				E4495D871BB46ADA0052CECE /* User.swift */,
 				E4495D6E1BB46AC40052CECE /* Info.plist */,
+				E4495D871BB46ADA0052CECE /* User.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

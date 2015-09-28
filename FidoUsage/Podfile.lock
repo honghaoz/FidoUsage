@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (2.0.2)
+  - Bolts/Tasks (1.3.0)
   - ChouTi (1.0):
     - ChouTi/UIChouTi (= 1.0)
   - ChouTi/Animators (1.0)
@@ -30,6 +31,8 @@ PODS:
     - OMGHTTPURLRQ/FormURLEncode
     - OMGHTTPURLRQ/UserAgent
   - OMGHTTPURLRQ/UserAgent (3.0.0)
+  - Parse (1.8.5):
+    - Bolts/Tasks (>= 1.2.2)
   - PromiseKit (3.0.0):
     - PromiseKit/Foundation (= 3.0.0)
     - PromiseKit/QuartzCore (= 3.0.0)
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - ChouTi (from `../Submodules/ChouTi/`)
   - Ji (~> 1.1.2)
   - Loggerithm (~> 1.3)
+  - Parse
   - PromiseKit (from `https://github.com/mxcl/PromiseKit`, branch `changes-for-3.0`)
 
 EXTERNAL SOURCES:
@@ -64,10 +68,12 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
   ChouTi: 8387c0b034608fd30bd88d7491685f9fbced955f
   Ji: 477ec17f9abe9d7f016d714f7b5da8c3c67a2e15
   Loggerithm: 23ec82a8f7907832758cb93f15c33a85de0ed99b
   OMGHTTPURLRQ: 45cd892e5643206a5a359307621df7678625ebec
+  Parse: 17ad8e0677ed682f7f00503860fcda0f4eb74168
   PromiseKit: 6810c48ec19990d3253dc8caf0e05519e7cd39ba
 
 COCOAPODS: 0.38.2
