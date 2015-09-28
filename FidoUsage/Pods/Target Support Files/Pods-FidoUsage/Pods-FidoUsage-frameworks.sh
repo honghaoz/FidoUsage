@@ -60,6 +60,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-FidoUsage/OMGHTTPURLRQ.framework'
   install_framework 'Pods-FidoUsage/Parse.framework'
   install_framework 'Pods-FidoUsage/PromiseKit.framework'
+  install_framework 'Pods-FidoUsage/Watchdog.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-FidoUsage/Alamofire.framework'
@@ -70,4 +71,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-FidoUsage/OMGHTTPURLRQ.framework'
   install_framework 'Pods-FidoUsage/Parse.framework'
   install_framework 'Pods-FidoUsage/PromiseKit.framework'
+  install_framework 'Pods-FidoUsage/Watchdog.framework'
 fi

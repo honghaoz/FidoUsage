@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "38D3330A9DAF0005FAC53F10"
+               BlueprintIdentifier = "2CA15F5125809B62FD82EE30"
                BuildableName = "ChouTi.framework"
                BlueprintName = "ChouTi"
                ReferencedContainer = "container:Pods.xcodeproj">

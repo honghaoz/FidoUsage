@@ -39,6 +39,9 @@
         "ChouTi/Animators": [
 
         ],
+        "ChouTi/Utility": [
+
+        ],
         "ChouTi/SlideController": [
 
         ],
@@ -66,6 +69,12 @@
       "name": "Animators",
       "summary": "A set of customized view controller transition animators",
       "source_files": "Source/iOS/Animators/*.*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "Utility",
+      "summary": "Handy utility functions",
+      "source_files": "Source/iOS/Utility/*.*",
       "frameworks": "UIKit"
     },
     {

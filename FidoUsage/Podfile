@@ -13,7 +13,9 @@ pod 'Ji', '~> 1.1.2'
 pod 'Alamofire', '~> 2.0'
 pod 'Loggerithm', '~> 1.3'
 pod "PromiseKit", :git => 'https://github.com/mxcl/PromiseKit', :branch => 'changes-for-3.0'
+
 pod 'Parse'
+pod "Watchdog"
 
 # Analytics
 # pod 'Google/Analytics'

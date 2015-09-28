@@ -28,5 +28,4 @@ extension UIColor {
 	class func fidoDarkGreyColor() -> UIColor {
 		return UIColor(red:91/255.0, green:103/255.0, blue:112/255.0, alpha:255/255.0)
 	}
-	
 }

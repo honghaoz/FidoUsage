@@ -18,6 +18,8 @@ PODS:
     - ChouTi/Protocols
     - ChouTi/SegmentedControl
     - ChouTi/SlideController
+    - ChouTi/Utility
+  - ChouTi/Utility (1.0)
   - Ji (1.1.2):
     - Ji/Ji (= 1.1.2)
   - Ji/Ji (1.1.2):
@@ -45,6 +47,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (3.0.0):
     - PromiseKit/CorePromise
+  - Watchdog (1.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
@@ -53,6 +56,7 @@ DEPENDENCIES:
   - Loggerithm (~> 1.3)
   - Parse
   - PromiseKit (from `https://github.com/mxcl/PromiseKit`, branch `changes-for-3.0`)
+  - Watchdog
 
 EXTERNAL SOURCES:
   ChouTi:
@@ -69,11 +73,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
-  ChouTi: 8387c0b034608fd30bd88d7491685f9fbced955f
+  ChouTi: 52b7ab2fb1706f69e1d386e13e17207ed9886862
   Ji: 477ec17f9abe9d7f016d714f7b5da8c3c67a2e15
   Loggerithm: 23ec82a8f7907832758cb93f15c33a85de0ed99b
   OMGHTTPURLRQ: 45cd892e5643206a5a359307621df7678625ebec
   Parse: 17ad8e0677ed682f7f00503860fcda0f4eb74168
   PromiseKit: 6810c48ec19990d3253dc8caf0e05519e7cd39ba
+  Watchdog: df151f580ea32831011cef05eda6c42385cd8423
 
 COCOAPODS: 0.38.2

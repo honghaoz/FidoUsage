@@ -9,9 +9,14 @@
 import Foundation
 import Loggerithm
 import ChouTi
+import Watchdog
 
 #if DEBUG
 let DEBUG = true
+let watchdog = Watchdog(threshold: 0.2) { duration in
+	print("👮 Main thread was blocked for " + String(format:"%.2f", duration) + "s 👮")
+}
+
 #else
 let DEBUG = false
 #endif
