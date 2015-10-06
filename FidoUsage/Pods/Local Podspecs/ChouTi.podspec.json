@@ -21,85 +21,70 @@
   "requires_arc": true,
   "public_header_files": "Source/**/**/*.h",
   "source_files": "Source/iOS/**/",
-  "default_subspecs": "UIChouTi",
+  "default_subspecs": [
+    "ChouTi",
+    "UI"
+  ],
   "subspecs": [
     {
-      "name": "UIChouTi",
-      "summary": "A set of common UI views & utilities.",
-      "dependencies": {
-        "ChouTi/Extensions": [
-
-        ],
-        "ChouTi/Protocols": [
-
-        ],
-        "ChouTi/CollectionViewLayouts": [
-
-        ],
-        "ChouTi/Animators": [
-
-        ],
-        "ChouTi/Utility": [
-
-        ],
-        "ChouTi/SlideController": [
-
-        ],
-        "ChouTi/AutoLinesLabel": [
-
-        ],
-        "ChouTi/SegmentedControl": [
-
-        ]
-      }
+      "name": "ChouTi",
+      "summary": "A Set of Common UI Utilities.",
+      "subspecs": [
+        {
+          "name": "Extensions",
+          "summary": "Extensions",
+          "source_files": "Source/iOS/Extensions/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "Protocols",
+          "summary": "Protocols",
+          "source_files": "Source/iOS/Protocols/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "CollectionViewLayouts",
+          "summary": "A collection of UICollectionView Layouts",
+          "source_files": "Source/iOS/CollectionViewLayouts/*/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "Animators",
+          "summary": "A set of customized view controller transition animators",
+          "source_files": "Source/iOS/Animators/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "Utility",
+          "summary": "Handy utility functions",
+          "source_files": "Source/iOS/Utility/*.*",
+          "frameworks": "UIKit"
+        }
+      ]
     },
     {
-      "name": "Extensions",
-      "summary": "Extensions of UIKit",
-      "source_files": "Source/iOS/Extensions/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "Protocols",
-      "summary": "Protocols",
-      "source_files": "Source/iOS/Protocols/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "Animators",
-      "summary": "A set of customized view controller transition animators",
-      "source_files": "Source/iOS/Animators/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "Utility",
-      "summary": "Handy utility functions",
-      "source_files": "Source/iOS/Utility/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "CollectionViewLayouts",
-      "summary": "A collection of UICollectionView Layouts",
-      "source_files": "Source/iOS/CollectionViewLayouts/*/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "SlideController",
-      "summary": "A left/right slide container view controller",
-      "source_files": "Source/iOS/SlideController/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "AutoLinesLabel",
-      "summary": "UILabel with contentInset and probide auto lines on iOS7",
-      "source_files": "Source/iOS/AutoLinesLabel/*.*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "SegmentedControl",
-      "summary": "Customized Segmented Control, with underscore bars",
-      "source_files": "Source/iOS/SegmentedControl/*.*",
-      "frameworks": "UIKit"
+      "name": "UI",
+      "summary": "UI Views & ViewControllers",
+      "subspecs": [
+        {
+          "name": "SlideController",
+          "summary": "A left/right slide container view controller",
+          "source_files": "Source/iOS/UI/SlideController/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "AutoLinesLabel",
+          "summary": "UILabel with contentInset and probide auto lines on iOS7",
+          "source_files": "Source/iOS/UI/AutoLinesLabel/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "SegmentedControl",
+          "summary": "Customized Segmented Control, with underscore bars",
+          "source_files": "Source/iOS/UI/SegmentedControl/*.*",
+          "frameworks": "UIKit"
+        }
+      ]
     }
   ]
 }
