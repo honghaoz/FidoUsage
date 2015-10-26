@@ -21,13 +21,38 @@
   "requires_arc": true,
   "public_header_files": "Source/**/**/*.h",
   "source_files": "Source/iOS/**/",
-  "default_subspecs": [
-    "ChouTi",
-    "UI",
-    "App-Extension-API-Unsafe",
-    "UI-App-Extension-API-Unsafe"
-  ],
+  "default_subspecs": "Unsafe",
   "subspecs": [
+    {
+      "name": "Safe",
+      "summary": "App extension API compatible",
+      "dependencies": {
+        "ChouTi/ChouTi": [
+
+        ],
+        "ChouTi/UI": [
+
+        ]
+      }
+    },
+    {
+      "name": "Unsafe",
+      "summary": "App extension API not compatible",
+      "dependencies": {
+        "ChouTi/ChouTi": [
+
+        ],
+        "ChouTi/UI": [
+
+        ],
+        "ChouTi/App-Extension-API-Unsafe": [
+
+        ],
+        "ChouTi/UI-App-Extension-API-Unsafe": [
+
+        ]
+      }
+    },
     {
       "name": "ChouTi",
       "summary": "A Set of Common UI Utilities.",

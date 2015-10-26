@@ -1,12 +1,6 @@
 PODS:
   - Alamofire (2.0.2)
   - Bolts/Tasks (1.4.0)
-  - ChouTi (1.0):
-    - ChouTi/App-Extension-API-Unsafe (= 1.0)
-    - ChouTi/ChouTi (= 1.0)
-    - ChouTi/UI (= 1.0)
-    - ChouTi/UI-App-Extension-API-Unsafe (= 1.0)
-  - ChouTi/App-Extension-API-Unsafe (1.0)
   - ChouTi/ChouTi (1.0):
     - ChouTi/ChouTi/Animators (= 1.0)
     - ChouTi/ChouTi/CollectionViewLayouts (= 1.0)
@@ -18,13 +12,13 @@ PODS:
   - ChouTi/ChouTi/Extensions (1.0)
   - ChouTi/ChouTi/Protocols (1.0)
   - ChouTi/ChouTi/Utility (1.0)
+  - ChouTi/Safe (1.0):
+    - ChouTi/ChouTi
+    - ChouTi/UI
   - ChouTi/UI (1.0):
     - ChouTi/UI/AutoLinesLabel (= 1.0)
     - ChouTi/UI/MenuPageViewController (= 1.0)
     - ChouTi/UI/SegmentedControl (= 1.0)
-  - ChouTi/UI-App-Extension-API-Unsafe (1.0):
-    - ChouTi/UI-App-Extension-API-Unsafe/SlideController (= 1.0)
-  - ChouTi/UI-App-Extension-API-Unsafe/SlideController (1.0)
   - ChouTi/UI/AutoLinesLabel (1.0)
   - ChouTi/UI/MenuPageViewController (1.0)
   - ChouTi/UI/SegmentedControl (1.0)
@@ -40,7 +34,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
-  - ChouTi (from `../Submodules/ChouTi/`)
+  - ChouTi/ChouTi (from `../Submodules/ChouTi/`)
+  - ChouTi/Safe (from `../Submodules/ChouTi/`)
+  - ChouTi/UI (from `../Submodules/ChouTi/`)
   - Ji (~> 1.2.0)
   - Loggerithm (~> 1.3)
   - Parse
@@ -53,7 +49,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
-  ChouTi: 42e9b8f276890ad47ec016087b462ad797fc58d8
+  ChouTi: 7fa31c83e6b3852938541e932f425349737605a0
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
   Loggerithm: 23ec82a8f7907832758cb93f15c33a85de0ed99b
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b

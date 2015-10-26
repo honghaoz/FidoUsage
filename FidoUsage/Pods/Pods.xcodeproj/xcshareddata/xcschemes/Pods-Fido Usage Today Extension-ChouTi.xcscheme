@@ -14,8 +14,8 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3F6D9AC055FF81A0AF07D634'
-               BlueprintName = 'ChouTi'
+               BlueprintIdentifier = '1238195F24375BB63F55F527'
+               BlueprintName = 'Pods-Fido Usage Today Extension-ChouTi'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ChouTi.framework'>
             </BuildableReference>

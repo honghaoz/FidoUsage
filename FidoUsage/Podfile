@@ -3,18 +3,22 @@ use_frameworks!
 
 platform :ios, '8.0'
 
+# inhibit_all_warnings!
+
 def unsafe_ChouTi
-	pod 'ChouTi', :path => '../Submodules/ChouTi/'
+	pod 'ChouTi/Unsafe', :path => '../Submodules/ChouTi/'
 end
 
 def safe_ChouTi
-	pod 'ChouTi', :path => '../Submodules/ChouTi/', :subspecs => ['ChouTi', 'UI']
+	pod 'ChouTi/Safe', :path => '../Submodules/ChouTi/'#, :subspecs => ['ChouTi', 'UI']
 end
 
 target 'FidoUsage' do
 
 	# Internal Libs
-	unsafe_ChouTi
+	safe_ChouTi
+	pod 'ChouTi/ChouTi', :path => '../Submodules/ChouTi/'
+	pod 'ChouTi/UI', :path => '../Submodules/ChouTi/'
 
 	# Utilities
 	pod 'Ji', '~> 1.2.0'
@@ -29,13 +33,9 @@ target 'FidoUsage' do
 
 end
 
-#target 'Client' do 
-#	safe_ChouTi
-#end
-
 post_install do |installer|
 	installer.pods_project.targets.each do |target|
-		if target.name == 'Alamofire' or target.name == 'Ji' or target.name == 'Loggerithm'
+		if target.name == 'Alamofire' or target.name == 'Ji' or target.name == 'Loggerithm' or target.name == 'ChouTi'
 			target.build_configurations.each do |config|
 				config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'YES'
 			end
