@@ -40,6 +40,7 @@
 		E44DDDD91BAC9E9600870334 /* FidoUsageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */; };
 		E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */; };
 		E462FDD11BDDE68000FD6DAC /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E462FDD01BDDE68000FD6DAC /* Loggerithm.framework */; };
+		E462FDD41BDDE83300FD6DAC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E462FDD21BDDE7FB00FD6DAC /* String+Extensions.swift */; };
 		E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A76511BB1D28700F601F8 /* LoginViewController.swift */; };
 		E49A76541BB1D2B600F601F8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49A76531BB1D2B600F601F8 /* Login.storyboard */; };
 		E4BE71691BACA2D200176D77 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71661BACA2D200176D77 /* Colors.swift */; };
@@ -185,6 +186,7 @@
 		E44DDDDA1BAC9E9600870334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		E462FDD01BDDE68000FD6DAC /* Loggerithm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loggerithm.framework; path = "Pods/../build/Debug-iphoneos/Loggerithm.framework"; sourceTree = SOURCE_ROOT; };
+		E462FDD21BDDE7FB00FD6DAC /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E49A76511BB1D28700F601F8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E49A76531BB1D2B600F601F8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E4BE71661BACA2D200176D77 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				E4495D3E1BB3AFA20052CECE /* Info.plist */,
 				E4495D581BB3AFCD0052CECE /* FidoClient.swift */,
 				E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */,
+				E462FDD21BDDE7FB00FD6DAC /* String+Extensions.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4495D5A1BB3AFCD0052CECE /* FidoClient.swift in Sources */,
+				E462FDD41BDDE83300FD6DAC /* String+Extensions.swift in Sources */,
 				E4495D5B1BB3AFCD0052CECE /* FidoHTMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
