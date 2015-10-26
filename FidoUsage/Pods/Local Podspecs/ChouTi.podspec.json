@@ -83,6 +83,12 @@
           "summary": "Customized Segmented Control, with underscore bars",
           "source_files": "Source/iOS/UI/SegmentedControl/*.*",
           "frameworks": "UIKit"
+        },
+        {
+          "name": "MenuPageViewController",
+          "summary": "PageViewController with header titles",
+          "source_files": "Source/iOS/UI/MenuPageViewController/*.*",
+          "frameworks": "UIKit"
         }
       ]
     }

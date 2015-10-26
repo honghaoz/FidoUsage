@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D9F374A70AC735D182D8764B /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		E4495D261BB3AEDF0052CECE /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */; settings = {ASSET_TAGS = (); }; };
+		D9F374A70AC735D182D8764B /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */; };
+		E4495D261BB3AEDF0052CECE /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */; };
 		E4495D291BB3AEDF0052CECE /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D281BB3AEDF0052CECE /* TodayViewController.swift */; };
 		E4495D2C1BB3AEDF0052CECE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4495D2A1BB3AEDF0052CECE /* MainInterface.storyboard */; };
 		E4495D301BB3AEDF0052CECE /* Fido Usage Today Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E4495D241BB3AEDF0052CECE /* Fido Usage Today Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E4495D3D1BB3AFA20052CECE /* Client.h in Headers */ = {isa = PBXBuildFile; fileRef = E4495D3C1BB3AFA20052CECE /* Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4495D441BB3AFA20052CECE /* Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; settings = {ASSET_TAGS = (); }; };
+		E4495D441BB3AFA20052CECE /* Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; };
 		E4495D4B1BB3AFA20052CECE /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D4A1BB3AFA20052CECE /* ClientTests.swift */; };
 		E4495D4F1BB3AFA20052CECE /* Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; };
 		E4495D501BB3AFA20052CECE /* Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E4495D5A1BB3AFCD0052CECE /* FidoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D581BB3AFCD0052CECE /* FidoClient.swift */; settings = {ASSET_TAGS = (); }; };
-		E4495D5B1BB3AFCD0052CECE /* FidoHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */; settings = {ASSET_TAGS = (); }; };
+		E4495D5A1BB3AFCD0052CECE /* FidoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D581BB3AFCD0052CECE /* FidoClient.swift */; };
+		E4495D5B1BB3AFCD0052CECE /* FidoHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */; };
 		E4495D5D1BB3B0FD0052CECE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D5C1BB3B0FD0052CECE /* Alamofire.framework */; };
 		E4495D5F1BB3B17C0052CECE /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D5E1BB3B17C0052CECE /* Ji.framework */; };
 		E4495D611BB3B1810052CECE /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D601BB3B1810052CECE /* Loggerithm.framework */; };
 		E4495D621BB3B4870052CECE /* Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; };
 		E4495D6D1BB46AC40052CECE /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = E4495D6C1BB46AC40052CECE /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4495D741BB46AC40052CECE /* User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D6A1BB46AC40052CECE /* User.framework */; settings = {ASSET_TAGS = (); }; };
+		E4495D741BB46AC40052CECE /* User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D6A1BB46AC40052CECE /* User.framework */; };
 		E4495D7B1BB46AC40052CECE /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D7A1BB46AC40052CECE /* UserTests.swift */; };
 		E4495D7F1BB46AC40052CECE /* User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D6A1BB46AC40052CECE /* User.framework */; };
 		E4495D801BB46AC40052CECE /* User.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D6A1BB46AC40052CECE /* User.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E4495D881BB46ADA0052CECE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D871BB46ADA0052CECE /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		E4495D881BB46ADA0052CECE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D871BB46ADA0052CECE /* User.swift */; };
 		E4495D891BB46B190052CECE /* User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D6A1BB46AC40052CECE /* User.framework */; };
 		E44DDDB61BAC9E9600870334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDB51BAC9E9600870334 /* AppDelegate.swift */; };
 		E44DDDB81BAC9E9600870334 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDB71BAC9E9600870334 /* RootViewController.swift */; };
@@ -38,14 +38,15 @@
 		E44DDDC31BAC9E9600870334 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44DDDC11BAC9E9600870334 /* LaunchScreen.storyboard */; };
 		E44DDDCE1BAC9E9600870334 /* FidoUsageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDCD1BAC9E9600870334 /* FidoUsageTests.swift */; };
 		E44DDDD91BAC9E9600870334 /* FidoUsageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */; };
-		E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
-		E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A76511BB1D28700F601F8 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E49A76541BB1D2B600F601F8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49A76531BB1D2B600F601F8 /* Login.storyboard */; settings = {ASSET_TAGS = (); }; };
-		E4BE71691BACA2D200176D77 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71661BACA2D200176D77 /* Colors.swift */; settings = {ASSET_TAGS = (); }; };
-		E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71671BACA2D200176D77 /* Constant.swift */; settings = {ASSET_TAGS = (); }; };
-		E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71681BACA2D200176D77 /* Locator.swift */; settings = {ASSET_TAGS = (); }; };
-		E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71701BACA4C200176D77 /* UsageViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */; settings = {ASSET_TAGS = (); }; };
+		E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */; };
+		E462FDD11BDDE68000FD6DAC /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E462FDD01BDDE68000FD6DAC /* Loggerithm.framework */; };
+		E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A76511BB1D28700F601F8 /* LoginViewController.swift */; };
+		E49A76541BB1D2B600F601F8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49A76531BB1D2B600F601F8 /* Login.storyboard */; };
+		E4BE71691BACA2D200176D77 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71661BACA2D200176D77 /* Colors.swift */; };
+		E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71671BACA2D200176D77 /* Constant.swift */; };
+		E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71681BACA2D200176D77 /* Locator.swift */; };
+		E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71701BACA4C200176D77 /* UsageViewController.swift */; };
+		E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FidoUsageUITests.swift; sourceTree = "<group>"; };
 		E44DDDDA1BAC9E9600870334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		E462FDD01BDDE68000FD6DAC /* Loggerithm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loggerithm.framework; path = "Pods/../build/Debug-iphoneos/Loggerithm.framework"; sourceTree = SOURCE_ROOT; };
 		E49A76511BB1D28700F601F8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E49A76531BB1D2B600F601F8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E4BE71661BACA2D200176D77 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E462FDD11BDDE68000FD6DAC /* Loggerithm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +270,7 @@
 		99C9518EC9F9C11D8B3A2E39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E462FDD01BDDE68000FD6DAC /* Loggerithm.framework */,
 				E4495D3B1BB3AFA20052CECE /* Client */,
 				E4495D491BB3AFA20052CECE /* ClientTests */,
 				E4495D6B1BB46AC40052CECE /* User */,
@@ -1270,7 +1274,6 @@
 				CODE_SIGN_ENTITLEMENTS = FidoUsage/FidoUsage/FidoUsage.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FidoUsage/FidoUsage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1288,7 +1291,6 @@
 				CODE_SIGN_ENTITLEMENTS = FidoUsage/FidoUsage/FidoUsage.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FidoUsage/FidoUsage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

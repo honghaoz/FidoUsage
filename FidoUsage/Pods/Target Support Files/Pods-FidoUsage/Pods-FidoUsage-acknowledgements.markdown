@@ -134,17 +134,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## OMGHTTPURLRQ
-
-See README.markdown for full license text.
-
 ## Parse
 
 See https://www.parse.com/about/terms
-
-## PromiseKit
-
-@see README
 
 ## Watchdog
 
