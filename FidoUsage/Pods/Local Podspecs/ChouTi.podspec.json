@@ -23,7 +23,9 @@
   "source_files": "Source/iOS/**/",
   "default_subspecs": [
     "ChouTi",
-    "UI"
+    "UI",
+    "App-Extension-API-Unsafe",
+    "UI-App-Extension-API-Unsafe"
   ],
   "subspecs": [
     {
@@ -63,15 +65,13 @@
       ]
     },
     {
+      "name": "App-Extension-API-Unsafe",
+      "summary": "Components which are not app extension compatible"
+    },
+    {
       "name": "UI",
       "summary": "UI Views & ViewControllers",
       "subspecs": [
-        {
-          "name": "SlideController",
-          "summary": "A left/right slide container view controller",
-          "source_files": "Source/iOS/UI/SlideController/*.*",
-          "frameworks": "UIKit"
-        },
         {
           "name": "AutoLinesLabel",
           "summary": "UILabel with contentInset and probide auto lines on iOS7",
@@ -88,6 +88,18 @@
           "name": "MenuPageViewController",
           "summary": "PageViewController with header titles",
           "source_files": "Source/iOS/UI/MenuPageViewController/*.*",
+          "frameworks": "UIKit"
+        }
+      ]
+    },
+    {
+      "name": "UI-App-Extension-API-Unsafe",
+      "summary": "UI components which are not app extension compatible",
+      "subspecs": [
+        {
+          "name": "SlideController",
+          "summary": "A left/right slide container view controller",
+          "source_files": "Source/iOS/UI/SlideController/*.*",
           "frameworks": "UIKit"
         }
       ]

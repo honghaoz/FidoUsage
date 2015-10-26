@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D9F374A70AC735D182D8764B /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */; };
+		E43C0E1C1BDE746300E55BAE /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0E1B1BDE746300E55BAE /* Loggerithm.framework */; };
 		E4495D261BB3AEDF0052CECE /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */; };
 		E4495D291BB3AEDF0052CECE /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D281BB3AEDF0052CECE /* TodayViewController.swift */; };
 		E4495D2C1BB3AEDF0052CECE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4495D2A1BB3AEDF0052CECE /* MainInterface.storyboard */; };
@@ -21,7 +22,6 @@
 		E4495D5B1BB3AFCD0052CECE /* FidoHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D591BB3AFCD0052CECE /* FidoHTMLParser.swift */; };
 		E4495D5D1BB3B0FD0052CECE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D5C1BB3B0FD0052CECE /* Alamofire.framework */; };
 		E4495D5F1BB3B17C0052CECE /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D5E1BB3B17C0052CECE /* Ji.framework */; };
-		E4495D611BB3B1810052CECE /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D601BB3B1810052CECE /* Loggerithm.framework */; };
 		E4495D621BB3B4870052CECE /* Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D3A1BB3AFA20052CECE /* Client.framework */; };
 		E4495D6D1BB46AC40052CECE /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = E4495D6C1BB46AC40052CECE /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E4495D741BB46AC40052CECE /* User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D6A1BB46AC40052CECE /* User.framework */; };
@@ -144,7 +144,12 @@
 
 /* Begin PBXFileReference section */
 		34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FidoUsage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		394A3D9641546618BF75AE4F /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.debug.xcconfig"; sourceTree = "<group>"; };
+		6C38386390E928E5BE8506E0 /* Pods-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Client/Pods-Client.debug.xcconfig"; sourceTree = "<group>"; };
+		B98A5A14A5621ECD2253717A /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Pods/Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
+		E43C0E191BDE744F00E55BAE /* ChouTi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChouTi.framework; path = "Pods/../build/Debug-iphoneos/Pods-FidoUsage/ChouTi.framework"; sourceTree = SOURCE_ROOT; };
+		E43C0E1B1BDE746300E55BAE /* Loggerithm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loggerithm.framework; path = "Pods/../build/Debug-iphoneos/Loggerithm.framework"; sourceTree = SOURCE_ROOT; };
 		E4495D241BB3AEDF0052CECE /* Fido Usage Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Fido Usage Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E4495D281BB3AEDF0052CECE /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4495D611BB3B1810052CECE /* Loggerithm.framework in Frameworks */,
+				E43C0E1C1BDE746300E55BAE /* Loggerithm.framework in Frameworks */,
 				E4495D5F1BB3B17C0052CECE /* Ji.framework in Frameworks */,
 				E4495D5D1BB3B0FD0052CECE /* Alamofire.framework in Frameworks */,
 			);
@@ -272,6 +277,8 @@
 		99C9518EC9F9C11D8B3A2E39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E43C0E1B1BDE746300E55BAE /* Loggerithm.framework */,
+				E43C0E191BDE744F00E55BAE /* ChouTi.framework */,
 				E462FDD01BDDE68000FD6DAC /* Loggerithm.framework */,
 				E4495D3B1BB3AFA20052CECE /* Client */,
 				E4495D491BB3AFA20052CECE /* ClientTests */,
@@ -282,6 +289,7 @@
 				E4495D5C1BB3B0FD0052CECE /* Alamofire.framework */,
 				34D7E0292D4E5A688ECDA9B1 /* Pods_FidoUsage.framework */,
 				E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */,
+				394A3D9641546618BF75AE4F /* Pods_Client.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -491,6 +499,8 @@
 			children = (
 				59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */,
 				F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */,
+				6C38386390E928E5BE8506E0 /* Pods-Client.debug.xcconfig */,
+				B98A5A14A5621ECD2253717A /* Pods-Client.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1055,7 +1065,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Frameworks/Client/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1080,7 +1089,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Frameworks/Client/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

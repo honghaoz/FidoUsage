@@ -3,20 +3,42 @@ use_frameworks!
 
 platform :ios, '8.0'
 
+def unsafe_ChouTi
+	pod 'ChouTi', :path => '../Submodules/ChouTi/'
+end
+
+def safe_ChouTi
+	pod 'ChouTi', :path => '../Submodules/ChouTi/', :subspecs => ['ChouTi', 'UI']
+end
+
 target 'FidoUsage' do
 
-# Internal Libs
-pod 'ChouTi', :path => '../Submodules/ChouTi/'
+	# Internal Libs
+	unsafe_ChouTi
 
-# Utilities
-pod 'Ji'
-pod 'Alamofire', '~> 2.0'
-pod 'Loggerithm'
+	# Utilities
+	pod 'Ji', '~> 1.2.0'
+	pod 'Alamofire', '~> 2.0'
+	pod 'Loggerithm', '~> 1.3'
 
-pod 'Parse'
-pod "Watchdog"
+	pod 'Parse'
+	pod 'Watchdog'
 
-# Analytics
-# pod 'Google/Analytics'
+	# Analytics
+	# pod 'Google/Analytics'
 
+end
+
+#target 'Client' do 
+#	safe_ChouTi
+#end
+
+post_install do |installer|
+	installer.pods_project.targets.each do |target|
+		if target.name == 'Alamofire' or target.name == 'Ji' or target.name == 'Loggerithm'
+			target.build_configurations.each do |config|
+				config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'YES'
+			end
+		end
+	end
 end
