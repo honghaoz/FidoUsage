@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
     }
 	
 	private func setupViews() {
+		numberField.keyboardType = .PhonePad
 		passwordField.secureTextEntry = true
 	}
 	
@@ -52,7 +53,7 @@ class LoginViewController: UIViewController {
 		Locator.client.loginWithNumber(number, password: password) {[unowned self] (succeed, resultDict) in
 			if succeed {
 				log.debug("Login Results: \(resultDict)")
-				
+		
 				self.user.isLoggedIn = true
 				self.user.number = number
 				self.user.password = password

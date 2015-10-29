@@ -21,22 +21,10 @@
   "requires_arc": true,
   "public_header_files": "Source/**/**/*.h",
   "source_files": "Source/iOS/**/",
-  "default_subspecs": "Unsafe",
+  "default_subspecs": "All",
   "subspecs": [
     {
-      "name": "Safe",
-      "summary": "App extension API compatible",
-      "dependencies": {
-        "ChouTi/ChouTi": [
-
-        ],
-        "ChouTi/UI": [
-
-        ]
-      }
-    },
-    {
-      "name": "Unsafe",
+      "name": "All",
       "summary": "App extension API not compatible",
       "dependencies": {
         "ChouTi/ChouTi": [
@@ -49,6 +37,18 @@
 
         ],
         "ChouTi/UI-App-Extension-API-Unsafe": [
+
+        ]
+      }
+    },
+    {
+      "name": "Safe",
+      "summary": "App extension API compatible",
+      "dependencies": {
+        "ChouTi/ChouTi": [
+
+        ],
+        "ChouTi/UI": [
 
         ]
       }

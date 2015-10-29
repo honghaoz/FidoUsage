@@ -449,6 +449,7 @@
 		E175EDF8790813A2AC21686AFB4E5BA4 /* PFPinningEventuallyQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA2B2D74D157D4DA2E3B06B87DB72C4 /* PFPinningEventuallyQueue.m */; };
 		E255BBC6E62B0077402B1019C428FC69 /* PFUserConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBC1BA33D673B369BE9A4584BDDB897 /* PFUserConstants.m */; };
 		E3850C4A57C621F582D20409B24CBB47 /* schemasInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = 5725E51ECA77FA74557B2F0B2DD0AC4E /* schemasInternals.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E49D42F01BE150AE001147C2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D42EF1BE150AE001147C2 /* UIViewController+Extension.swift */; };
 		E558BC559ED38B40C8C86E4D988C284C /* PFObjectState.h in Headers */ = {isa = PBXBuildFile; fileRef = 954CB8E001D0944B3B4D48F6F623FD15 /* PFObjectState.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E568A48D66409BA8A0D72948A76BA7C3 /* PFEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2398DE1E8AC520C830DECA1E8875A7 /* PFEncoder.m */; };
 		E5995AC544AA3F6BEF60D0CED31BE825 /* PFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F878753D92E78E45B7844F7159CA264 /* PFProduct.m */; };
@@ -463,7 +464,7 @@
 		E824A7479B453062B8E1078E5FEB6593 /* PFFileState.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7C02E701674641FB0A71F262430BE /* PFFileState.m */; };
 		E8C5F762562F18C03793B174E1167C23 /* xmlreader.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A4C0E4BD787E6519DA745551B39480 /* xmlreader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E917BB2160AF8EC4B371D98E96583ADB /* chvalid.h in Headers */ = {isa = PBXBuildFile; fileRef = 43A404D5B108A66C45421AAD2ED8E7AC /* chvalid.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA84C34B30840EF76E59548535B3F73E /* UINavigationBar+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8268052836DAD49F1E6EFED175F7E /* UINavigationBar+UI.swift */; };
+		EA84C34B30840EF76E59548535B3F73E /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8268052836DAD49F1E6EFED175F7E /* UINavigationBar+Extension.swift */; };
 		EAA9B58CE90D02C49A055D3D48E0C7E7 /* parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 819C3EE6015704C1B29FFEBD31B6A982 /* parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB51F11A058B57302652970171C78A8E /* PFMutableACLState.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE4EDE56AE219C644EC72E730CB9D5A /* PFMutableACLState.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EBCE0AF5480E47AB4426F1DB159DD7F3 /* PFMutableObjectState.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D669AAC84E13BA164AC97196FC317B4 /* PFMutableObjectState.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1038,6 +1039,7 @@
 		E391284BC18318AA03218A63CBA49644 /* PFConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFConstants.m; path = Parse/PFConstants.m; sourceTree = "<group>"; };
 		E3FB53ACA1E9B8297C108F2331954F6D /* PFURLSessionCommandRunner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFURLSessionCommandRunner.m; path = Parse/Internal/Commands/CommandRunner/URLSession/PFURLSessionCommandRunner.m; sourceTree = "<group>"; };
 		E49AF9961E510F2CC85B01F84CDDEDCB /* Bolts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Bolts-dummy.m"; sourceTree = "<group>"; };
+		E49D42EF1BE150AE001147C2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E4A0B2CB77F3CA88985C268D0DBA5BC9 /* PFURLSessionCommandRunner_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFURLSessionCommandRunner_Private.h; path = Parse/Internal/Commands/CommandRunner/URLSession/PFURLSessionCommandRunner_Private.h; sourceTree = "<group>"; };
 		E4A52BB0320245D7190223F203589A93 /* Collection+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		E4D55D7A548CDDA5CC1A53F1D81D648B /* PFPaymentTransactionObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFPaymentTransactionObserver.m; path = Parse/Internal/Purchase/PaymentTransactionObserver/PFPaymentTransactionObserver.m; sourceTree = "<group>"; };
@@ -1091,7 +1093,7 @@
 		FBEC81AD67F647081B3B40B17C832024 /* PFMulticastDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFMulticastDelegate.h; path = Parse/Internal/PFMulticastDelegate.h; sourceTree = "<group>"; };
 		FBF0C795051D1D7F42F0699554A7F569 /* UIImage+Tint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Tint.swift"; sourceTree = "<group>"; };
 		FC70DD45B7DED499E685C31F3BA0F447 /* PFEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFEncoder.h; path = Parse/Internal/PFEncoder.h; sourceTree = "<group>"; };
-		FCD8268052836DAD49F1E6EFED175F7E /* UINavigationBar+UI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+UI.swift"; sourceTree = "<group>"; };
+		FCD8268052836DAD49F1E6EFED175F7E /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		FD37FA3D2D7AE21C7735B5BCC5119DEF /* PFOfflineStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFOfflineStore.h; path = Parse/Internal/LocalDataStore/OfflineStore/PFOfflineStore.h; sourceTree = "<group>"; };
 		FD5E72A27A9670AD111822635B8BEF81 /* PFRESTCommand_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFRESTCommand_Private.h; path = Parse/Internal/Commands/PFRESTCommand_Private.h; sourceTree = "<group>"; };
 		FDF8F68C67B791D4405BD3816266DFDA /* PFACLState_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFACLState_Private.h; path = Parse/Internal/ACL/State/PFACLState_Private.h; sourceTree = "<group>"; };
@@ -1236,10 +1238,11 @@
 				38CA1C2A1CBFF4149F157E565D773E2A /* UIImage+Resize.swift */,
 				FBF0C795051D1D7F42F0699554A7F569 /* UIImage+Tint.swift */,
 				C8D17AEB740206618C9775D3A6E25840 /* UILable+Extensions.swift */,
-				FCD8268052836DAD49F1E6EFED175F7E /* UINavigationBar+UI.swift */,
+				FCD8268052836DAD49F1E6EFED175F7E /* UINavigationBar+Extension.swift */,
 				6B0781E6E1CE53572FA4A8CD3CCAD03F /* UIView+Extensions.swift */,
 				9DA937ACB590959C460B061822C4ED61 /* UIViewController+Storyboard.swift */,
 				265726755ED707A2E39C7435300CE236 /* UIViewController+Utility.swift */,
+				E49D42EF1BE150AE001147C2 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2815,7 +2818,7 @@
 				5852BF4FF7DED6A7F568D2AD9BFB0154 /* UIImage+Resize.swift in Sources */,
 				D4E8D7A1262445D50061D935D1F1DA6C /* UIImage+Tint.swift in Sources */,
 				7EDC38AB431EC4F8C85F291DF85FC5E3 /* UILable+Extensions.swift in Sources */,
-				EA84C34B30840EF76E59548535B3F73E /* UINavigationBar+UI.swift in Sources */,
+				EA84C34B30840EF76E59548535B3F73E /* UINavigationBar+Extension.swift in Sources */,
 				1B9E6D57128106CD41B056769054D873 /* UIView+Extensions.swift in Sources */,
 				8E6CF282566075459FE159CC555EA263 /* UIViewController+Storyboard.swift in Sources */,
 				BB8EB06F90DA63DC397A9C3A22761ACF /* UIViewController+Utility.swift in Sources */,
@@ -2841,6 +2844,7 @@
 				D8136D3B59D4753690000387A8082B54 /* Alamofire-dummy.m in Sources */,
 				E816509B4E3564E1A117CBDC0D845D69 /* Alamofire.swift in Sources */,
 				9077ECA2FA7B9C5D73365490A3D8898F /* Download.swift in Sources */,
+				E49D42F01BE150AE001147C2 /* UIViewController+Extension.swift in Sources */,
 				FE1F95F519342B9266EB69B23B4336CF /* Error.swift in Sources */,
 				69A447D12E60E5C3451DA30C6BB4BF7F /* Manager.swift in Sources */,
 				D39B20327B1DAF6D8753ED5685DDE6DC /* MultipartFormData.swift in Sources */,

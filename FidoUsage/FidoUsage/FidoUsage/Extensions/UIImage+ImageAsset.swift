@@ -14,6 +14,7 @@ extension UIImage {
 		case AppIcon = "AppIcon"
 		case LaunchImage = "LaunchImage"
 		case FidoLogo = "FidoLogo"
+		case FidoTealUnderscore = "FidoTealUnderscore"
 	}
 	
 	convenience init!(asset: ImageAssets) {

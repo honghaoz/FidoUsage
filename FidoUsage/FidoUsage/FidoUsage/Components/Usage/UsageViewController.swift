@@ -27,12 +27,14 @@ class UsageViewController : UIViewController {
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(tableView)
 		
-		tableView.backgroundColor = UIColor.whiteColor()
 		tableView.separatorStyle = .None
 		
 		tableView.dataSource = self
 		tableView.delegate = self
 		tableView.rowHeight = UITableViewAutomaticDimension
+		
+		tableView.canCancelContentTouches = true
+		tableView.delaysContentTouches = true
 		
 		setupConstraints()
 	}
@@ -51,44 +53,44 @@ class UsageViewController : UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		log.info("Goto View Usage Page ...")
-		Locator.client.gotoViewUsagePage { (succeed, sections) in
-			guard let sections = sections else {
-				log.error("Sections are emtpy")
-				return
-			}
-			log.debug("Usage Sections: \(sections)")
-			
-			var startIndex = 0
-			
-			log.info("Getting section: \(sections[startIndex])")
-			Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
-				log.debug(table)
-				
-				self.data[sections[startIndex]] = table
-				self.tableView.reloadData()
-				if startIndex < sections.count {
-					startIndex++
-					log.info("Getting section: \(sections[startIndex])")
-					Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
-						log.debug(table)
-						
-						self.data[sections[startIndex]] = table
-						self.tableView.reloadData()
-						if startIndex < sections.count {
-							startIndex++
-							log.info("Getting section: \(sections[startIndex])")
-							Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
-								log.debug(table)
-								
-								self.data[sections[startIndex]] = table
-								self.tableView.reloadData()
-							})
-						}
-					})
-				}
-			})
-		}
+//		log.info("Goto View Usage Page ...")
+//		Locator.client.gotoViewUsagePage { (succeed, sections) in
+//			guard let sections = sections else {
+//				log.error("Sections are emtpy")
+//				return
+//			}
+//			log.debug("Usage Sections: \(sections)")
+//			
+//			var startIndex = 0
+//			
+//			log.info("Getting section: \(sections[startIndex])")
+//			Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+//				log.debug(table)
+//				
+//				self.data[sections[startIndex]] = table
+//				self.tableView.reloadData()
+//				if startIndex < sections.count {
+//					startIndex++
+//					log.info("Getting section: \(sections[startIndex])")
+//					Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+//						log.debug(table)
+//						
+//						self.data[sections[startIndex]] = table
+//						self.tableView.reloadData()
+//						if startIndex < sections.count {
+//							startIndex++
+//							log.info("Getting section: \(sections[startIndex])")
+//							Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+//								log.debug(table)
+//								
+//								self.data[sections[startIndex]] = table
+//								self.tableView.reloadData()
+//							})
+//						}
+//					})
+//				}
+//			})
+//		}
 	}
 }
 
@@ -121,16 +123,16 @@ extension UsageViewController : UITableViewDataSource {
 			switch indexPath.row {
 			case 0:
 				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = data["Voice"]?["Type"]
+//				cell.detailTextLabel?.text = data["Voice"]?["Type"]
 			case 1:
 				cell.textLabel?.text = "Included"
-				cell.detailTextLabel?.text = data["Voice"]?["Included"]
+//				cell.detailTextLabel?.text = data["Voice"]?["Included"]
 			case 2:
 				cell.textLabel?.text = "Used"
-				cell.detailTextLabel?.text = data["Voice"]?["Used"]
+//				cell.detailTextLabel?.text = data["Voice"]?["Used"]
 			case 3:
 				cell.textLabel?.text = "Remaining"
-				cell.detailTextLabel?.text = data["Voice"]?["Remaining"]
+//				cell.detailTextLabel?.text = data["Voice"]?["Remaining"]
 			default:
 				break
 			}
@@ -138,16 +140,16 @@ extension UsageViewController : UITableViewDataSource {
 			switch indexPath.row {
 			case 0:
 				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = data["Data"]?["Type"]
+//				cell.detailTextLabel?.text = data["Data"]?["Type"]
 			case 1:
 				cell.textLabel?.text = "Included"
-				cell.detailTextLabel?.text = data["Data"]?["Included"]
+//				cell.detailTextLabel?.text = data["Data"]?["Included"]
 			case 2:
 				cell.textLabel?.text = "Used"
-				cell.detailTextLabel?.text = data["Data"]?["Used"]
+//				cell.detailTextLabel?.text = data["Data"]?["Used"]
 			case 3:
 				cell.textLabel?.text = "Remaining"
-				cell.detailTextLabel?.text = data["Data"]?["Remaining"]
+//				cell.detailTextLabel?.text = data["Data"]?["Remaining"]
 			default:
 				break
 			}
@@ -155,16 +157,16 @@ extension UsageViewController : UITableViewDataSource {
 			switch indexPath.row {
 			case 0:
 				cell.textLabel?.text = "Type"
-				cell.detailTextLabel?.text = data["Messaging"]?["Type"]
+//				cell.detailTextLabel?.text = data["Messaging"]?["Type"]
 			case 1:
 				cell.textLabel?.text = "Included"
-				cell.detailTextLabel?.text = data["Messaging"]?["Included"]
+//				cell.detailTextLabel?.text = data["Messaging"]?["Included"]
 			case 2:
 				cell.textLabel?.text = "Used"
-				cell.detailTextLabel?.text = data["Messaging"]?["Used"]
+//				cell.detailTextLabel?.text = data["Messaging"]?["Used"]
 			case 3:
 				cell.textLabel?.text = "Remaining"
-				cell.detailTextLabel?.text = data["Messaging"]?["Remaining"]
+//				cell.detailTextLabel?.text = data["Messaging"]?["Remaining"]
 			default:
 				break
 			}
@@ -184,6 +186,6 @@ extension UsageViewController : UITableViewDelegate {
 	
 	// MARK: - Selections
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		//
+		print("did selected: \(indexPath)")
 	}
 }

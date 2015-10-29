@@ -13,13 +13,13 @@ import Ji
 public class FidoHTMLParser {
 	static public let sharedInstance = FidoHTMLParser()
 	
-	let fidoNumberKey = "Fido number"
-	let accountHolderKey = "Account holder"
+	let fidoNumberKey = "fido_number"
+	let accountHolderKey = "account_holder"
 	
-    var results = [String: AnyObject]()
+    var results = [String : AnyObject]()
 	
-	func parseAccountDetails(homeHTMLString: String) -> [String: String] {
-		var resultsDict = [String: String]()
+	func parseAccountDetails(homeHTMLString: String) -> [String : String] {
+		var resultsDict = [String : String]()
 		guard let ji = Ji(htmlString: homeHTMLString) else {
 			log.error("Setup Ji doc failed")
 			return resultsDict
@@ -55,7 +55,9 @@ public class FidoHTMLParser {
 					continue
 				}
 				
-				if aNode["style"] == "display:none;" { continue }
+				if aNode["style"] == "display:none;" {
+					continue
+				}
 				
 				if let tabName = aNode.firstChildWithName("span")?.value {
 					tabs.append(tabName)
@@ -66,8 +68,8 @@ public class FidoHTMLParser {
 		return tabs
 	}
 	
-	func parseUsageDetail(viewUsageHTMLString: String) -> [String: String] {
-		var table = [String: String]()
+	func parseUsageDetail(viewUsageHTMLString: String) -> [String : String] {
+		var table = [String : String]()
 		guard let ji = Ji(htmlString: viewUsageHTMLString) else {
 			log.error("Setup Ji doc failed")
 			return table

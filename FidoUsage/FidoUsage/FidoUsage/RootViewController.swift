@@ -18,17 +18,17 @@ class RootViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		let user = Locator.user
-		if !user.isLoggedIn {
+		if user.isLoggedIn == false {
 			let loginVC = Locator.loginViewController
 			presentViewController(loginVC, animated: true, completion: nil)
 		}
 	}
 	
 	func showUsageViewController() {
-		let usageNavigationController = Locator.usageNavigationController
-		addChildViewController(usageNavigationController)
-		view.addSubview(usageNavigationController.view)
+		let usageContainerNavigationController = Locator.usageContainerNavigationController
+		addChildViewController(usageContainerNavigationController)
+		view.addSubview(usageContainerNavigationController.view)
 		
-		usageNavigationController.didMoveToParentViewController(self)
+		usageContainerNavigationController.didMoveToParentViewController(self)
 	}
 }

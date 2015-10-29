@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22EA14979512BC2C24BDD4C8 /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8946BD7A5A88D4762253D2F /* Pods_FidoUsage.framework */; };
+		E43C0E9A1BDECE5B00E55BAE /* UsageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C0E991BDECE5B00E55BAE /* UsageContainerViewController.swift */; };
+		E43C0E9C1BDEDD4E00E55BAE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0E9B1BDEDD4E00E55BAE /* Alamofire.framework */; };
+		E43C0E9E1BDEDD5300E55BAE /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0E9D1BDEDD5300E55BAE /* Ji.framework */; };
+		E43C0EA01BDEDD5700E55BAE /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0E9F1BDEDD5700E55BAE /* Loggerithm.framework */; };
+		E43C0EA21BDEDD6900E55BAE /* ChouTi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0EA11BDEDD6900E55BAE /* ChouTi.framework */; };
+		E43C0EA41BDEDD7B00E55BAE /* Loggerithm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0EA31BDEDD7B00E55BAE /* Loggerithm.framework */; };
 		E4495D261BB3AEDF0052CECE /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */; };
 		E4495D291BB3AEDF0052CECE /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4495D281BB3AEDF0052CECE /* TodayViewController.swift */; };
 		E4495D2C1BB3AEDF0052CECE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4495D2A1BB3AEDF0052CECE /* MainInterface.storyboard */; };
@@ -138,6 +145,12 @@
 
 /* Begin PBXFileReference section */
 		59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.debug.xcconfig"; sourceTree = "<group>"; };
+		E43C0E991BDECE5B00E55BAE /* UsageContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageContainerViewController.swift; sourceTree = "<group>"; };
+		E43C0E9B1BDEDD4E00E55BAE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = SOURCE_ROOT; };
+		E43C0E9D1BDEDD5300E55BAE /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "Pods/../build/Debug-iphoneos/Ji.framework"; sourceTree = SOURCE_ROOT; };
+		E43C0E9F1BDEDD5700E55BAE /* Loggerithm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loggerithm.framework; path = "Pods/../build/Debug-iphoneos/Loggerithm.framework"; sourceTree = SOURCE_ROOT; };
+		E43C0EA11BDEDD6900E55BAE /* ChouTi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChouTi.framework; path = "Pods/../build/Debug-iphoneos/ChouTi.framework"; sourceTree = SOURCE_ROOT; };
+		E43C0EA31BDEDD7B00E55BAE /* Loggerithm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loggerithm.framework; path = "Pods/../build/Debug-iphoneos/Loggerithm.framework"; sourceTree = SOURCE_ROOT; };
 		E4495D241BB3AEDF0052CECE /* Fido Usage Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Fido Usage Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E4495D281BB3AEDF0052CECE /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +196,7 @@
 		E4BE71701BACA4C200176D77 /* UsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
 		E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageAsset.swift"; sourceTree = "<group>"; };
 		F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.release.xcconfig"; sourceTree = "<group>"; };
+		F8946BD7A5A88D4762253D2F /* Pods_FidoUsage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FidoUsage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +214,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43C0EA21BDEDD6900E55BAE /* ChouTi.framework in Frameworks */,
+				E43C0EA01BDEDD5700E55BAE /* Loggerithm.framework in Frameworks */,
+				E43C0E9E1BDEDD5300E55BAE /* Ji.framework in Frameworks */,
+				E43C0E9C1BDEDD4E00E55BAE /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43C0EA41BDEDD7B00E55BAE /* Loggerithm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +251,7 @@
 			files = (
 				E4495D7F1BB46AC40052CECE /* User.framework in Frameworks */,
 				E4495D4F1BB3AFA20052CECE /* Client.framework in Frameworks */,
+				22EA14979512BC2C24BDD4C8 /* Pods_FidoUsage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,11 +275,17 @@
 		99C9518EC9F9C11D8B3A2E39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E43C0EA31BDEDD7B00E55BAE /* Loggerithm.framework */,
+				E43C0EA11BDEDD6900E55BAE /* ChouTi.framework */,
+				E43C0E9F1BDEDD5700E55BAE /* Loggerithm.framework */,
+				E43C0E9D1BDEDD5300E55BAE /* Ji.framework */,
+				E43C0E9B1BDEDD4E00E55BAE /* Alamofire.framework */,
 				E4495D3B1BB3AFA20052CECE /* Client */,
 				E4495D491BB3AFA20052CECE /* ClientTests */,
 				E4495D6B1BB46AC40052CECE /* User */,
 				E4495D791BB46AC40052CECE /* UserTests */,
 				E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */,
+				F8946BD7A5A88D4762253D2F /* Pods_FidoUsage.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -435,6 +461,7 @@
 		E4BE716F1BACA4C200176D77 /* Usage */ = {
 			isa = PBXGroup;
 			children = (
+				E43C0E991BDECE5B00E55BAE /* UsageContainerViewController.swift */,
 				E4BE71701BACA4C200176D77 /* UsageViewController.swift */,
 				E4BE71751BACA74500176D77 /* Views */,
 			);
@@ -884,6 +911,7 @@
 			files = (
 				E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */,
 				E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */,
+				E43C0E9A1BDECE5B00E55BAE /* UsageContainerViewController.swift in Sources */,
 				E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */,
 				E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */,
 				E4BE71691BACA2D200176D77 /* Colors.swift in Sources */,
@@ -1258,6 +1286,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.honghaoz.FidoUsage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1275,6 +1304,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.honghaoz.FidoUsage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

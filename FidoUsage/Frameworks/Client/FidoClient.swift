@@ -37,12 +37,20 @@ public class FidoClient {
 
 // MARK: - Login
 extension FidoClient {
-	public func loginWithNumber(number: String, password: String, completion: ((Bool, [String: String]?) -> Void)? = nil) {
+	/**
+	Login with number and password
+	
+	- parameter number:     Fido number
+	- parameter password:   Fido password
+	- parameter completion: First Boolean, true for login successful. Second dictionary is reuslt dictionary
+	*/
+	public func loginWithNumber(number: String, password: String, completion: ((Bool, [String : String]?) -> Void)? = nil) {
 		switch currentPage {
 		case .Login:
 			POSTLoginWithNumber(number, password: password) { [unowned self] (succeed, htmlString) in
 				if !succeed {
 					completion?(false , nil)
+					return
 				}
 				
 				guard let htmlString = htmlString else {
@@ -65,6 +73,13 @@ extension FidoClient {
 		}
 	}
 	
+	/**
+	POST for login
+	
+	- parameter number:     Fido number
+	- parameter password:   Fido password
+	- parameter completion: POST status and result html string
+	*/
 	private func POSTLoginWithNumber(number: String, password: String, completion: ((Bool, String?) -> Void)? = nil) {
 		let parameters = [
 			"FidoSignIn_1_1{actionForm.fidonumber}": number,
@@ -102,6 +117,11 @@ extension FidoClient {
 
 // MARK: - View Usage
 extension FidoClient {
+	/**
+	Go to view usage page
+	
+	- parameter completion: (successful, sections)
+	*/
 	public func gotoViewUsagePage(completion: ((Bool, [String]?) -> Void)? = nil) {
 		switch currentPage {
 		case .ViewUsage(_):
@@ -109,30 +129,35 @@ extension FidoClient {
 			return
 		default:
 			GETViewUsagePage({ [unowned self] (succeed, htmlString) in
-				if succeed {
-					guard let htmlString = htmlString else {
-						log.error("Unwrapp htmlString failed")
-						completion?(false, nil)
-						return
-					}
-					
-					let sections = self.fidoParser.parseUsageSections(htmlString)
-					self.usageSections = sections
-					if sections.count == 0 {
-						log.error("Sections are zero")
-						completion?(false, [])
-					} else {
-						self.currentPage = .ViewUsage(sections[0])
-						completion?(true, sections)
-					}
-					
-				} else {
+				if !succeed {
 					completion?(false, nil)
+					return
+				}
+				
+				guard let htmlString = htmlString else {
+					log.error("Unwrapp htmlString failed")
+					completion?(false, nil)
+					return
+				}
+				
+				let sections = self.fidoParser.parseUsageSections(htmlString)
+				self.usageSections = sections
+				if sections.count == 0 {
+					log.warning("Sections are zero")
+					completion?(false, [])
+				} else {
+					self.currentPage = .ViewUsage(sections[0])
+					completion?(true, sections)
 				}
 			})
 		}
 	}
 	
+	/**
+	GET usage main page
+	
+	- parameter completion: (request status, html string)
+	*/
 	private func GETViewUsagePage(completion: ((Bool, String?) -> Void)? = nil) {
 		Alamofire.request(.GET, self.dynamicType.viewUsageURL, parameters: nil).responseString(completionHandler: { [unowned self] (_, _, result) in
 			if !result.isSuccess {
@@ -151,13 +176,19 @@ extension FidoClient {
 		})
 	}
 	
-	public func showViewUsgaeForSection(section: String, completion: ((Bool, [String: String]?) -> Void)? = nil) {
+	/**
+	Show usage for the section
+	
+	- parameter section:    section key
+	- parameter completion: (successful, result dictionary)
+	*/
+	public func showViewUsgaeForSection(section: String, completion: ((Bool, [String : String]?) -> Void)? = nil) {
 		switch currentPage {
 		case .ViewUsage(section):
 			if let currentHTMLString = self.currentHTMLString {
 				completion?(true, self.fidoParser.parseUsageDetail(currentHTMLString))
 			} else {
-				completion?(false, nil)
+				fallthrough
 			}
 		default:
 			POSTViewUsagePageForSection(section, completion: { [unowned self] (succeed, htmlString) in

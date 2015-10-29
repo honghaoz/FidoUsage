@@ -53,16 +53,16 @@ class Locator {
 		return sharedInstance._loginViewController
 	}
 	
-	// MARK: - Usage View Controller
-	private lazy var _usageViewController: UsageViewController = {
-		return UIViewController.viewControllerInStoryboard("Main", viewControllerName: "UsageViewController") as! UsageViewController
+	// MARK: - Usage Container View Controller
+	private lazy var _usageContainerViewController: UsageContainerViewController = {
+		return UsageContainerViewController()
 	}()
 	
-	class var usageViewController: UsageViewController {
-		return sharedInstance._usageViewController
+	class var usageContainerViewController: UsageContainerViewController {
+		return sharedInstance._usageContainerViewController
 	}
 	
-	class var usageNavigationController: BaseNavigationController {
-		return BaseNavigationController(rootViewController: usageViewController)
+	class var usageContainerNavigationController: BaseNavigationController {
+		return BaseNavigationController(rootViewController: usageContainerViewController)
 	}
 }

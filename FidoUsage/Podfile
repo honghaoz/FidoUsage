@@ -6,7 +6,7 @@ platform :ios, '8.0'
 # inhibit_all_warnings!
 
 def unsafe_ChouTi
-	pod 'ChouTi/Unsafe', :path => '../Submodules/ChouTi/'
+	pod 'ChouTi', :path => '../Submodules/ChouTi/'
 end
 
 def safe_ChouTi
