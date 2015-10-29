@@ -13,7 +13,7 @@ import Ji
 public class FidoHTMLParser {
 	static public let sharedInstance = FidoHTMLParser()
 	
-	let fidoNumberKey = "fido_number"
+	let numberKey = "number"
 	let accountHolderKey = "account_holder"
 	
     var results = [String : AnyObject]()
@@ -26,7 +26,7 @@ public class FidoHTMLParser {
 		}
 		
 		if let fidoNumber = ji.xPath("//div[@id='fidoNumberDetails']/span/text()")?.first?.content?.trimmed() {
-			resultsDict[fidoNumberKey] = fidoNumber
+			resultsDict[numberKey] = fidoNumber
 		}
 		
 		if let accountHolder = ji.xPath("//div[@id='accountName']")?.first?.value?.trimmed() {
@@ -103,7 +103,7 @@ public class FidoHTMLParser {
 		}
 		
 		for (index, header) in headers.enumerate() {
-			table[header] = contents[index]
+			table[header] = contents[index].removeTabsAndReplaceNewlineWithEmptySpace()
 		}
 
 		return table

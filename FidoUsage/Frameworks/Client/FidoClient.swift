@@ -30,8 +30,13 @@ public class FidoClient {
 	var currentPage: Page = .Login
 	var currentHTMLString: String?
 	
-	var accountInformationDictionary: [String: String]?
-	var usageSections: [String]?
+	public var numberString: String?
+	public var accountHolderName: String?
+	
+	var accountInformationDictionary: [String : String]?
+	
+	public var usageSections: [String]?
+	public var usageDetails = [String : [String : String]]()
 }
 
 
@@ -63,7 +68,10 @@ extension FidoClient {
 					completion?(false, nil)
 				} else {
 					self.currentPage = .Home
-					self.accountInformationDictionary = self.fidoParser.parseAccountDetails(htmlString)
+					let accountInfo = self.fidoParser.parseAccountDetails(htmlString)
+					self.accountInformationDictionary = accountInfo
+					self.numberString = accountInfo[self.fidoParser.numberKey]
+					self.accountHolderName = accountInfo[self.fidoParser.accountHolderKey]
 					completion?(true, self.accountInformationDictionary)
 				}
 			}
@@ -186,7 +194,9 @@ extension FidoClient {
 		switch currentPage {
 		case .ViewUsage(section):
 			if let currentHTMLString = self.currentHTMLString {
-				completion?(true, self.fidoParser.parseUsageDetail(currentHTMLString))
+				let detail = self.fidoParser.parseUsageDetail(currentHTMLString)
+				self.usageDetails[section] = detail
+				completion?(true, detail)
 			} else {
 				fallthrough
 			}
@@ -204,7 +214,9 @@ extension FidoClient {
 				}
 				
 				self.currentPage = .ViewUsage(section)
-				completion?(true, self.fidoParser.parseUsageDetail(htmlString))
+				let detail = self.fidoParser.parseUsageDetail(htmlString)
+				self.usageDetails[section] = detail
+				completion?(true, detail)
 			})
 		}
 	}

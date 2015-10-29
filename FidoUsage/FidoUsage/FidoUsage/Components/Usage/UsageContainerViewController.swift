@@ -66,7 +66,8 @@ class UsageContainerViewController : UIViewController {
 			return
 		}
 		
-		numberButton.titleLabel?.font = UIFont.systemFontOfSize(16)
+		numberButton.titleLabel?.font = UIFont.systemFontOfSize(11)
+		numberButton.titleLabel?.numberOfLines = 2
 		numberButton.setTitle("---", forState: .Normal)
 		numberButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
 		numberButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.3), forState: .Highlighted)
@@ -100,7 +101,7 @@ class UsageContainerViewController : UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		let number = Locator.user.number
+		let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
 		numberButton.setTitle(number, forState: .Normal)
 	}
 }
