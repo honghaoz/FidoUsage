@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (2.0.2)
+  - Alamofire (3.1.0)
   - Bolts/Tasks (1.4.0)
   - ChouTi/ChouTi (1.0):
     - ChouTi/ChouTi/Animators (= 1.0)
@@ -33,7 +33,7 @@ PODS:
   - Watchdog (1.0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 2.0)
+  - Alamofire (~> 3.0)
   - ChouTi/ChouTi (from `../Submodules/ChouTi/`)
   - ChouTi/Safe (from `../Submodules/ChouTi/`)
   - ChouTi/UI (from `../Submodules/ChouTi/`)
@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
     :path: "../Submodules/ChouTi/"
 
 SPEC CHECKSUMS:
-  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Alamofire: 415bd7f56197722978759078486689f7ef913dce
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   ChouTi: bffb4f8467c35e3dc26542369ed83e816c03c8b1
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7

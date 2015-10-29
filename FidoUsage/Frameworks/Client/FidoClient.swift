@@ -88,12 +88,12 @@ extension FidoClient {
 			"FidoSignIn_1_1{actionForm.loginAsGAM}": "false"
 		]
 		
-		Alamofire.request(.POST, self.dynamicType.loginURL, parameters: parameters).responseString { [unowned self] (_, _, result) in
-			if !result.isSuccess {
+		Alamofire.request(.POST, self.dynamicType.loginURL, parameters: parameters).responseString { [unowned self] response in
+			if !response.result.isSuccess {
 				log.error("Login: network request failed!")
 				completion?(false, nil)
 			} else {
-				guard let htmlString = result.value else {
+				guard let htmlString = response.result.value else {
 					log.error("Login: getting htmlString failed!")
 					completion?(false, nil)
 					return
@@ -159,12 +159,12 @@ extension FidoClient {
 	- parameter completion: (request status, html string)
 	*/
 	private func GETViewUsagePage(completion: ((Bool, String?) -> Void)? = nil) {
-		Alamofire.request(.GET, self.dynamicType.viewUsageURL, parameters: nil).responseString(completionHandler: { [unowned self] (_, _, result) in
-			if !result.isSuccess {
+		Alamofire.request(.GET, self.dynamicType.viewUsageURL, parameters: nil).responseString(completionHandler: { [unowned self] response in
+			if !response.result.isSuccess {
 				log.error("View Usage: network request failed!")
 				completion?(false, nil)
 			} else {
-				guard let htmlString = result.value else {
+				guard let htmlString = response.result.value else {
 					log.error("View Usage: getting htmlString failed!")
 					completion?(false, nil)
 					return
@@ -211,12 +211,12 @@ extension FidoClient {
 	
 	private func POSTViewUsagePageForSection(section: String, completion: ((Bool, String?) -> Void)? = nil) {
 		let parameters = ["selectedUsageType": section]
-		Alamofire.request(.POST, self.dynamicType.sectionUsageURL, parameters: parameters).responseString(completionHandler: { (_, _, result) in
-			if !result.isSuccess {
+		Alamofire.request(.POST, self.dynamicType.sectionUsageURL, parameters: parameters).responseString(completionHandler: { response in
+			if !response.result.isSuccess {
 				log.error("View Usage: network request failed!")
 				completion?(false, nil)
 			} else {
-				guard let htmlString = result.value else {
+				guard let htmlString = response.result.value else {
 					log.error("View Usage: getting htmlString failed!")
 					completion?(false, nil)
 					return

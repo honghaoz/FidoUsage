@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F1B99DDE4C51D61FA762D6BE'
+               BlueprintIdentifier = 'B0A12A4D369943CE3746A83E'
                BlueprintName = 'ChouTi'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ChouTi.framework'>
