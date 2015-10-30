@@ -69,23 +69,20 @@ public class FidoHTMLParser {
 	}
 	
 	func parseUsageDetail(viewUsageHTMLString: String) -> [String : String] {
-		var table = [String : String]()
 		guard let ji = Ji(htmlString: viewUsageHTMLString) else {
 			log.error("Setup Ji doc failed")
-			return table
+			return [:]
 		}
 		
 		// Get usage details
-		guard let liNodes = ji.xPath("//ul[@class='usageContent']/li") else {
+		guard let currentVisibleLiNodes = ji.xPath("//ul[@class='usageContent']/li[not(contains(@class, 'hideLink'))]") else {
 			log.error("liNodes not found")
-			return table
+			return [:]
 		}
-		
-		let currentVisibleLiNodes = liNodes.filter { $0["class"] != "hideLink" }
 		
 		if currentVisibleLiNodes.count == 0 {
 			log.error("No visible liNode found")
-			return table
+			return [:]
 		}
 		
 		if currentVisibleLiNodes.count > 1 {
@@ -93,9 +90,24 @@ public class FidoHTMLParser {
 		}
 		
 		let currentLiNode = currentVisibleLiNodes.first!
+		let table = getUsageTableForLiNode(currentLiNode)
+		getUsageMetersForLiNode(currentLiNode)
 		
-		let headers = getTableHeadersForLiNode(currentLiNode)
-		let contents = getTableContentsForLiNode(currentLiNode, headers: headers)
+		return table
+	}
+	
+	/**
+	["Remaining": "Unlimited", "Type": "Incoming/Outgoing Evenings and Weekends usage", "Included": "Unlimited", "Used": "38 min"]
+	
+	- parameter liNode: Current visible liNode
+	
+	- returns: Table
+	*/
+	private func getUsageTableForLiNode(liNode: JiNode) -> [String : String] {
+		var table = [String : String]()
+		
+		let headers = getTableHeadersForLiNode(liNode)
+		let contents = getTableContentsForLiNode(liNode, headers: headers)
 		
 		if headers.count != contents.count {
 			log.error("headers.count != contents.count")
@@ -105,10 +117,17 @@ public class FidoHTMLParser {
 		for (index, header) in headers.enumerate() {
 			table[header] = contents[index].removeTabsAndReplaceNewlineWithEmptySpace()
 		}
-
+		
 		return table
 	}
 	
+	/**
+	["Remaining", "Type", "Included", "Used"]
+	
+	- parameter liNode: Current visible liNode
+	
+	- returns: Table Headers
+	*/
 	private func getTableHeadersForLiNode(liNode: JiNode) -> [String] {
 		var tableHeaders = [String]()
 		if let tableHeaderNode = liNode.xPath(".//div[@class='tableHeader']").first {
@@ -121,6 +140,14 @@ public class FidoHTMLParser {
 		return tableHeaders
 	}
 	
+	/**
+	["Unlimited", "Incoming/Outgoing Evenings and Weekends usage", "Unlimited", "38 min"]
+	
+	- parameter liNode:  Current visible liNode
+	- parameter headers: Corresponding Table Headers
+	
+	- returns: Table contents
+	*/
 	private func getTableContentsForLiNode(liNode: JiNode, headers: [String]) -> [String] {
 		var tableContents = [String]()
 		
@@ -132,5 +159,36 @@ public class FidoHTMLParser {
 			}
 		}
 		return tableContents
+	}
+	
+	/**
+	[
+	 "min": "0 min",
+	 "max": "237 min",
+	 "used": "237 min"
+	 "usage": [
+	  "Included:": "Unlimited"
+	  "Used:": "237 min"
+	  "Remaining:" "Unlimited"
+	 ]
+	]
+	
+	- parameter liNode: Current visible liNode
+	
+	- returns: Usage detail dictionary
+	*/
+	private func getUsageMetersForLiNode(liNode: JiNode) -> [String : String] {
+		let usageMeterDivs = liNode.xPath("//div[contains(@class, 'usageSection')]/div[1]/div")
+		for (index, div) in usageMeterDivs.enumerate() {
+			if let meterChartDiv = div.xPath(".//div[contains(@id, 'usageMeter')]").first {
+				print("style: \(meterChartDiv["style"])")
+				continue
+			}
+			
+			for div in div.children {
+				print("div: \(div.content?.normalizeSpaces())")
+			}
+		}
+		return [:]
 	}
 }

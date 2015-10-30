@@ -8,6 +8,7 @@
 
 import UIKit
 import ChouTi
+import DKChainableAnimationKit
 
 class UsageContainerViewController : UIViewController {
 	
@@ -179,6 +180,6 @@ extension UsageContainerViewController : MenuPageViewControllerDelegate {
 			}
 			
 			self.underscoreImageView.center = CGPoint(x: x, y: self.underscoreImageView.center.y)
-			}, completion: nil)
+		}, completion: nil)
 	}
 }
