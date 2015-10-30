@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
 				})
 				
 			} else {
-				log.error("")
+				log.error("Login failed")
 			}
 		}
 	}

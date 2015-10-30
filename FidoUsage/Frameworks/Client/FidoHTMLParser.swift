@@ -178,17 +178,58 @@ public class FidoHTMLParser {
 	- returns: Usage detail dictionary
 	*/
 	private func getUsageMetersForLiNode(liNode: JiNode) -> [String : String] {
-		let usageMeterDivs = liNode.xPath("//div[contains(@class, 'usageSection')]/div[1]/div")
-		for (index, div) in usageMeterDivs.enumerate() {
-			if let meterChartDiv = div.xPath(".//div[contains(@id, 'usageMeter')]").first {
-				print("style: \(meterChartDiv["style"])")
-				continue
-			}
-			
-			for div in div.children {
-				print("div: \(div.content?.normalizeSpaces())")
+		let sectionDivs = liNode.xPath("//div[contains(@class, 'usageSection')]/div")
+		for section in sectionDivs {
+			// Right Sections Text, usually have usage detail and billing cycle
+			if let classAttributes = section["class"] where classAttributes.containsString("usageTextSection") {
+				// Usage Details
+				if section.xPath("./div[@id='included']").count > 0 {
+					for div in section.childrenWithName("div") {
+						print(div.content?.normalizeSpaces())
+					}
+				}
+				
+				// Billing Cycle
+				if section.firstChildWithName("div")?.value == "Billing Cycle" {
+					for div in section.childrenWithName("div") {
+						print(div.content?.normalizeSpaces())
+					}
+				}
+			} else if section.xPath(".//div[@id='usageMeterSection']").count > 0 {
+				// Usage meter
+				for (index, div) in section.childrenWithName("div").enumerate() {
+					if let meterChartDiv = div.xPath(".//div[contains(@id, 'usageMeter')]").first {
+						print("style: \(meterChartDiv["style"])")
+						continue
+					}
+					
+					for div in div.children {
+						print("div: \(div.content?.normalizeSpaces())")
+					}
+				}
+			} else if section.xPath("./div[@id='billingCycle']").count > 0 {
+				// Billing meter
+				for div in section.childrenWithName("div") {
+					if div["id"] == "billingCycle" {
+						for div in div.childrenWithName("div") {
+							if let meterChartDiv = div.xPath(".//div[@id='BillingMeter']").first {
+								print("style: \(meterChartDiv["style"])")
+								continue
+							}
+							print(div.content?.normalizeSpaces())
+						}
+					}
+					
+					if let todayDiv = div.xPath(".//div[@id='todayDate']").first {
+						print("today: \(todayDiv.content?.normalizeSpaces())")
+						continue
+					}
+				}
+			} else {
+				print("What's this section?")
 			}
 		}
+		
 		return [:]
 	}
 }
