@@ -9,7 +9,7 @@
 import UIKit
 
 class UsageViewController : UIViewController {
-
+	
 	let tableView = UITableView(frame: CGRectZero, style: .Grouped)
 	
 	var data = [String: AnyObject]()
@@ -32,6 +32,8 @@ class UsageViewController : UIViewController {
 		
 		tableView.canCancelContentTouches = true
 		tableView.delaysContentTouches = true
+		
+		UsageDetailCell.registerInTableView(tableView)
 		
 		setupConstraints()
 	}
@@ -98,11 +100,11 @@ class UsageViewController : UIViewController {
 
 extension UsageViewController : UITableViewDataSource {
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 3
+		return 1
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return 1
 	}
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -115,66 +117,32 @@ extension UsageViewController : UITableViewDataSource {
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier("Cell")
-		if cell == nil {
-			cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
-		}
+		let cell = tableView.dequeueReusableCellWithIdentifier(UsageDetailCell.identifier()) as! UsageDetailCell
 		
-		switch indexPath.section {
-		case 0:
-			switch indexPath.row {
-			case 0:
-				cell.textLabel?.text = "Type"
-//				cell.detailTextLabel?.text = data["Voice"]?["Type"]
-			case 1:
-				cell.textLabel?.text = "Included"
-//				cell.detailTextLabel?.text = data["Voice"]?["Included"]
-			case 2:
-				cell.textLabel?.text = "Used"
-//				cell.detailTextLabel?.text = data["Voice"]?["Used"]
-			case 3:
-				cell.textLabel?.text = "Remaining"
-//				cell.detailTextLabel?.text = data["Voice"]?["Remaining"]
-			default:
-				break
-			}
-		case 1:
-			switch indexPath.row {
-			case 0:
-				cell.textLabel?.text = "Type"
-//				cell.detailTextLabel?.text = data["Data"]?["Type"]
-			case 1:
-				cell.textLabel?.text = "Included"
-//				cell.detailTextLabel?.text = data["Data"]?["Included"]
-			case 2:
-				cell.textLabel?.text = "Used"
-//				cell.detailTextLabel?.text = data["Data"]?["Used"]
-			case 3:
-				cell.textLabel?.text = "Remaining"
-//				cell.detailTextLabel?.text = data["Data"]?["Remaining"]
-			default:
-				break
-			}
-		case 2:
-			switch indexPath.row {
-			case 0:
-				cell.textLabel?.text = "Type"
-//				cell.detailTextLabel?.text = data["Messaging"]?["Type"]
-			case 1:
-				cell.textLabel?.text = "Included"
-//				cell.detailTextLabel?.text = data["Messaging"]?["Included"]
-			case 2:
-				cell.textLabel?.text = "Used"
-//				cell.detailTextLabel?.text = data["Messaging"]?["Used"]
-			case 3:
-				cell.textLabel?.text = "Remaining"
-//				cell.detailTextLabel?.text = data["Messaging"]?["Remaining"]
-			default:
-				break
-			}
-		default:
-			break
-		}
+		
+		
+//		switch indexPath.section {
+//		case 0:
+//			switch indexPath.row {
+//			case 0:
+//				cell.textLabel?.text = "Type"
+////				cell.detailTextLabel?.text = data["Voice"]?["Type"]
+//			case 1:
+//				cell.textLabel?.text = "Included"
+////				cell.detailTextLabel?.text = data["Voice"]?["Included"]
+//			case 2:
+//				cell.textLabel?.text = "Used"
+////				cell.detailTextLabel?.text = data["Voice"]?["Used"]
+//			case 3:
+//				cell.textLabel?.text = "Remaining"
+////				cell.detailTextLabel?.text = data["Voice"]?["Remaining"]
+//			default:
+//				break
+//			}
+//			
+//		default:
+//			break
+//		}
 		
 		return cell
 	}
@@ -189,5 +157,6 @@ extension UsageViewController : UITableViewDelegate {
 	// MARK: - Selections
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		print("did selected: \(indexPath)")
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 	}
 }

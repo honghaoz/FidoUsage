@@ -456,6 +456,7 @@
 		E255BBC6E62B0077402B1019C428FC69 /* PFUserConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AE359F9ED6220D7A42A416D6D44802A4 /* PFUserConstants.m */; };
 		E332E5EA93F546AFE5D04F31586DC6A1 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1FC096D00B3DF4E8A4778993F0011 /* UIView+Extensions.swift */; };
 		E3850C4A57C621F582D20409B24CBB47 /* schemasInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B091325B6F213214B7A796047E7F298 /* schemasInternals.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E45327221BE85E22000CC8D6 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45327211BE85E22000CC8D6 /* UIFont+Extensions.swift */; };
 		E558BC559ED38B40C8C86E4D988C284C /* PFObjectState.h in Headers */ = {isa = PBXBuildFile; fileRef = 958E252599BAB2AB5DD6C57C06496066 /* PFObjectState.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E568A48D66409BA8A0D72948A76BA7C3 /* PFEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB12909617C99868A5C6EA0522C8BE73 /* PFEncoder.m */; };
 		E5995AC544AA3F6BEF60D0CED31BE825 /* PFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B6962D05992C7DA325ECDD57167BFF /* PFProduct.m */; };
@@ -1058,6 +1059,7 @@
 		E2E431EE8AA77A57956F49BF989BAD99 /* PFAnalyticsController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFAnalyticsController.h; path = Parse/Internal/Analytics/Controller/PFAnalyticsController.h; sourceTree = "<group>"; };
 		E32165F207A856C0FA78A28C1DBCC16F /* PFCommandRunning.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFCommandRunning.m; path = Parse/Internal/Commands/CommandRunner/PFCommandRunning.m; sourceTree = "<group>"; };
 		E38A1D3CC922AB919811587728DF1C47 /* Bolts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bolts-prefix.pch"; sourceTree = "<group>"; };
+		E45327211BE85E22000CC8D6 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		E4B6962D05992C7DA325ECDD57167BFF /* PFProduct.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFProduct.m; path = Parse/PFProduct.m; sourceTree = "<group>"; };
 		E4BDAE2CAD6BA2229E42F521019510E9 /* PFPinningObjectStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFPinningObjectStore.m; path = Parse/Internal/Object/PinningStore/PFPinningObjectStore.m; sourceTree = "<group>"; };
 		E50B06AA847F30EC360AEA2DFBC6C570 /* ParseInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ParseInternal.h; path = Parse/Internal/ParseInternal.h; sourceTree = "<group>"; };
@@ -2172,6 +2174,7 @@
 				AEDEF833FAC8794F7C2A55501EF08155 /* UIImage+Resize.swift */,
 				7AD8D5501258DF0E92C89CE88758B8D5 /* UIImage+Tint.swift */,
 				75233B33801AB48AEEB16945A22227E9 /* UILable+Extensions.swift */,
+				E45327211BE85E22000CC8D6 /* UIFont+Extensions.swift */,
 				4F3F8D2C25F7E48DABC06580C5C1BE27 /* UINavigationBar+Extensions.swift */,
 				DBC1FC096D00B3DF4E8A4778993F0011 /* UIView+Extensions.swift */,
 				6DEC52A547FD8B877DDC358FB183CD1E /* UIViewController+Extensions.swift */,
@@ -3050,6 +3053,7 @@
 			files = (
 				B6D2DC3E3DA44CD382B9B425F40E11C1 /* Alamofire-dummy.m in Sources */,
 				B0FB4B01682814B9E3D32F9DC4A5E762 /* Alamofire.swift in Sources */,
+				E45327221BE85E22000CC8D6 /* UIFont+Extensions.swift in Sources */,
 				A3505FA2FB3067D53847AD288AC04F03 /* Download.swift in Sources */,
 				D75CA395D510E08C404E55F5BDAE55CE /* Error.swift in Sources */,
 				A2C172FE407C0BC3478ADCA91A6C9CEC /* Manager.swift in Sources */,
