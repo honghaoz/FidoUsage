@@ -102,8 +102,8 @@ class UsageContainerViewController : UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
-		numberButton.setTitle(number, forState: .Normal)
+//		let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
+//		numberButton.setTitle(number, forState: .Normal)
 	}
 }
 

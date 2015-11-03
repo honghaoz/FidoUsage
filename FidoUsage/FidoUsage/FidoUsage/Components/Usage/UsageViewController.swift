@@ -12,13 +12,10 @@ class UsageViewController : UIViewController {
 
 	let tableView = UITableView(frame: CGRectZero, style: .Grouped)
 	
-	var data = [String: [String: String]]()
+	var data = [String: AnyObject]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		let logoImageView = UIImageView(image: UIImage(asset: .FidoLogo))
-		navigationItem.titleView = logoImageView
 		
 		setupViews()
     }
@@ -53,49 +50,49 @@ class UsageViewController : UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		log.info("Goto View Usage Page ...")
-		Locator.client.gotoViewUsagePage { (succeed, sections) in
-			guard let sections = sections else {
-				log.error("Sections are emtpy")
-				return
-			}
-			log.debug("Usage Sections: \(sections)")
-
-			var startIndex = 0
-
-			log.info("Getting section: \(sections[startIndex])")
-			Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
-				log.debug(table)
-				
-				self.data[sections[startIndex]] = table
-				self.tableView.reloadData()
-				if startIndex < sections.count {
-					startIndex++
-					log.info("Getting section: \(sections[startIndex])")
-					Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
-						log.debug(table)
-						
-						self.data[sections[startIndex]] = table
-						self.tableView.reloadData()
-						if startIndex < sections.count {
-							startIndex++
-							log.info("Getting section: \(sections[startIndex])")
-							Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
-								log.debug(table)
-								
-								self.data[sections[startIndex]] = table
-								self.tableView.reloadData()
-								
-								log.info(Locator.client.accountHolderName)
-								log.info(Locator.client.numberString)
-								log.info(Locator.client.usageSections)
-								log.info(Locator.client.usageDetails)
-							})
-						}
-					})
-				}
-			})
-		}
+//		log.info("Goto View Usage Page ...")
+//		Locator.client.gotoViewUsagePage { (succeed, sections) in
+//			guard let sections = sections else {
+//				log.error("Sections are emtpy")
+//				return
+//			}
+//			log.debug("Usage Sections: \(sections)")
+//
+//			var startIndex = 0
+//
+//			log.info("Getting section: \(sections[startIndex])")
+//			Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+//				log.debug(table)
+//				
+//				self.data[sections[startIndex]] = table
+//				self.tableView.reloadData()
+//				if startIndex < sections.count {
+//					startIndex++
+//					log.info("Getting section: \(sections[startIndex])")
+//					Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+//						log.debug(table)
+//						
+//						self.data[sections[startIndex]] = table
+//						self.tableView.reloadData()
+//						if startIndex < sections.count {
+//							startIndex++
+//							log.info("Getting section: \(sections[startIndex])")
+//							Locator.client.showViewUsgaeForSection(sections[startIndex], completion: { (succeed, table) in
+//								log.debug(table)
+//								
+//								self.data[sections[startIndex]] = table
+//								self.tableView.reloadData()
+//								
+//								log.info(Locator.client.accountHolderName)
+//								log.info(Locator.client.numberString)
+//								log.info(Locator.client.usageSections)
+//								log.info(Locator.client.usageDetails)
+//							})
+//						}
+//					})
+//				}
+//			})
+//		}
 	}
 }
 

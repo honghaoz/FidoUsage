@@ -36,7 +36,7 @@ public class FidoClient {
 	var accountInformationDictionary: [String : String]?
 	
 	public var usageSections: [String]?
-	public var usageDetails = [String : [String : String]]()
+	public var usageDetails = [String : AnyObject]()
 }
 
 
@@ -190,7 +190,7 @@ extension FidoClient {
 	- parameter section:    section key
 	- parameter completion: (successful, result dictionary)
 	*/
-	public func showViewUsgaeForSection(section: String, completion: ((Bool, [String : String]?) -> Void)? = nil) {
+	public func showViewUsgaeForSection(section: String, completion: ((Bool, [String : AnyObject]?) -> Void)? = nil) {
 		switch currentPage {
 		case .ViewUsage(section):
 			if let currentHTMLString = self.currentHTMLString {

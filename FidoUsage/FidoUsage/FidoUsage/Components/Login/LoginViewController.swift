@@ -49,23 +49,23 @@ class LoginViewController: UIViewController {
 			return
 		}
 		
-		log.info("Login with number: \(number)")
-		Locator.client.loginWithNumber(number, password: password) {[unowned self] (succeed, resultDict) in
-			if succeed {
-				log.debug("Login Results: \(resultDict)")
+//		log.info("Login with number: \(number)")
+//		Locator.client.loginWithNumber(number, password: password) {[unowned self] (succeed, resultDict) in
+//			if succeed {
+//				log.debug("Login Results: \(resultDict)")
+//		
+//				self.user.isLoggedIn = true
+//				self.user.number = number
+//				self.user.password = password
+//				self.user.save()
 		
-				self.user.isLoggedIn = true
-				self.user.number = number
-				self.user.password = password
-				self.user.save()
-				
 				self.dismissViewControllerAnimated(true, completion: {_ in
 					Locator.rootViewController.showUsageViewController()
 				})
 				
-			} else {
-				log.error("Login failed")
-			}
-		}
+//			} else {
+//				log.error("Login failed")
+//			}
+//		}
 	}
 }

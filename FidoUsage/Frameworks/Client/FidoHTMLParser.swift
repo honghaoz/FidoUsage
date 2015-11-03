@@ -68,7 +68,17 @@ public class FidoHTMLParser {
 		return tabs
 	}
 	
-	func parseUsageDetail(viewUsageHTMLString: String) -> [String : String] {
+	/**
+	[
+		"usage_table" : [[String : String]],
+		"usage_meter" : [[String : [String : String]]]
+	]
+	
+	- parameter viewUsageHTMLString: usage html string
+	
+	- returns: []
+	*/
+	func parseUsageDetail(viewUsageHTMLString: String) -> [String : AnyObject] {
 		guard let ji = Ji(htmlString: viewUsageHTMLString) else {
 			log.error("Setup Ji doc failed")
 			return [:]
@@ -91,34 +101,47 @@ public class FidoHTMLParser {
 		
 		let currentLiNode = currentVisibleLiNodes.first!
 		let table = getUsageTableForLiNode(currentLiNode)
-		getUsageMetersForLiNode(currentLiNode)
+		let usageDetails = getUsageMetersForLiNode(currentLiNode)
 		
-		return table
+		log.info(table)
+		log.info(usageDetails)
+		
+		return [
+			"usage_table" : table,
+			"usage_meter" : usageDetails
+		]
 	}
 	
 	/**
-	["Remaining": "Unlimited", "Type": "Incoming/Outgoing Evenings and Weekends usage", "Included": "Unlimited", "Used": "38 min"]
+	[
+		["Remaining": "Unlimited", "Type": "Incoming/Outgoing Evenings and Weekends usage", "Included": "Unlimited", "Used": "38 min"],
+		...
+	]
 	
 	- parameter liNode: Current visible liNode
 	
 	- returns: Table
 	*/
-	private func getUsageTableForLiNode(liNode: JiNode) -> [String : String] {
-		var table = [String : String]()
+	private func getUsageTableForLiNode(liNode: JiNode) -> [[String : String]] {
+		var tables = [[String : String]]()
 		
 		let headers = getTableHeadersForLiNode(liNode)
 		let contents = getTableContentsForLiNode(liNode, headers: headers)
 		
-		if headers.count != contents.count {
-			log.error("headers.count != contents.count")
-			return table
+		if contents.count % headers.count == 0 {
+			log.error("headers.count doesn't match contents.count")
+			return tables
 		}
 		
-		for (index, header) in headers.enumerate() {
-			table[header] = contents[index].removeTabsAndReplaceNewlineWithEmptySpace()
+		for eachTableContent in contents {
+			var table = [String : String]()
+			for (index, header) in headers.enumerate() {
+				table[header] = eachTableContent[index].removeTabsAndReplaceNewlineWithEmptySpace()
+			}
+			tables.append(table)
 		}
 		
-		return table
+		return tables
 	}
 	
 	/**
@@ -141,95 +164,309 @@ public class FidoHTMLParser {
 	}
 	
 	/**
-	["Unlimited", "Incoming/Outgoing Evenings and Weekends usage", "Unlimited", "38 min"]
+	[
+		["Unlimited", "Incoming/Outgoing Evenings and Weekends usage", "Unlimited", "38 min"],
+		...
+	]
 	
 	- parameter liNode:  Current visible liNode
 	- parameter headers: Corresponding Table Headers
 	
 	- returns: Table contents
 	*/
-	private func getTableContentsForLiNode(liNode: JiNode, headers: [String]) -> [String] {
-		var tableContents = [String]()
+	private func getTableContentsForLiNode(liNode: JiNode, headers: [String]) -> [[String]] {
+		var results = [[String]]()
 		
-		if let div = liNode.xPath(".//div[@class='clearBoth font12px']/div[1]/div[1]").first {
-			for i in 0 ..< headers.count {
-				if let contentString = div.childrenWithName("div")[i].content?.trimmed() {
-					tableContents.append(contentString)
+		let divs = liNode.xPath(".//div[@class='clearBoth font12px']/div[1]/div")
+		if divs.count == 0 {
+			log.error("No divs found")
+			return results
+		}
+		
+		for div in divs {
+			if let id = div["id"] where id.containsString("usageRow") {
+				var tableContents = [String]()
+				for i in 0 ..< headers.count {
+					if let contentString = div.childrenWithName("div")[i].content?.trimmed() {
+						tableContents.append(contentString)
+					}
 				}
+				results.append(tableContents)
 			}
 		}
-		return tableContents
+		
+		return results
 	}
 	
 	/**
 	[
-	 "min": "0 min",
-	 "max": "237 min",
-	 "used": "237 min"
-	 "usage": [
-	  "Included:": "Unlimited"
-	  "Used:": "237 min"
-	  "Remaining:" "Unlimited"
-	 ]
+		[
+		"usage_text_section":
+			[
+				"included": "Unlimited",
+				"remaining": "Unlimited",
+				"used": "256 min",
+				"usage_title": "Usage (Minutes)"
+			],
+		"billing_cycle_meter_section": 
+			[
+				"begin_date": "Oct 04, 2015",
+				"passed_percent": "87",
+				"today": "Today, Oct 30",
+				"end_date": "Nov 03, 2015"
+			],
+		"billing_text_section": 
+			[
+				"days_remaining": "4 days",
+				"billing_cycle_title": "Billing Cycle",
+				"days_into_cycle": "27 days"
+			],
+		"usage_meter_section": 
+			[
+				"min": "0 min",
+				"used": "256 min",
+				"max": "256 min",
+				"usage_percent": "100"
+			]
+		],
+	
+		...
 	]
 	
 	- parameter liNode: Current visible liNode
 	
 	- returns: Usage detail dictionary
 	*/
-	private func getUsageMetersForLiNode(liNode: JiNode) -> [String : String] {
-		let sectionDivs = liNode.xPath("//div[contains(@class, 'usageSection')]/div")
-		for section in sectionDivs {
+	private func getUsageMetersForLiNode(liNode: JiNode) -> [[String : [String : String]]] {
+		var results = [[String : [String : String]]]()
+		
+		let sectionDivs = liNode.xPath("//div[contains(@class, 'usageSection')]")
+
+		for sectionDiv in sectionDivs {
+			results.append(fourSectionsFromSectionDiv(sectionDiv))
+		}
+		
+		return results
+	}
+	
+	private func fourSectionsFromSectionDiv(sectionDiv: JiNode) -> [String : [String : String]] {
+		var resultDict = [String : [String : String]]()
+		
+		let divsInSection = sectionDiv.xPath("./div")
+		for divInSection in divsInSection {
 			// Right Sections Text, usually have usage detail and billing cycle
-			if let classAttributes = section["class"] where classAttributes.containsString("usageTextSection") {
+			if let classAttributes = divInSection["class"] where classAttributes.containsString("usageTextSection") {
 				// Usage Details
-				if section.xPath("./div[@id='included']").count > 0 {
-					for div in section.childrenWithName("div") {
-						print(div.content?.normalizeSpaces())
+				if divInSection.xPath("./div[@id='included']").count > 0 {
+					var usageTextStrings = [String]()
+					for div in divInSection.childrenWithName("div") {
+						guard let divString = div.content?.normalizeSpaces() else {
+							log.error("No divString found")
+							continue
+						}
+						usageTextStrings.append(divString)
 					}
+					
+					let usageTextDict = usageTextSectionFromStrings(usageTextStrings)
+					resultDict["usage_text_section"] = usageTextDict
 				}
 				
 				// Billing Cycle
-				if section.firstChildWithName("div")?.value == "Billing Cycle" {
-					for div in section.childrenWithName("div") {
-						print(div.content?.normalizeSpaces())
+				if divInSection.firstChildWithName("div")?.value == "Billing Cycle" {
+					var billingStrings = [String]()
+					for div in divInSection.childrenWithName("div") {
+						guard let divString = div.content?.normalizeSpaces() else {
+							log.error("No divString found")
+							continue
+						}
+						billingStrings.append(divString)
 					}
+					
+					let billingTextDict = billingCycleTextSectionFromStrings(billingStrings)
+					resultDict["billing_text_section"] = billingTextDict
 				}
-			} else if section.xPath(".//div[@id='usageMeterSection']").count > 0 {
+			} else if divInSection.xPath(".//div[@id='usageMeterSection']").count > 0 {
 				// Usage meter
-				for (index, div) in section.childrenWithName("div").enumerate() {
+				var meterStrings = [String]()
+				for div in divInSection.childrenWithName("div") {
 					if let meterChartDiv = div.xPath(".//div[contains(@id, 'usageMeter')]").first {
-						print("style: \(meterChartDiv["style"])")
+						guard let style = meterChartDiv["style"] else {
+							log.error("No style attribute found")
+							continue
+						}
+						meterStrings.append(style)
 						continue
 					}
 					
 					for div in div.children {
-						print("div: \(div.content?.normalizeSpaces())")
+						guard let divString = div.content?.normalizeSpaces() else {
+							log.error("No div string found")
+							continue
+						}
+						meterStrings.append(divString)
 					}
 				}
-			} else if section.xPath("./div[@id='billingCycle']").count > 0 {
+				
+				let meterDict = usageMeterFromStrings(meterStrings)
+				resultDict["usage_meter_section"] = meterDict
+				
+			} else if divInSection.xPath("./div[@id='billingCycle']").count > 0 {
 				// Billing meter
-				for div in section.childrenWithName("div") {
+				var meterStrings = [String]()
+				for div in divInSection.childrenWithName("div") {
 					if div["id"] == "billingCycle" {
 						for div in div.childrenWithName("div") {
 							if let meterChartDiv = div.xPath(".//div[@id='BillingMeter']").first {
-								print("style: \(meterChartDiv["style"])")
-								continue
+								guard let style = meterChartDiv["style"] else {
+									log.error("No style attribute found")
+									continue
+								}
+								meterStrings.append(style)
+							} else {
+								guard let divString = div.content?.normalizeSpaces() else {
+									log.error("No div string found")
+									continue
+								}
+								
+								meterStrings.append(divString)
 							}
-							print(div.content?.normalizeSpaces())
 						}
 					}
 					
 					if let todayDiv = div.xPath(".//div[@id='todayDate']").first {
-						print("today: \(todayDiv.content?.normalizeSpaces())")
-						continue
+						guard let todayString = todayDiv.content?.normalizeSpaces() else {
+							log.error("No todayDiv string found")
+							continue
+						}
+						meterStrings.append(todayString)
 					}
 				}
+				
+				let billingCycleMeterDict = billingCycleMeterFromStrings(meterStrings)
+				resultDict["billing_cycle_meter_section"] = billingCycleMeterDict
+				
 			} else {
-				print("What's this section?")
+				log.error("What's this section?")
 			}
 		}
 		
-		return [:]
+		return resultDict
+	}
+	
+	// MARK: - Four Sections
+	
+	private func usageMeterFromStrings(strings: [String]) -> [String : String] {
+		var results = [String : String]()
+		for (index, string) in strings.enumerate() {
+			switch index {
+			case 0:// where string.containsString("min"):
+				results["min"] = string
+			case 1:// where string.containsString("min"):
+				results["max"] = string
+			case 2 where !string.containsString("%"):
+				results["usage_percent"] = "100"
+			case 2 where string.containsString("%"):
+				results["usage_percent"] = string.percentNumberString()
+			case 3 where string.containsString("used:"):
+				continue
+			case 4:// where string.containsString("min"):
+				results["used"] = string
+			default:
+				log.error("Not handled string!")
+			}
+		}
+		
+		return results
+	}
+	
+	private func billingCycleMeterFromStrings(strings: [String]) -> [String : String] {
+		var results = [String : String]()
+		for (index, string) in strings.enumerate() {
+			switch index {
+			case 0:
+				results["begin_date"] = string
+			case 1:
+				results["end_date"] = string
+			case 2 where !string.containsString("%"):
+				results["passed_percent"] = "100"
+			case 2 where string.containsString("%"):
+				results["passed_percent"] = string.percentNumberString()
+			case 3 where string.containsString("Today"):
+				results["today"] = string
+			default:
+				log.error("Not handled string!")
+			}
+		}
+		
+		return results
+	}
+	
+	private func usageTextSectionFromStrings(strings: [String]) -> [String : String] {
+		var results = [String : String]()
+		for (index, string) in strings.enumerate() {
+			switch index {
+			case 0 where string.containsString("Usage"):
+				results["usage_title"] = string
+			case 1 where string.containsString("Included"):
+				results["included"] = ""
+			case 2:
+				if results.indexForKey("included") != nil {
+					results["included"] = string
+				} else {
+					log.error("included key not existed")
+				}
+			case 3 where string.containsString("Used"):
+				results["used"] = ""
+			case 4:
+				if results.indexForKey("used") != nil {
+					results["used"] = string
+				} else {
+					log.error("used key not existed")
+				}
+			case 5 where string.containsString("Remaining"):
+				results["remaining"] = ""
+			case 6:
+				if results.indexForKey("remaining") != nil {
+					results["remaining"] = string
+				} else {
+					log.error("remaining key not existed")
+				}
+			default:
+				log.error("Not handled string!")
+			}
+		}
+		
+		return results
+	}
+	
+	private func billingCycleTextSectionFromStrings(strings: [String]) -> [String : String] {
+		let dayPattern = try! NSRegularExpression(pattern: "(?<=:)(.+)", options: [])
+		
+		var results = [String : String]()
+		for (index, string) in strings.enumerate() {
+			switch index {
+			case 0:
+				if !string.containsString("Billing") {
+					log.warning("Billing Cycle is not found")
+				}
+				results["billing_cycle_title"] = string
+			case 1:
+				if let dayString = string.firstMatchStringForRegex(dayPattern) {
+					results["days_into_cycle"] = dayString.normalizeSpaces()
+				} else {
+					log.error("day string not found")
+				}
+			case 2:
+				if let dayString = string.firstMatchStringForRegex(dayPattern) {
+					results["days_remaining"] = dayString.normalizeSpaces()
+				} else {
+					log.error("day string not found")
+				}
+			default:
+				log.error("Not handled string!")
+			}
+		}
+		
+		return results
 	}
 }

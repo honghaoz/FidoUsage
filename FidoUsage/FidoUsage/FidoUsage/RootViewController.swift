@@ -17,11 +17,13 @@ class RootViewController: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		let user = Locator.user
-		if user.isLoggedIn == false {
-			let loginVC = Locator.loginViewController
-			presentViewController(loginVC, animated: true, completion: nil)
-		}
+//		let user = Locator.user
+//		if user.isLoggedIn == false {
+//			let loginVC = Locator.loginViewController
+//			presentViewController(loginVC, animated: true, completion: nil)
+//		}
+		
+		showUsageViewController()
 	}
 	
 	func showUsageViewController() {
