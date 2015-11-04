@@ -48,6 +48,10 @@ class UsageDetailCell: UITableViewCell {
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
 		
+		delay(seconds: 2.0) { () -> () in
+			self.usageMeterView.progressBarView.percent = CGFloat.random()
+		}
+		
 		usageMeterView.minLabel.text = "0 GB"
 		usageMeterView.maxLabel.text = "Total: 2.5 GB"
 		usageMeterView.currentLabel.text = "2.33 GB"
@@ -92,7 +96,7 @@ class UsageDetailCell: UITableViewCell {
 		
 		let metrics = [
 			"vertical_spacing" : 16.0,
-			"meter_height" : 70.0,
+			"meter_height" : 68.0,
 			"detail_v_spacing" : 6.0
 		]
 		
@@ -104,9 +108,9 @@ class UsageDetailCell: UITableViewCell {
 		
 		// Adjust content label
 		constraints.append(NSLayoutConstraint(item: includedPairView.contentLabel, attribute: .Leading, relatedBy: .Equal, toItem: usedPairView.contentLabel, attribute: .Leading, multiplier: 1.0, constant: 0.0))
-		includedPairView.horizontalSpacing = 8
-		usedPairView.horizontalSpacing = 8
-		remainingPairView.horizontalSpacing = 8
+		includedPairView.horizontalSpacing = 10
+		usedPairView.horizontalSpacing = 10
+		remainingPairView.horizontalSpacing = 10
 		
 		NSLayoutConstraint.activateConstraints(constraints)
 	}

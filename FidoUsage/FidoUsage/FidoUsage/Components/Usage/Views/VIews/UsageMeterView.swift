@@ -101,7 +101,7 @@ extension UsageMeterView : ProgressBarViewDelegate {
 		currentLabelHorizontalPositionConstraint.priority = 750
 		currentLabelHorizontalPositionConstraint.active = true
 		
-		UIView.animateWithDuration(0.2) { () -> Void in
+		UIView.animateWithDuration(isVisible ? 0.2 : 0.0) { () -> Void in
 			self.layoutIfNeeded()
 		}
 	}

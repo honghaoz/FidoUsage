@@ -165,12 +165,21 @@ extension UsageViewController : UITableViewDelegate {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 	}
 	
-	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return 64
+	func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+		return 71
 	}
 	
 	func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let view = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+		view.backgroundColor = UIColor(white: 0.0, alpha: 0.08)
+		
+		view.layoutMargins = UIEdgeInsets(top: 22, left: 8, bottom: 22, right: 8)
+		
+		let summaryView = UsageSummaryView()
+		summaryView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(summaryView)
+		
+		summaryView.fullSizeMarginInSuperview()
 		
 		return view
 	}

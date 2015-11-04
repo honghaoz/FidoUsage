@@ -13,8 +13,7 @@ class BillingCycleDetailCell: UITableViewCell {
 
 	let titleLabel = UILabel()
 	let usageMeterView = UsageMeterView()
-	let includedPairView = SingleTitleContentPairView()
-	let usedPairView = SingleTitleContentPairView()
+	let daysInPairView = SingleTitleContentPairView()
 	let remainingPairView = SingleTitleContentPairView()
 	
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -48,11 +47,15 @@ class BillingCycleDetailCell: UITableViewCell {
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
 		
+		delay(seconds: 2.0) { () -> () in
+			self.usageMeterView.progressBarView.percent = CGFloat.random()
+		}
+	
 		usageMeterView.minLabel.text = "Oct 04, 2015"
 		usageMeterView.maxLabel.text = "Nov 03, 2015"
 		usageMeterView.currentLabel.text = "Today, Nov 02"
 		
-		[includedPairView, usedPairView, remainingPairView].forEach {
+		[daysInPairView, remainingPairView].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			addSubview($0)
 			$0.layoutMargins = UIEdgeInsetsZero
@@ -65,14 +68,11 @@ class BillingCycleDetailCell: UITableViewCell {
 			}
 		}
 		
-		includedPairView.titleLabel.text = "Included:"
-		includedPairView.contentLabel.text = "2.5 GB"
+		daysInPairView.titleLabel.text = "Days into Cycle:"
+		daysInPairView.contentLabel.text = "30 days"
 		
-		usedPairView.titleLabel.text = "Used:"
-		usedPairView.contentLabel.text = "2.33 GB"
-		
-		remainingPairView.titleLabel.text = "Remaining:"
-		remainingPairView.contentLabel.text = "167.8 MB"
+		remainingPairView.titleLabel.text = "Days remaining:"
+		remainingPairView.contentLabel.text = "1 days"
 		
 		setupConstraints()
 	}
@@ -85,28 +85,25 @@ class BillingCycleDetailCell: UITableViewCell {
 		let views = [
 			"titleLabel" : titleLabel,
 			"usageMeterView" : usageMeterView,
-			"includedPairView" : includedPairView,
-			"usedPairView" : usedPairView,
+			"daysInPairView" : daysInPairView,
 			"remainingPairView" : remainingPairView
 		]
 		
 		let metrics = [
 			"vertical_spacing" : 16.0,
-			"meter_height" : 70.0,
+			"meter_height" : 68.0,
 			"detail_v_spacing" : 6.0
 		]
 		
 		var constraints = [NSLayoutConstraint]()
 		
-		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-(vertical_spacing)-[usageMeterView(meter_height)]-(vertical_spacing)-[includedPairView]-(detail_v_spacing)-[usedPairView]-|", options: [.AlignAllLeading], metrics: metrics, views: views)
+		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-(vertical_spacing)-[usageMeterView(meter_height)]-(vertical_spacing)-[daysInPairView]-(detail_v_spacing)-[remainingPairView]-|", options: [.AlignAllLeading], metrics: metrics, views: views)
 		constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-[usageMeterView]-|", options: [], metrics: metrics, views: views)
-		constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:[usedPairView]-(>=0)-[remainingPairView]-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
 		
 		// Adjust content label
-		constraints.append(NSLayoutConstraint(item: includedPairView.contentLabel, attribute: .Leading, relatedBy: .Equal, toItem: usedPairView.contentLabel, attribute: .Leading, multiplier: 1.0, constant: 0.0))
-		includedPairView.horizontalSpacing = 8
-		usedPairView.horizontalSpacing = 8
-		remainingPairView.horizontalSpacing = 8
+		constraints.append(NSLayoutConstraint(item: daysInPairView.contentLabel, attribute: .Leading, relatedBy: .Equal, toItem: remainingPairView.contentLabel, attribute: .Leading, multiplier: 1.0, constant: 0.0))
+		daysInPairView.horizontalSpacing = 10
+		remainingPairView.horizontalSpacing = 10
 		
 		NSLayoutConstraint.activateConstraints(constraints)
 	}
@@ -118,7 +115,7 @@ extension BillingCycleDetailCell : TableViewCellInfo {
 	}
 	
 	static func estimatedRowHeight() -> CGFloat {
-		return 184.5
+		return 182.5
 	}
 	
 	static func registerInTableView(tableView: UITableView) {
