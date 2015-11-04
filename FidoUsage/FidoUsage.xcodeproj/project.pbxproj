@@ -42,9 +42,11 @@
 		E44DDDCE1BAC9E9600870334 /* FidoUsageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDCD1BAC9E9600870334 /* FidoUsageTests.swift */; };
 		E44DDDD91BAC9E9600870334 /* FidoUsageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */; };
 		E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */; };
-		E453271E1BE859F5000CC8D6 /* UsageMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453271D1BE859F5000CC8D6 /* UsageMeterView.swift */; };
-		E45327201BE85AB0000CC8D6 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453271F1BE85AB0000CC8D6 /* ProgressBarView.swift */; };
-		E458E3311BE9CB5B008A7C27 /* SingleTitleContentPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458E3301BE9CB5B008A7C27 /* SingleTitleContentPairView.swift */; settings = {ASSET_TAGS = (); }; };
+		E458E3361BE9DA25008A7C27 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458E3331BE9DA25008A7C27 /* ProgressBarView.swift */; settings = {ASSET_TAGS = (); }; };
+		E458E3371BE9DA25008A7C27 /* SingleTitleContentPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458E3341BE9DA25008A7C27 /* SingleTitleContentPairView.swift */; settings = {ASSET_TAGS = (); }; };
+		E458E3381BE9DA25008A7C27 /* UsageMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458E3351BE9DA25008A7C27 /* UsageMeterView.swift */; settings = {ASSET_TAGS = (); }; };
+		E458E33A1BE9DA3E008A7C27 /* BillingCycleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458E3391BE9DA3E008A7C27 /* BillingCycleDetailCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E458E33C1BE9DBC1008A7C27 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458E33B1BE9DBC1008A7C27 /* SeparatorCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E4737A571BE864090057D5D0 /* UsageDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4737A561BE864090057D5D0 /* UsageDetailCell.swift */; };
 		E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A76511BB1D28700F601F8 /* LoginViewController.swift */; };
 		E49A76541BB1D2B600F601F8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49A76531BB1D2B600F601F8 /* Login.storyboard */; };
@@ -192,9 +194,11 @@
 		E44DDDD81BAC9E9600870334 /* FidoUsageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FidoUsageUITests.swift; sourceTree = "<group>"; };
 		E44DDDDA1BAC9E9600870334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44DDDEB1BACA24100870334 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
-		E453271D1BE859F5000CC8D6 /* UsageMeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageMeterView.swift; sourceTree = "<group>"; };
-		E453271F1BE85AB0000CC8D6 /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
-		E458E3301BE9CB5B008A7C27 /* SingleTitleContentPairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTitleContentPairView.swift; sourceTree = "<group>"; };
+		E458E3331BE9DA25008A7C27 /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		E458E3341BE9DA25008A7C27 /* SingleTitleContentPairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTitleContentPairView.swift; sourceTree = "<group>"; };
+		E458E3351BE9DA25008A7C27 /* UsageMeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageMeterView.swift; sourceTree = "<group>"; };
+		E458E3391BE9DA3E008A7C27 /* BillingCycleDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingCycleDetailCell.swift; sourceTree = "<group>"; };
+		E458E33B1BE9DBC1008A7C27 /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		E4737A561BE864090057D5D0 /* UsageDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageDetailCell.swift; sourceTree = "<group>"; };
 		E49A76511BB1D28700F601F8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E49A76531BB1D2B600F601F8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -431,6 +435,16 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		E458E3321BE9DA25008A7C27 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				E458E3331BE9DA25008A7C27 /* ProgressBarView.swift */,
+				E458E3341BE9DA25008A7C27 /* SingleTitleContentPairView.swift */,
+				E458E3351BE9DA25008A7C27 /* UsageMeterView.swift */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
 		E49A76501BB1D26F00F601F8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,9 +502,9 @@
 			isa = PBXGroup;
 			children = (
 				E4737A561BE864090057D5D0 /* UsageDetailCell.swift */,
-				E458E3301BE9CB5B008A7C27 /* SingleTitleContentPairView.swift */,
-				E453271D1BE859F5000CC8D6 /* UsageMeterView.swift */,
-				E453271F1BE85AB0000CC8D6 /* ProgressBarView.swift */,
+				E458E3391BE9DA3E008A7C27 /* BillingCycleDetailCell.swift */,
+				E458E33B1BE9DBC1008A7C27 /* SeparatorCell.swift */,
+				E458E3321BE9DA25008A7C27 /* VIews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -923,18 +937,20 @@
 			files = (
 				E49A76521BB1D28700F601F8 /* LoginViewController.swift in Sources */,
 				E4BE716B1BACA2D200176D77 /* Locator.swift in Sources */,
-				E458E3311BE9CB5B008A7C27 /* SingleTitleContentPairView.swift in Sources */,
-				E45327201BE85AB0000CC8D6 /* ProgressBarView.swift in Sources */,
 				E43C0E9A1BDECE5B00E55BAE /* UsageContainerViewController.swift in Sources */,
+				E458E3361BE9DA25008A7C27 /* ProgressBarView.swift in Sources */,
 				E4BE71741BACA68600176D77 /* UIImage+ImageAsset.swift in Sources */,
-				E453271E1BE859F5000CC8D6 /* UsageMeterView.swift in Sources */,
 				E44DDDEC1BACA24100870334 /* BaseNavigationController.swift in Sources */,
 				E4BE71691BACA2D200176D77 /* Colors.swift in Sources */,
+				E458E3381BE9DA25008A7C27 /* UsageMeterView.swift in Sources */,
 				E4BE71711BACA4C200176D77 /* UsageViewController.swift in Sources */,
 				E44DDDB81BAC9E9600870334 /* RootViewController.swift in Sources */,
 				E4737A571BE864090057D5D0 /* UsageDetailCell.swift in Sources */,
+				E458E33A1BE9DA3E008A7C27 /* BillingCycleDetailCell.swift in Sources */,
+				E458E33C1BE9DBC1008A7C27 /* SeparatorCell.swift in Sources */,
 				E44DDDBE1BAC9E9600870334 /* FidoUsage.xcdatamodeld in Sources */,
 				E44DDDB61BAC9E9600870334 /* AppDelegate.swift in Sources */,
+				E458E3371BE9DA25008A7C27 /* SingleTitleContentPairView.swift in Sources */,
 				E4BE716A1BACA2D200176D77 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

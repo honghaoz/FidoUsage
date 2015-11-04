@@ -11,7 +11,7 @@ import ChouTi
 
 class UsageViewController : UIViewController {
 	
-	let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+	let tableView = UITableView(frame: CGRectZero, style: .Plain)
 	
 	var data = [String: AnyObject]()
 	
@@ -26,6 +26,7 @@ class UsageViewController : UIViewController {
 		view.addSubview(tableView)
 		
 		tableView.separatorStyle = .None
+		tableView.allowsSelection = false
 		
 		tableView.dataSource = self
 		tableView.delegate = self
@@ -35,6 +36,8 @@ class UsageViewController : UIViewController {
 		tableView.delaysContentTouches = true
 		
 		UsageDetailCell.registerInTableView(tableView)
+		BillingCycleDetailCell.registerInTableView(tableView)
+		SeparatorCell.registerInTableView(tableView)
 		
 		setupConstraints()
 	}
@@ -105,22 +108,25 @@ extension UsageViewController : UITableViewDataSource {
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
-	}
-	
-	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		switch section {
-		case 0: return "Voice"
-		case 1: return "Data"
-		case 2: return "Messaging"
-		default: return nil
-		}
+		return 3
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier(UsageDetailCell.identifier()) as! UsageDetailCell
 		
 		
+		switch indexPath.row {
+		case 0:
+			return tableView.dequeueReusableCellWithIdentifier(UsageDetailCell.identifier()) as! UsageDetailCell
+		case 1:
+			let separatorCell = tableView.dequeueReusableCellWithIdentifier(SeparatorCell.identifier()) as! SeparatorCell
+			separatorCell.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+			separatorCell.separatorView.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
+			return separatorCell
+		case 2:
+			return tableView.dequeueReusableCellWithIdentifier(BillingCycleDetailCell.identifier()) as! BillingCycleDetailCell
+		default:
+			return UITableViewCell()
+		}
 		
 //		switch indexPath.section {
 //		case 0:
@@ -144,8 +150,6 @@ extension UsageViewController : UITableViewDataSource {
 //		default:
 //			break
 //		}
-		
-		return cell
 	}
 }
 
@@ -159,5 +163,15 @@ extension UsageViewController : UITableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		print("did selected: \(indexPath)")
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+	}
+	
+	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 64
+	}
+	
+	func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let view = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+		
+		return view
 	}
 }

@@ -1,15 +1,15 @@
 //
-//  UsageDetailCell.swift
+//  BillingCycleDetailCell.swift
 //  FidoUsage
 //
-//  Created by Honghao Zhang on 2015-11-02.
+//  Created by Honghao Zhang on 2015-11-04.
 //  Copyright © 2015 Honghao Zhang. All rights reserved.
 //
 
 import UIKit
 import ChouTi
 
-class UsageDetailCell: UITableViewCell {
+class BillingCycleDetailCell: UITableViewCell {
 
 	let titleLabel = UILabel()
 	let usageMeterView = UsageMeterView()
@@ -21,9 +21,9 @@ class UsageDetailCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		commonInit()
 	}
-
+	
 	required init?(coder aDecoder: NSCoder) {
-	    super.init(coder: aDecoder)
+		super.init(coder: aDecoder)
 		commonInit()
 	}
 	
@@ -33,13 +33,13 @@ class UsageDetailCell: UITableViewCell {
 		
 		titleLabel.font = UIFont.systemFontOfSize(17)
 		titleLabel.textColor = UIColor.darkTextColor()
-		titleLabel.text = "Usage"
+		titleLabel.text = "Billing Cycle"
 		
 		usageMeterView.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(usageMeterView)
-		usageMeterView.progressBarView.forgroundColor = UIColor.fidoTealColor()
+		usageMeterView.progressBarView.forgroundColor = UIColor(white: 0.15, alpha: 1.0)
 		if #available(iOS 8.2, *) {
-		    usageMeterView.minLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
+			usageMeterView.minLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
 			usageMeterView.maxLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
 			usageMeterView.currentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
 		} else {
@@ -48,9 +48,9 @@ class UsageDetailCell: UITableViewCell {
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
 		
-		usageMeterView.minLabel.text = "0 GB"
-		usageMeterView.maxLabel.text = "Total: 2.5 GB"
-		usageMeterView.currentLabel.text = "2.33 GB"
+		usageMeterView.minLabel.text = "Oct 04, 2015"
+		usageMeterView.maxLabel.text = "Nov 03, 2015"
+		usageMeterView.currentLabel.text = "Today, Nov 02"
 		
 		[includedPairView, usedPairView, remainingPairView].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
@@ -112,9 +112,9 @@ class UsageDetailCell: UITableViewCell {
 	}
 }
 
-extension UsageDetailCell : TableViewCellInfo {
+extension BillingCycleDetailCell : TableViewCellInfo {
 	static func identifier() -> String {
-		return NSStringFromClass(UsageDetailCell.self)
+		return NSStringFromClass(BillingCycleDetailCell.self)
 	}
 	
 	static func estimatedRowHeight() -> CGFloat {
@@ -122,6 +122,6 @@ extension UsageDetailCell : TableViewCellInfo {
 	}
 	
 	static func registerInTableView(tableView: UITableView) {
-		tableView.registerClass(UsageDetailCell.self, forCellReuseIdentifier: UsageDetailCell.identifier())
+		tableView.registerClass(BillingCycleDetailCell.self, forCellReuseIdentifier: BillingCycleDetailCell.identifier())
 	}
 }
