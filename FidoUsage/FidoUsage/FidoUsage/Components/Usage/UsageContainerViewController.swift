@@ -8,7 +8,6 @@
 
 import UIKit
 import ChouTi
-import DKChainableAnimationKit
 
 class UsageContainerViewController : UIViewController {
 	

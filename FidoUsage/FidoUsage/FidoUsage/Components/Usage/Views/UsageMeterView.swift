@@ -13,7 +13,7 @@ class UsageMeterView: UIView {
 	let maxLabel = UILabel()
 	let currentLabel = UILabel()
 	
-	let meterView = HorizontalUsageMeterView()
+	let progressBarView = ProgressBarView()
 	
 	private var currentLabelHorizontalPositionConstraint: NSLayoutConstraint!
 	
@@ -43,20 +43,14 @@ class UsageMeterView: UIView {
 		currentLabel.textColor = UIColor.darkTextColor()
 		currentLabel.text = "Current"
 		
-		if #available(iOS 8.2, *) {
-			minLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
-			maxLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
-			currentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
-		} else {
-			minLabel.font = UIFont.helveticaNenueThinFont(12)
-			maxLabel.font = UIFont.helveticaNenueThinFont(12)
-			currentLabel.font = UIFont.helveticaNenueThinFont(12)
-		}
+		minLabel.font = UIFont.systemFontOfSize(14)
+		maxLabel.font = UIFont.systemFontOfSize(14)
+		currentLabel.font = UIFont.systemFontOfSize(14)
 		
-		meterView.translatesAutoresizingMaskIntoConstraints = false
-		addSubview(meterView)
+		progressBarView.translatesAutoresizingMaskIntoConstraints = false
+		addSubview(progressBarView)
 		
-		meterView.addObserver(self, forKeyPath: "percent", options: [.New], context: nil)
+		progressBarView.delegate = self
 		
 		setupConstraints()
 	}
@@ -69,7 +63,7 @@ class UsageMeterView: UIView {
 			"minLabel" : minLabel,
 			"maxLabel" : maxLabel,
 			"currentLabel" : currentLabel,
-			"meterView" : meterView
+			"progressBarView" : progressBarView
 		]
 		
 		let metrics = [
@@ -78,34 +72,37 @@ class UsageMeterView: UIView {
 		
 		var constraints = [NSLayoutConstraint]()
 		
-		constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-[meterView]-|", options: [], metrics: metrics, views: views)
-		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[minLabel]-(vertical_spacing)-[meterView]", options: [.AlignAllLeading], metrics: metrics, views: views)
-		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[maxLabel]-(vertical_spacing)-[meterView]", options: [.AlignAllTrailing], metrics: metrics, views: views)
-		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:[meterView]-(vertical_spacing)-[currentLabel]-|", options: [], metrics: metrics, views: views)
+		constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-[progressBarView]-|", options: [], metrics: metrics, views: views)
+		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[minLabel]-(vertical_spacing)-[progressBarView]", options: [.AlignAllLeading], metrics: metrics, views: views)
+		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[maxLabel]-(vertical_spacing)-[progressBarView]", options: [.AlignAllTrailing], metrics: metrics, views: views)
+		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:[progressBarView]-(vertical_spacing)-[currentLabel]-|", options: [], metrics: metrics, views: views)
 		
-		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: meterView, attribute: .Leading, multiplier: meterView.percent, constant: 0.0)
+		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: progressBarView, attribute: .Trailing, multiplier: progressBarView.percent, constant: 0.0)
 		currentLabelHorizontalPositionConstraint.priority = 750
 		
 		// Constraints avoids exceeding bounds
-		let leadingMaxConstraint = NSLayoutConstraint(item: currentLabel, attribute: .Leading, relatedBy: .GreaterThanOrEqual, toItem: meterView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-		let trailingMaxConstraint = NSLayoutConstraint(item: currentLabel, attribute: .Trailing, relatedBy: .LessThanOrEqual, toItem: meterView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+		let leadingMaxConstraint = NSLayoutConstraint(item: currentLabel, attribute: .Leading, relatedBy: .GreaterThanOrEqual, toItem: progressBarView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+		let trailingMaxConstraint = NSLayoutConstraint(item: currentLabel, attribute: .Trailing, relatedBy: .LessThanOrEqual, toItem: progressBarView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
 		
 		constraints += [leadingMaxConstraint, trailingMaxConstraint, currentLabelHorizontalPositionConstraint]
 				
 		NSLayoutConstraint.activateConstraints(constraints)
 	}
-	
-	deinit {
-		meterView.removeObserver(self, forKeyPath: "contentSize", context: nil)
+}
+
+extension UsageMeterView : ProgressBarViewDelegate {
+	func progressBarView(progressBarView: ProgressBarView, willSetToPercent percent: CGFloat) {
+		
 	}
 	
-	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-		if object === meterView {
-			guard let newPercent = change?[NSKeyValueChangeNewKey] as? CGFloat else { return }
-			currentLabelHorizontalPositionConstraint.active = false
-			currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: meterView, attribute: .Leading, multiplier: newPercent, constant: 0.0)
-			currentLabelHorizontalPositionConstraint.priority = 750
-			currentLabelHorizontalPositionConstraint.active = true
+	func progressBarView(progressBarView: ProgressBarView, didSetToPercent percent: CGFloat) {
+		currentLabelHorizontalPositionConstraint.active = false
+		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: progressBarView, attribute: .Trailing, multiplier: percent, constant: 0.0)
+		currentLabelHorizontalPositionConstraint.priority = 750
+		currentLabelHorizontalPositionConstraint.active = true
+		
+		UIView.animateWithDuration(0.2) { () -> Void in
+			self.layoutIfNeeded()
 		}
 	}
 }
