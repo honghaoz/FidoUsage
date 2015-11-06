@@ -11,7 +11,7 @@ import ChouTi
 
 class UsageContainerViewController : UIViewController {
 	
-	let usageViewControllers = [UsageViewController(), UsageViewController(), UsageViewController()]
+	var usageViewControllers = [UsageViewController]()
 	
 	// MARK: - UI
 	let menuPageViewController = MenuPageViewController()
@@ -20,6 +20,25 @@ class UsageContainerViewController : UIViewController {
 	
 	let menuWidth: CGFloat = 60.0
 	let numberButton = UIButton(type: .Custom)
+	
+	convenience init() {
+		self.init(sections: [])
+	}
+	
+	init(sections: [String]) {
+		super.init(nibName: nil, bundle: nil)
+		commonInit()
+		updateSections(sections)
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+	    fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func commonInit() {
+		menuPageViewController.delegate = self
+		menuPageViewController.dataSource = self
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -36,15 +55,11 @@ class UsageContainerViewController : UIViewController {
 		self.navigationController?.navigationBar.hideBottomHairline()
 		
 		// MenuPageViewController
+		menuPageViewController.menuView.menuAlwaysCentered = true
 		menuPageViewController.menuTitleHeight = 44
-		menuPageViewController.menuView.spacingsBetweenMenus = (UIScreen.mainScreen().bounds.width - menuWidth * CGFloat(usageViewControllers.count)) / (CGFloat(usageViewControllers.count) + 1)
 		
 		menuPageViewController.menuView.scrollingOption = .Center
 		
-		menuPageViewController.delegate = self
-		menuPageViewController.dataSource = self
-		
-		menuPageViewController.selectedIndex = 1
 		menuPageViewController.menuView.autoScrollingEnabled = false
 		menuPageViewController.menuView.backgroundColor = UIColor.fidoYellowColor()
 		
@@ -54,7 +69,7 @@ class UsageContainerViewController : UIViewController {
 		menuPageViewController.didMoveToParentViewController(self)
 		
 		// Underscore View setup
-		underscoreView.backgroundColor = UIColor.fidoYellowColor()
+		underscoreView.backgroundColor = UIColor.clearColor()
 		underscoreView.translatesAutoresizingMaskIntoConstraints = false
 		menuPageViewController.menuView.addSubview(underscoreView)
 		
@@ -93,8 +108,6 @@ class UsageContainerViewController : UIViewController {
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
-		// Center menu view
-		menuPageViewController.menuView.scrollWithSelectedIndex(usageViewControllers.count / 2, withOffsetPercent: 0.0, animated: false, ignoreAutoScrollingEnabled: true)
 		// FIXME: width is not updated
 		underscoreImageView.center = CGPoint(x: menuPageViewController.menuView.bounds.width / 2.0, y: underscoreImageView.center.y)
 	}
@@ -106,30 +119,35 @@ class UsageContainerViewController : UIViewController {
 	}
 }
 
+extension UsageContainerViewController {
+    func updateSections(sections: [String]) {
+        usageViewControllers.removeAll()
+        
+        sections.forEach {
+            self.usageViewControllers.append(UsageViewController(sectionTitle: $0))
+        }
+		
+		menuPageViewController.menuView.spacingsBetweenMenus = (UIScreen.mainScreen().bounds.width - menuWidth * CGFloat(usageViewControllers.count)) / (CGFloat(usageViewControllers.count) + 1)
+
+		menuPageViewController.reload()
+    }
+}
+
 extension UsageContainerViewController : MenuPageViewControllerDataSource {
 	func numberOfMenusInMenuPageViewController(menuPageViewController: MenuPageViewController) -> Int {
 		return usageViewControllers.count
 	}
 	
 	func menuPageViewController(menuPageViewController: MenuPageViewController, menuViewForIndex index: Int, contentView: UIView?) -> UIView {
+		
 		let labelBackgroundView = UIView()
 		
 		let label = UILabel()
-		label.font = UIFont.systemFontOfSize(20)
-		switch index {
-		case 0:
-			label.text = "Voice"
-		case 1:
-			label.text = "Data"
-		case 2:
-			label.text = "Message"
-		default:
-			label.text = "Title \(index)"
-		}
-		
 		label.translatesAutoresizingMaskIntoConstraints = false
-		
 		labelBackgroundView.addSubview(label)
+		
+		label.font = UIFont.systemFontOfSize(20)
+		label.text = usageViewControllers[index].sectionTitle
 		
 		if let contentView = contentView {
 			labelBackgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -162,13 +180,19 @@ extension UsageContainerViewController : MenuPageViewControllerDelegate {
 	}
 	
 	func menuPageViewController(menuPageViewController: MenuPageViewController, didSelectIndex selectedIndex: Int, selectedViewController: UIViewController) {
-		print("selected: \(selectedIndex)")
+		print("selected index: \(selectedIndex)")
+		animateUnderScore(selectedIndex)
+	}
+	
+	func animateUnderScore(var index: Int) {
+		if index < 0 {
+			index = usageViewControllers.count / 2
+		}
 		
-		guard let menuView = menuPageViewController.menuView.menuViewForIndex(selectedIndex) else {
+		guard let menuView = menuPageViewController.menuView.menuViewForIndex(index) else {
 			return
 		}
 		
-		// Updating underscore
 		let rect = menuView.frameRectInView(menuPageViewController.menuView)
 		let x = rect.origin.x + rect.width / 2.0
 		
@@ -179,6 +203,6 @@ extension UsageContainerViewController : MenuPageViewControllerDelegate {
 			}
 			
 			self.underscoreImageView.center = CGPoint(x: x, y: self.underscoreImageView.center.y)
-		}, completion: nil)
+			}, completion: nil)
 	}
 }

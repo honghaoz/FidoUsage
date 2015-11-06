@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import ChouTi
 
 class RootViewController: UIViewController {
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
@@ -17,16 +18,15 @@ class RootViewController: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
-//		let user = Locator.user
-//		if user.isLoggedIn == false {
-//			let loginVC = Locator.loginViewController
-//			presentViewController(loginVC, animated: true, completion: nil)
-//		}
-		
-		showUsageViewController()
+		let user = Locator.user
+		if user.isLoggedIn == false {
+			let loginVC = Locator.loginViewController
+			presentViewController(loginVC, animated: true, completion: nil)
+		}
 	}
 	
 	func showUsageViewController() {
+		
 		let usageContainerNavigationController = Locator.usageContainerNavigationController
 		addChildViewController(usageContainerNavigationController)
 		view.addSubview(usageContainerNavigationController.view)

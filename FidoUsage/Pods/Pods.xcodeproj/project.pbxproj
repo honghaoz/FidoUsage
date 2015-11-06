@@ -457,6 +457,7 @@
 		E332E5EA93F546AFE5D04F31586DC6A1 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1FC096D00B3DF4E8A4778993F0011 /* UIView+Extensions.swift */; };
 		E3850C4A57C621F582D20409B24CBB47 /* schemasInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B091325B6F213214B7A796047E7F298 /* schemasInternals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E45327221BE85E22000CC8D6 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45327211BE85E22000CC8D6 /* UIFont+Extensions.swift */; };
+		E4B834F11BEC578200C6CC1B /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B834F01BEC578200C6CC1B /* NSObject+Extensions.swift */; };
 		E558BC559ED38B40C8C86E4D988C284C /* PFObjectState.h in Headers */ = {isa = PBXBuildFile; fileRef = 958E252599BAB2AB5DD6C57C06496066 /* PFObjectState.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E568A48D66409BA8A0D72948A76BA7C3 /* PFEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB12909617C99868A5C6EA0522C8BE73 /* PFEncoder.m */; };
 		E5995AC544AA3F6BEF60D0CED31BE825 /* PFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B6962D05992C7DA325ECDD57167BFF /* PFProduct.m */; };
@@ -1061,6 +1062,7 @@
 		E38A1D3CC922AB919811587728DF1C47 /* Bolts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bolts-prefix.pch"; sourceTree = "<group>"; };
 		E45327211BE85E22000CC8D6 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		E4B6962D05992C7DA325ECDD57167BFF /* PFProduct.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFProduct.m; path = Parse/PFProduct.m; sourceTree = "<group>"; };
+		E4B834F01BEC578200C6CC1B /* NSObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		E4BDAE2CAD6BA2229E42F521019510E9 /* PFPinningObjectStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFPinningObjectStore.m; path = Parse/Internal/Object/PinningStore/PFPinningObjectStore.m; sourceTree = "<group>"; };
 		E50B06AA847F30EC360AEA2DFBC6C570 /* ParseInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ParseInternal.h; path = Parse/Internal/ParseInternal.h; sourceTree = "<group>"; };
 		E536CC2C61E7D10DD799BC01B73BAB34 /* hash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hash.h; path = "Source/Ji-libxml/hash.h"; sourceTree = "<group>"; };
@@ -2165,6 +2167,7 @@
 			isa = PBXGroup;
 			children = (
 				D21D4C1AFEA80916FF408CD20336D253 /* CGContext+Extensions.swift */,
+				E4B834F01BEC578200C6CC1B /* NSObject+Extensions.swift */,
 				02B2BD99FA9E046969E15467BD70F1C5 /* Collection+Extensions.swift */,
 				77C832AAA5434C4C7275F4111B030B58 /* NSDate+Extensions.swift */,
 				6AD9DF69159ED8D0D1E845DF48901BA1 /* NSRegularExpression+Extensions.swift */,
@@ -3064,6 +3067,7 @@
 				D21B7325B3642887BFBE977E021F2D26 /* ResponseSerialization.swift in Sources */,
 				82971968CBDAB224212EEB4607C9FB8D /* Result.swift in Sources */,
 				80F496237530D382A045A29654D8C11C /* ServerTrustPolicy.swift in Sources */,
+				E4B834F11BEC578200C6CC1B /* NSObject+Extensions.swift in Sources */,
 				FEF0D7653948988B804226129471C1EC /* Stream.swift in Sources */,
 				0681ADC8BAE2C3185F13487BAAB4D9DD /* Upload.swift in Sources */,
 				C75519F0450166A6F28126ECC7664E9C /* Validation.swift in Sources */,

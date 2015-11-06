@@ -16,8 +16,6 @@ public class FidoHTMLParser {
 	let numberKey = "number"
 	let accountHolderKey = "account_holder"
 	
-    var results = [String : AnyObject]()
-	
 	func parseAccountDetails(homeHTMLString: String) -> [String : String] {
 		var resultsDict = [String : String]()
 		guard let ji = Ji(htmlString: homeHTMLString) else {
@@ -31,10 +29,6 @@ public class FidoHTMLParser {
 		
 		if let accountHolder = ji.xPath("//div[@id='accountName']")?.first?.value?.trimmed() {
 			resultsDict[accountHolderKey] = accountHolder
-		}
-		
-		for (key, value) in resultsDict {
-			results[key] = value
 		}
 		
 		return resultsDict

@@ -46,10 +46,6 @@ class BillingCycleDetailCell: UITableViewCell {
 			usageMeterView.maxLabel.font = UIFont.helveticaNenueThinFont(12)
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
-		
-		delay(seconds: 2.0) { () -> () in
-			self.usageMeterView.progressBarView.percent = CGFloat.random()
-		}
 	
 		usageMeterView.minLabel.text = "Oct 04, 2015"
 		usageMeterView.maxLabel.text = "Nov 03, 2015"

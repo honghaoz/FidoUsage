@@ -11,10 +11,25 @@ import ChouTi
 
 class UsageViewController : UIViewController {
 	
+    var sectionTitle: String? {
+        didSet {
+            
+        }
+    }
+    
 	let tableView = UITableView(frame: CGRectZero, style: .Plain)
 	
 	var data = [String: AnyObject]()
 	
+    init(sectionTitle: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.sectionTitle = sectionTitle
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -113,44 +128,33 @@ extension UsageViewController : UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		
 		switch indexPath.row {
 		case 0:
 			return tableView.dequeueReusableCellWithIdentifier(UsageDetailCell.identifier()) as! UsageDetailCell
 		case 1:
 			let separatorCell = tableView.dequeueReusableCellWithIdentifier(SeparatorCell.identifier()) as! SeparatorCell
-			separatorCell.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-			separatorCell.separatorView.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
+			configureCell(separatorCell, withIndexPath: indexPath)
 			return separatorCell
 		case 2:
 			return tableView.dequeueReusableCellWithIdentifier(BillingCycleDetailCell.identifier()) as! BillingCycleDetailCell
 		default:
 			return UITableViewCell()
 		}
-		
-//		switch indexPath.section {
-//		case 0:
-//			switch indexPath.row {
-//			case 0:
-//				cell.textLabel?.text = "Type"
-////				cell.detailTextLabel?.text = data["Voice"]?["Type"]
-//			case 1:
-//				cell.textLabel?.text = "Included"
-////				cell.detailTextLabel?.text = data["Voice"]?["Included"]
-//			case 2:
-//				cell.textLabel?.text = "Used"
-////				cell.detailTextLabel?.text = data["Voice"]?["Used"]
-//			case 3:
-//				cell.textLabel?.text = "Remaining"
-////				cell.detailTextLabel?.text = data["Voice"]?["Remaining"]
-//			default:
-//				break
-//			}
-//			
-//		default:
-//			break
-//		}
 	}
+    
+    private func configureCell(cell: UITableViewCell, withIndexPath indexPath: NSIndexPath) {
+        switch cell {
+        case let cell as SeparatorCell:
+            cell.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            cell.separatorView.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
+        case let cell as UsageDetailCell:
+            break
+        case let cell as BillingCycleDetailCell:
+            break
+        default:
+            break
+        }
+    }
 }
 
 extension UsageViewController : UITableViewDelegate {

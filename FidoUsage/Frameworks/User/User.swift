@@ -23,37 +23,43 @@ public class User {
 	private let isRememberedKey = "Remembered"
 	
 	let defaults = NSUserDefaults(suiteName: "group.com.honghaoz.fidoUsage")
-	
-	public func save() {
-		guard let defaults = defaults else {
-			log.error("defaults is nil")
-			return
-		}
-		
-		defaults.setBool(isRemembered, forKey: isRememberedKey)
-		defaults.setObject(number, forKey: numberKey)
-		defaults.setObject(password, forKey: passwordKey)
-		defaults.synchronize()
-	}
-	
-	
-	public func load() -> Bool {
-		guard let defaults = defaults else {
-			log.error("defaults is nil")
-			return false
-		}
-		
-		self.isRemembered = defaults.boolForKey(isRememberedKey)
-		if self.isRemembered {
-			if let number = defaults.objectForKey(numberKey) as? String {
-				self.number = number
-			}
-			
-			if let password = defaults.objectForKey(passwordKey) as? String {
-				self.password = password
-			}
-			return true
-		}
-		return false
-	}
+}
+
+public extension User {
+    public func save() {
+        guard let defaults = defaults else {
+            log.error("defaults is nil")
+            return
+        }
+        
+        defaults.setBool(isRemembered, forKey: isRememberedKey)
+        defaults.setObject(number, forKey: numberKey)
+        defaults.setObject(password, forKey: passwordKey)
+        defaults.synchronize()
+    }
+    
+    
+    public func load() -> Bool {
+        guard let defaults = defaults else {
+            log.error("defaults is nil")
+            return false
+        }
+        
+        self.isRemembered = defaults.boolForKey(isRememberedKey)
+        if self.isRemembered {
+            if let number = defaults.objectForKey(numberKey) as? String {
+                self.number = number
+            }
+            
+            if let password = defaults.objectForKey(passwordKey) as? String {
+                self.password = password
+            }
+            return true
+        }
+        return false
+    }
+}
+
+public extension User {
+    
 }
