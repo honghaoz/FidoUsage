@@ -40,16 +40,14 @@ class BillingCycleDetailCell: UITableViewCell {
 		if #available(iOS 8.2, *) {
 			usageMeterView.minLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
 			usageMeterView.maxLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
-			usageMeterView.currentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
+			usageMeterView.currentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightBold)
 		} else {
 			usageMeterView.minLabel.font = UIFont.helveticaNenueThinFont(12)
 			usageMeterView.maxLabel.font = UIFont.helveticaNenueThinFont(12)
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
-	
-		usageMeterView.minLabel.text = "Oct 04, 2015"
-		usageMeterView.maxLabel.text = "Nov 03, 2015"
-		usageMeterView.currentLabel.text = "Today, Nov 02"
+		
+		usageMeterView.currentLabel.textColor = UIColor.blackColor()
 		
 		[daysInPairView, remainingPairView].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
@@ -65,10 +63,7 @@ class BillingCycleDetailCell: UITableViewCell {
 		}
 		
 		daysInPairView.titleLabel.text = "Days into Cycle:"
-		daysInPairView.contentLabel.text = "30 days"
-		
 		remainingPairView.titleLabel.text = "Days remaining:"
-		remainingPairView.contentLabel.text = "1 days"
 		
 		setupConstraints()
 	}

@@ -41,16 +41,14 @@ class UsageDetailCell: UITableViewCell {
 		if #available(iOS 8.2, *) {
 		    usageMeterView.minLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
 			usageMeterView.maxLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
-			usageMeterView.currentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
+			usageMeterView.currentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightBold)
 		} else {
 			usageMeterView.minLabel.font = UIFont.helveticaNenueThinFont(12)
 			usageMeterView.maxLabel.font = UIFont.helveticaNenueThinFont(12)
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
 		
-		usageMeterView.minLabel.text = "0 GB"
-		usageMeterView.maxLabel.text = "Total: 2.5 GB"
-		usageMeterView.currentLabel.text = "2.33 GB"
+		usageMeterView.currentLabel.textColor = UIColor.fidoTealColor()
 		
 		[includedPairView, usedPairView, remainingPairView].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
@@ -66,13 +64,8 @@ class UsageDetailCell: UITableViewCell {
 		}
 		
 		includedPairView.titleLabel.text = "Included:"
-		includedPairView.contentLabel.text = "2.5 GB"
-		
 		usedPairView.titleLabel.text = "Used:"
-		usedPairView.contentLabel.text = "2.33 GB"
-		
 		remainingPairView.titleLabel.text = "Remaining:"
-		remainingPairView.contentLabel.text = "167.8 MB"
 		
 		setupConstraints()
 	}

@@ -49,6 +49,8 @@ class UsageMeterView: UIView {
 		
 		progressBarView.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(progressBarView)
+
+		currentLabel.textColor = UIColor.blueColor()
 		
 		progressBarView.delegate = self
 		
