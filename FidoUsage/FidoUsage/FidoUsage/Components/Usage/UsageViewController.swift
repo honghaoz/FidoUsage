@@ -79,8 +79,6 @@ class UsageViewController : UIViewController {
 			
 			client.showViewUsgaeForSection(sectionTitle, completion: { (succeed, table) in
 				if succeed {
-					log.debug(table)
-					
 					let existedSections = NSIndexSet(indexesInRange: NSRange(location: 0, length: self.tableView.numberOfSections))
 					self.data = [:]
 					self.tableView.deleteSections(existedSections, withRowAnimation: .Top)
@@ -129,8 +127,8 @@ extension UsageViewController : UITableViewDataSource {
     private func configureCell(cell: UITableViewCell, withIndexPath indexPath: NSIndexPath) {
         switch cell {
         case let cell as SeparatorCell:
-            cell.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
             cell.separatorView.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
+			
         case let cell as UsageDetailCell:
 			guard
 				let usageMeterSection = data?[FidoHTMLParser.usageMeterKey]?[indexPath.section]?[FidoHTMLParser.usageMeterUsageMeterSectionKey],

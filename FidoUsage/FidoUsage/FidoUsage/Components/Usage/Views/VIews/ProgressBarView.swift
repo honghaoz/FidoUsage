@@ -28,7 +28,6 @@ class ProgressBarView: UIView {
 		didSet {
 			precondition(0.0 <= percent && percent <= 1.0, "Percetn must in range 0.0 to 1.0, inclusive.")
 			setNeedsLayout()
-			layoutIfNeeded()
 			delegate?.progressBarView(self, didSetToPercent: percent)
 		}
 	}

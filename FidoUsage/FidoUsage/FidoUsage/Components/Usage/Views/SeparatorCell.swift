@@ -37,6 +37,7 @@ class SeparatorCell: UITableViewCell {
 	
 	private func setupConstraints() {
 		preservesSuperviewLayoutMargins = false
+		layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
 		
 		let views = [
 			"separatorView" : separatorView
