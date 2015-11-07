@@ -30,12 +30,18 @@ public class FidoClient {
 	var currentPage: Page = .Login
 	var currentHTMLString: String?
 	
+	// Account Informations
 	public var numberString: String?
 	public var accountHolderName: String?
 	
 	var accountInformationDictionary: [String : String]?
 	
+	// Sections
 	public var usageSections: [String]?
+	
+	// Usage Details
+	public static var usageTableKey = "usage_table"
+	public static var usageMeterkey = "usage_meter"
 	public var usageDetails = [String : AnyObject]()
 }
 
@@ -70,8 +76,8 @@ extension FidoClient {
 					self.currentPage = .Home
 					let accountInfo = self.fidoParser.parseAccountDetails(htmlString)
 					self.accountInformationDictionary = accountInfo
-					self.numberString = accountInfo[self.fidoParser.numberKey]
-					self.accountHolderName = accountInfo[self.fidoParser.accountHolderKey]
+					self.numberString = accountInfo[FidoHTMLParser.numberKey]
+					self.accountHolderName = accountInfo[FidoHTMLParser.accountHolderKey]
 					completion?(true, self.accountInformationDictionary)
 				}
 			}

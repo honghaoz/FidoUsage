@@ -13,8 +13,40 @@ import Ji
 public class FidoHTMLParser {
 	static public let sharedInstance = FidoHTMLParser()
 	
-	let numberKey = "number"
-	let accountHolderKey = "account_holder"
+	static public let numberKey = "number"
+	static public let accountHolderKey = "account_holder"
+	
+	static public let usageTableKey = "usage_table"
+	static public let usageMeterKey = "usage_meter"
+	
+	static public let usageTableIncludedKey = "Included"
+	static public let usageTableUsedKey = "Used"
+	static public let usageTableRemainingKey = "Remaining"
+	static public let usageTableTypeKey = "Type"
+	
+	static public let usageMeterUsageMeterSectionKey = "usage_meter_section"
+	static public let usageMeterUsageTextSectionKey = "usage_text_section"
+	
+	static public let usageMeterMinKey = "min"
+	static public let usageMeterMaxKey = "max"
+	static public let usageMeterUsedKey = "used"
+	static public let usageMeterUsagePercentKey = "usage_percent"
+	
+	static public let usageMeterUsageTitleKey = "usage_title"
+	static public let usageMeterIncludedKey = "included"
+	static public let usageMeterRemainingKey = "remaining"
+	
+	static public let usageMeterBillingCycleMeterSectionKey = "billing_cycle_meter_section"
+	static public let usageMeterBillingCycleTextSectionKey = "billing_text_section"
+	
+	static public let usageMeterBillingCycleBeginKey = "begin_date"
+	static public let usageMeterBillingCycleEndKey = "end_date"
+	static public let usageMeterBillingCyclePassedPercentKey = "passed_percent"
+	static public let usageMeterBillingCycleTodayKey = "today"
+	
+	static public let usageMeterBillingCycleTitleKey = "billing_cycle_title"
+	static public let usageMeterBillingCycleDaysIntoCycleKey = "days_into_cycle"
+	static public let usageMeterBillingCycleDaysRemainingKey = "days_remaining"
 	
 	func parseAccountDetails(homeHTMLString: String) -> [String : String] {
 		var resultsDict = [String : String]()
@@ -24,11 +56,11 @@ public class FidoHTMLParser {
 		}
 		
 		if let fidoNumber = ji.xPath("//div[@id='fidoNumberDetails']/span/text()")?.first?.content?.trimmed() {
-			resultsDict[numberKey] = fidoNumber
+			resultsDict[FidoHTMLParser.numberKey] = fidoNumber
 		}
 		
 		if let accountHolder = ji.xPath("//div[@id='accountName']")?.first?.value?.trimmed() {
-			resultsDict[accountHolderKey] = accountHolder
+			resultsDict[FidoHTMLParser.accountHolderKey] = accountHolder
 		}
 		
 		return resultsDict
@@ -101,8 +133,8 @@ public class FidoHTMLParser {
 		log.info(usageDetails)
 		
 		return [
-			"usage_table" : table,
-			"usage_meter" : usageDetails
+			FidoHTMLParser.usageTableKey : table,
+			FidoHTMLParser.usageMeterKey : usageDetails
 		]
 	}
 	
@@ -262,7 +294,7 @@ public class FidoHTMLParser {
 					}
 					
 					let usageTextDict = usageTextSectionFromStrings(usageTextStrings)
-					resultDict["usage_text_section"] = usageTextDict
+					resultDict[FidoHTMLParser.usageMeterUsageTextSectionKey] = usageTextDict
 				}
 				
 				// Billing Cycle
@@ -277,7 +309,7 @@ public class FidoHTMLParser {
 					}
 					
 					let billingTextDict = billingCycleTextSectionFromStrings(billingStrings)
-					resultDict["billing_text_section"] = billingTextDict
+					resultDict[FidoHTMLParser.usageMeterBillingCycleTextSectionKey] = billingTextDict
 				}
 			} else if divInSection.xPath(".//div[@id='usageMeterSection']").count > 0 {
 				// Usage meter
@@ -302,7 +334,7 @@ public class FidoHTMLParser {
 				}
 				
 				let meterDict = usageMeterFromStrings(meterStrings)
-				resultDict["usage_meter_section"] = meterDict
+				resultDict[FidoHTMLParser.usageMeterUsageMeterSectionKey] = meterDict
 				
 			} else if divInSection.xPath("./div[@id='billingCycle']").count > 0 {
 				// Billing meter
@@ -337,7 +369,7 @@ public class FidoHTMLParser {
 				}
 				
 				let billingCycleMeterDict = billingCycleMeterFromStrings(meterStrings)
-				resultDict["billing_cycle_meter_section"] = billingCycleMeterDict
+				resultDict[FidoHTMLParser.usageMeterBillingCycleMeterSectionKey] = billingCycleMeterDict
 				
 			} else {
 				log.error("What's this section?")
@@ -354,17 +386,17 @@ public class FidoHTMLParser {
 		for (index, string) in strings.enumerate() {
 			switch index {
 			case 0:// where string.containsString("min"):
-				results["min"] = string
+				results[FidoHTMLParser.usageMeterMinKey] = string
 			case 1:// where string.containsString("min"):
-				results["max"] = string
+				results[FidoHTMLParser.usageMeterMaxKey] = string
 			case 2 where !string.containsString("%"):
-				results["usage_percent"] = "100"
+				results[FidoHTMLParser.usageMeterUsagePercentKey] = "100"
 			case 2 where string.containsString("%"):
-				results["usage_percent"] = string.percentNumberString()
+				results[FidoHTMLParser.usageMeterUsagePercentKey] = string.percentNumberString()
 			case 3 where string.containsString("used:"):
 				continue
 			case 4:// where string.containsString("min"):
-				results["used"] = string
+				results[FidoHTMLParser.usageMeterUsedKey] = string
 			default:
 				log.error("Not handled string!")
 			}
@@ -378,15 +410,15 @@ public class FidoHTMLParser {
 		for (index, string) in strings.enumerate() {
 			switch index {
 			case 0:
-				results["begin_date"] = string
+				results[FidoHTMLParser.usageMeterBillingCycleBeginKey] = string
 			case 1:
-				results["end_date"] = string
+				results[FidoHTMLParser.usageMeterBillingCycleEndKey] = string
 			case 2 where !string.containsString("%"):
-				results["passed_percent"] = "100"
+				results[FidoHTMLParser.usageMeterBillingCyclePassedPercentKey] = "100"
 			case 2 where string.containsString("%"):
-				results["passed_percent"] = string.percentNumberString()
+				results[FidoHTMLParser.usageMeterBillingCyclePassedPercentKey] = string.percentNumberString()
 			case 3 where string.containsString("Today"):
-				results["today"] = string
+				results[FidoHTMLParser.usageMeterBillingCycleTodayKey] = string
 			default:
 				log.error("Not handled string!")
 			}
@@ -400,28 +432,28 @@ public class FidoHTMLParser {
 		for (index, string) in strings.enumerate() {
 			switch index {
 			case 0 where string.containsString("Usage"):
-				results["usage_title"] = string
+				results[FidoHTMLParser.usageMeterUsageTitleKey] = string
 			case 1 where string.containsString("Included"):
-				results["included"] = ""
+				results[FidoHTMLParser.usageMeterIncludedKey] = ""
 			case 2:
 				if results.indexForKey("included") != nil {
-					results["included"] = string
+					results[FidoHTMLParser.usageMeterIncludedKey] = string
 				} else {
 					log.error("included key not existed")
 				}
 			case 3 where string.containsString("Used"):
-				results["used"] = ""
+				results[FidoHTMLParser.usageMeterUsedKey] = ""
 			case 4:
 				if results.indexForKey("used") != nil {
-					results["used"] = string
+					results[FidoHTMLParser.usageMeterUsedKey] = string
 				} else {
 					log.error("used key not existed")
 				}
 			case 5 where string.containsString("Remaining"):
-				results["remaining"] = ""
+				results[FidoHTMLParser.usageMeterRemainingKey] = ""
 			case 6:
 				if results.indexForKey("remaining") != nil {
-					results["remaining"] = string
+					results[FidoHTMLParser.usageMeterRemainingKey] = string
 				} else {
 					log.error("remaining key not existed")
 				}
@@ -443,16 +475,16 @@ public class FidoHTMLParser {
 				if !string.containsString("Billing") {
 					log.warning("Billing Cycle is not found")
 				}
-				results["billing_cycle_title"] = string
+				results[FidoHTMLParser.usageMeterBillingCycleTitleKey] = string
 			case 1:
 				if let dayString = string.firstMatchStringForRegex(dayPattern) {
-					results["days_into_cycle"] = dayString.normalizeSpaces()
+					results[FidoHTMLParser.usageMeterBillingCycleDaysIntoCycleKey] = dayString.normalizeSpaces()
 				} else {
 					log.error("day string not found")
 				}
 			case 2:
 				if let dayString = string.firstMatchStringForRegex(dayPattern) {
-					results["days_remaining"] = dayString.normalizeSpaces()
+					results[FidoHTMLParser.usageMeterBillingCycleDaysRemainingKey] = dayString.normalizeSpaces()
 				} else {
 					log.error("day string not found")
 				}

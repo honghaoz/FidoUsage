@@ -8,10 +8,19 @@
 
 import UIKit
 import ChouTi
+import Client
 
 class UsageSummaryView: UIView {
 	let tableLayout = TableCollectionViewLayout()
 	var tableCollectionView: TableCollectionView!
+	
+	var data: [String : String]?
+	
+	convenience init(data: [String : String]) {
+		self.init(frame: CGRectZero)
+		
+		self.data = data
+	}
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -61,7 +70,7 @@ class UsageSummaryView: UIView {
 
 extension UsageSummaryView : TableLayoutDataSource {
 	func numberOfColumnsInCollectionView(collectionView: UICollectionView) -> Int {
-		return 4
+		return data?.count ?? 0
 	}
 	
 	func collectionView(collectionView: UICollectionView, numberOfRowsInColumn column: Int) -> Int {
@@ -71,13 +80,13 @@ extension UsageSummaryView : TableLayoutDataSource {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, titleForColumn column: Int) -> String {
 		switch column {
 		case 0:
-			return "Type"
+			return FidoHTMLParser.usageTableTypeKey
 		case 1:
-			return "Included"
+			return FidoHTMLParser.usageTableIncludedKey
 		case 2:
-			return "Used"
+			return FidoHTMLParser.usageTableUsedKey
 		case 3:
-			return "Remaining"
+			return FidoHTMLParser.usageTableRemainingKey
 		default:
 			return ""
 		}
@@ -86,13 +95,13 @@ extension UsageSummaryView : TableLayoutDataSource {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, contentForColumn column: Int, row: Int) -> String {
 		switch column {
 		case 0:
-			return "Anytime"
+			return data?[FidoHTMLParser.usageTableTypeKey] ?? ""
 		case 1:
-			return "2.5 GB"
+			return data?[FidoHTMLParser.usageTableIncludedKey] ?? ""
 		case 2:
-			return "2.33 GB"
+			return data?[FidoHTMLParser.usageTableUsedKey] ?? ""
 		case 3:
-			return "167.8 MB"
+			return data?[FidoHTMLParser.usageTableRemainingKey] ?? ""
 		default:
 			return ""
 		}

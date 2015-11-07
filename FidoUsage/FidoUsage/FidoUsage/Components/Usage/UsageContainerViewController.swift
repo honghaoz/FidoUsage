@@ -72,8 +72,10 @@ class UsageContainerViewController : UIViewController {
 		underscoreView.backgroundColor = UIColor.clearColor()
 		underscoreView.translatesAutoresizingMaskIntoConstraints = false
 		menuPageViewController.menuView.addSubview(underscoreView)
-		
+		underscoreView.clipsToBounds = true
 		underscoreView.addSubview(underscoreImageView)
+		// Put underscore image below
+		underscoreImageView.center = CGPoint(x: menuPageViewController.menuView.bounds.width / 2.0, y: 15)
 		
 		// Number button
 		guard let leftNavigationBarBackgroundView = addLeftNavigationBarBackgroundView() else {
@@ -105,17 +107,25 @@ class UsageContainerViewController : UIViewController {
 		}
 	}
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		// FIXME: width is not updated
-		underscoreImageView.center = CGPoint(x: menuPageViewController.menuView.bounds.width / 2.0, y: underscoreImageView.center.y)
-	}
-	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-//		let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
-//		numberButton.setTitle(number, forState: .Normal)
+		
+		log.info("Requesting sections ...")
+		Locator.client.gotoViewUsagePage({ (succeed, sections) -> Void in
+			if let sections = Locator.client.usageSections {
+				log.info("Got sections: \(sections)")
+				
+				self.updateSections(sections)
+				if let dataIndex = sections.indexOf("Data") {
+					self.menuPageViewController.selectedIndex = dataIndex
+				} else {
+					self.menuPageViewController.selectedIndex = sections.count / 2
+				}
+				
+				let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
+				self.numberButton.setTitle(number, forState: .Normal)
+			}
+		})
 	}
 }
 
@@ -130,7 +140,43 @@ extension UsageContainerViewController {
 		menuPageViewController.menuView.spacingsBetweenMenus = (UIScreen.mainScreen().bounds.width - menuWidth * CGFloat(usageViewControllers.count)) / (CGFloat(usageViewControllers.count) + 1)
 
 		menuPageViewController.reload()
+		
+		// Give some delay for menuPage to reload
+		delay(seconds: 0.05) { () -> () in
+			self.animateUnderScore(self.menuPageViewController.selectedIndex)
+		}
     }
+	
+	func animateUnderScore(var index: Int) {
+		if index < 0 {
+			index = usageViewControllers.count / 2
+		}
+		
+		guard let menuView = menuPageViewController.menuView.menuViewForIndex(index) else {
+			return
+		}
+		
+		let rect = menuView.frameRectInView(menuPageViewController.menuView)
+		let x = rect.origin.x + rect.width / 2.0
+		
+		// if underscore image view is hidden, set x and width immediately and animte move up
+		if underscoreImageView.center.y > underscoreView.bounds.height {
+			if let label = menuView as? UILabel {
+				underscoreImageView.bounds = CGRect(x: 0, y: 0, width: label.exactSize().width * 1.2, height: underscoreImageView.bounds.height)
+			}
+			
+			underscoreImageView.center = CGPoint(x: x, y: underscoreImageView.center.y)
+		}
+		
+		UIView.animateWithDuration(0.25, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, animations: { [unowned self] () -> Void in
+			
+			if let label = menuView as? UILabel {
+				self.underscoreImageView.bounds = CGRect(x: 0, y: 0, width: label.exactSize().width * 1.2, height: self.underscoreImageView.bounds.height)
+			}
+			
+			self.underscoreImageView.center = CGPoint(x: x, y: self.underscoreView.bounds.height / 2.0)
+			}, completion: nil)
+	}
 }
 
 extension UsageContainerViewController : MenuPageViewControllerDataSource {
@@ -182,27 +228,5 @@ extension UsageContainerViewController : MenuPageViewControllerDelegate {
 	func menuPageViewController(menuPageViewController: MenuPageViewController, didSelectIndex selectedIndex: Int, selectedViewController: UIViewController) {
 		print("selected index: \(selectedIndex)")
 		animateUnderScore(selectedIndex)
-	}
-	
-	func animateUnderScore(var index: Int) {
-		if index < 0 {
-			index = usageViewControllers.count / 2
-		}
-		
-		guard let menuView = menuPageViewController.menuView.menuViewForIndex(index) else {
-			return
-		}
-		
-		let rect = menuView.frameRectInView(menuPageViewController.menuView)
-		let x = rect.origin.x + rect.width / 2.0
-		
-		UIView.animateWithDuration(0.25, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, animations: { [unowned self] () -> Void in
-			
-			if let label = menuView as? UILabel {
-				self.underscoreImageView.bounds = CGRect(x: 0, y: 0, width: label.exactSize().width * 1.2, height: self.underscoreImageView.bounds.height)
-			}
-			
-			self.underscoreImageView.center = CGPoint(x: x, y: self.underscoreImageView.center.y)
-			}, completion: nil)
 	}
 }

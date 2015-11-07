@@ -48,10 +48,6 @@ class UsageDetailCell: UITableViewCell {
 			usageMeterView.currentLabel.font = UIFont.helveticaNenueThinFont(12)
 		}
 		
-		delay(seconds: 2.0) { () -> () in
-			self.usageMeterView.progressBarView.percent = CGFloat.random()
-		}
-		
 		usageMeterView.minLabel.text = "0 GB"
 		usageMeterView.maxLabel.text = "Total: 2.5 GB"
 		usageMeterView.currentLabel.text = "2.33 GB"

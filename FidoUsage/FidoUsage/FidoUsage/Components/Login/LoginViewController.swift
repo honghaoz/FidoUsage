@@ -63,13 +63,6 @@ class LoginViewController: UIViewController {
 					Locator.rootViewController.showUsageViewController()
 				})
 				
-				Locator.client.gotoViewUsagePage({ (succeed, sections) -> Void in
-					if let sections = Locator.client.usageSections {
-						Locator.usageContainerViewController.updateSections(sections)
-						Locator.usageContainerViewController.menuPageViewController.selectedIndex = sections.count / 2
-					}
-				})
-				
 			} else {
 				log.error("Login failed")
 			}
