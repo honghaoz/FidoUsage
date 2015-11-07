@@ -36,6 +36,8 @@ class UsageContainerViewController : UIViewController {
 	}
 	
 	private func commonInit() {
+		menuPageViewController.menuView.setHidden(true)
+		
 		menuPageViewController.delegate = self
 		menuPageViewController.dataSource = self
 	}
@@ -85,10 +87,12 @@ class UsageContainerViewController : UIViewController {
 		
 		numberButton.titleLabel?.font = UIFont.systemFontOfSize(11)
 		numberButton.titleLabel?.numberOfLines = 2
-		numberButton.setTitle("---", forState: .Normal)
+		numberButton.setTitle("", forState: .Normal)
 		numberButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
 		numberButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.3), forState: .Highlighted)
 		numberButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.3), forState: .Selected)
+		
+		numberButton.setHidden(true)
 		
 		numberButton.translatesAutoresizingMaskIntoConstraints = false
 		leftNavigationBarBackgroundView.addSubview(numberButton)
@@ -124,6 +128,8 @@ class UsageContainerViewController : UIViewController {
 				
 				let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
 				self.numberButton.setTitle(number, forState: .Normal)
+				
+				self.numberButton.setHidden(false, animated: true, duration: 0.5)
 			}
 		})
 	}
@@ -131,6 +137,12 @@ class UsageContainerViewController : UIViewController {
 
 extension UsageContainerViewController {
     func updateSections(sections: [String]) {
+		if sections.count > 0 {
+			menuPageViewController.menuView.setHidden(false, animated: true, duration: 0.5)
+		} else {
+			menuPageViewController.menuView.setHidden(true)
+		}
+		
         usageViewControllers.removeAll()
         
         sections.forEach {

@@ -49,6 +49,8 @@ class UsageViewController : UIViewController {
 		tableView.canCancelContentTouches = true
 		tableView.delaysContentTouches = true
 		
+		tableView.setHidden(true)
+		
 		UsageDetailCell.registerInTableView(tableView)
 		BillingCycleDetailCell.registerInTableView(tableView)
 		SeparatorCell.registerInTableView(tableView)
@@ -79,13 +81,18 @@ class UsageViewController : UIViewController {
 			
 			client.showViewUsgaeForSection(sectionTitle, completion: { (succeed, table) in
 				if succeed {
-					let existedSections = NSIndexSet(indexesInRange: NSRange(location: 0, length: self.tableView.numberOfSections))
-					self.data = [:]
-					self.tableView.deleteSections(existedSections, withRowAnimation: .Top)
+//					let existedSections = NSIndexSet(indexesInRange: NSRange(location: 0, length: self.tableView.numberOfSections))
+//					self.data = [:]
+//					self.tableView.deleteSections(existedSections, withRowAnimation: .None)
+//					
+//					self.data = table
+//
+//					self.tableView.insertSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: table?[FidoHTMLParser.usageTableKey]?.count ?? 0)), withRowAnimation: .None)
 					
 					self.data = table
-					
-					self.tableView.insertSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: table?[FidoHTMLParser.usageTableKey]?.count ?? 0)), withRowAnimation: .Top)
+					self.tableView.reloadData()
+
+					self.tableView.setHidden(false, animated: true, duration: 0.5)
 				} else {
 					log.error("Requesting \(self.sectionTitle) failed")
 				}
