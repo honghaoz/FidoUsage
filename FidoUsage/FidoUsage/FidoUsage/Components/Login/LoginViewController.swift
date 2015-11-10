@@ -8,6 +8,7 @@
 
 import UIKit
 import Client
+import ChouTi
 
 class LoginViewController: UIViewController {
 

@@ -11,8 +11,7 @@ import ChouTi
 import Client
 
 class UsageSummaryView: UIView {
-	let tableLayout = TableCollectionViewLayout()
-	var tableCollectionView: TableCollectionView!
+	var tableCollectionView = TextTableCollectionView()
 	
 	var data: [String : String]?
 	
@@ -33,26 +32,26 @@ class UsageSummaryView: UIView {
 	}
 	
 	private func commonInit() {
-		tableLayout.separatorLineWidth = 0.0
-		tableCollectionView = TableCollectionView(frame: CGRectZero, collectionViewLayout: tableLayout)
-		tableCollectionView.tableLayoutDataSource = self
+		tableCollectionView.separatorLineWidth = 0.0
+		tableCollectionView.textTableDataSource = self
+		tableCollectionView.textTableDelegate = self
+		
+		tableCollectionView.titleTextColor = UIColor.darkTextColor()
+		tableCollectionView.contentTextColor = UIColor.darkTextColor()
+		
+		tableCollectionView.horizontalPadding = 10.0
+		tableCollectionView.verticalPadding = 2.0
+		
+		if #available(iOS 8.2, *) {
+			tableCollectionView.titleFont = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
+			tableCollectionView.contentFont = UIFont.systemFontOfSize(14, weight: UIFontWeightThin)
+		} else {
+			tableCollectionView.titleFont = UIFont.helveticaNeueLightFont(17)
+			tableCollectionView.contentFont = UIFont.helveticaNenueThinFont(17)
+		}
 		
 		tableCollectionView.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(tableCollectionView)
-		
-		tableLayout.titleTextColor = UIColor.darkTextColor()
-		tableLayout.contentTextColor = UIColor.darkTextColor()
-		
-		tableLayout.horizontalPadding = 10.0
-		tableLayout.verticalPadding = 2.0
-		
-		if #available(iOS 8.2, *) {
-			tableLayout.titleFont = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
-			tableLayout.contentFont = UIFont.systemFontOfSize(14, weight: UIFontWeightThin)
-		} else {
-			tableLayout.titleFont = UIFont.helveticaNeueLightFont(17)
-			tableLayout.contentFont = UIFont.helveticaNenueThinFont(17)
-		}
 		
 		setupConstraints()
 	}
@@ -68,16 +67,16 @@ class UsageSummaryView: UIView {
 	}
 }
 
-extension UsageSummaryView : TableLayoutDataSource {
-	func numberOfColumnsInCollectionView(collectionView: UICollectionView) -> Int {
+extension UsageSummaryView : TextTableCollectionViewDataSource {
+	func numberOfColumnsInTableCollectionView(tableCollectionView: TextTableCollectionView) -> Int {
 		return data?.count ?? 0
 	}
 	
-	func collectionView(collectionView: UICollectionView, numberOfRowsInColumn column: Int) -> Int {
+	func tableCollectionView(tableCollectionView: TextTableCollectionView, numberOfRowsInColumn column: Int) -> Int {
 		return 1
 	}
 	
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, titleForColumn column: Int) -> String {
+	func tableCollectionView(tableCollectionView: TextTableCollectionView, layout collectionViewLayout: TableCollectionViewLayout, titleForColumn column: Int) -> String {
 		switch column {
 		case 0:
 			return FidoHTMLParser.usageTableTypeKey
@@ -92,7 +91,7 @@ extension UsageSummaryView : TableLayoutDataSource {
 		}
 	}
 	
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, contentForColumn column: Int, row: Int) -> String {
+	func tableCollectionView(tableCollectionView: TextTableCollectionView, layout collectionViewLayout: TableCollectionViewLayout, contentForColumn column: Int, row: Int) -> String {
 		switch column {
 		case 0:
 			return data?[FidoHTMLParser.usageTableTypeKey] ?? ""
@@ -104,6 +103,26 @@ extension UsageSummaryView : TableLayoutDataSource {
 			return data?[FidoHTMLParser.usageTableRemainingKey] ?? ""
 		default:
 			return ""
+		}
+	}
+}
+
+extension UsageSummaryView : TextTableCollectionViewDelegate {
+	func tableCollectionView(tableCollectionView: TextTableCollectionView, configureTitleLabel titleLabel: UILabel, atColumn column: Int) {
+		titleLabel.preferredMaxLayoutWidth = screenWidth / 3.5
+	}
+	
+	func tableCollectionView(tableCollectionView: TextTableCollectionView, configureContentLabel contentLabel: UILabel, atColumn column: Int, row: Int) {
+		contentLabel.numberOfLines = 2
+		contentLabel.preferredMaxLayoutWidth = screenWidth / 3.5
+		
+		let contentString = self.tableCollectionView(tableCollectionView, layout: tableCollectionView.tableLayout, contentForColumn: column, row: row)
+		if contentString.characters.count > 16 {
+			if #available(iOS 8.2, *) {
+				contentLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightThin)
+			} else {
+				contentLabel.font =  UIFont.helveticaNenueThinFont(10)
+			}
 		}
 	}
 }

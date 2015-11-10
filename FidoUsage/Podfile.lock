@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.1.0)
+  - Alamofire (3.1.2)
   - Bolts/Tasks (1.4.0)
   - ChouTi/ChouTi (1.0):
     - ChouTi/ChouTi/Animators (= 1.0)
@@ -47,9 +47,9 @@ EXTERNAL SOURCES:
     :path: "../Submodules/ChouTi/"
 
 SPEC CHECKSUMS:
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
-  ChouTi: bffb4f8467c35e3dc26542369ed83e816c03c8b1
+  ChouTi: f42b4776c050d4316f02554d1e2089ad0acc921b
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
   Loggerithm: 23ec82a8f7907832758cb93f15c33a85de0ed99b
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b

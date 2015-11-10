@@ -238,7 +238,7 @@ extension UsageContainerViewController : MenuPageViewControllerDelegate {
 	}
 	
 	func menuPageViewController(menuPageViewController: MenuPageViewController, didSelectIndex selectedIndex: Int, selectedViewController: UIViewController) {
-		print("selected index: \(selectedIndex)")
+		log.debug("selected index: \(selectedIndex)")
 		animateUnderScore(selectedIndex)
 	}
 }

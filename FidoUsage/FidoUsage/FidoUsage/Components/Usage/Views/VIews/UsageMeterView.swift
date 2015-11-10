@@ -53,6 +53,7 @@ class UsageMeterView: UIView {
 		currentLabel.textColor = UIColor.blueColor()
 		
 		progressBarView.delegate = self
+		progressBarView.animationDuration = 1.5
 		
 		setupConstraints()
 	}
@@ -104,7 +105,7 @@ extension UsageMeterView : ProgressBarViewDelegate {
 		currentLabelHorizontalPositionConstraint.active = true
 		
 		if isVisible {
-			UIView.animateWithDuration(0.2) { () -> Void in
+			UIView.animateWithDuration(progressBarView.animationDuration) { () -> Void in
 				self.layoutIfNeeded()
 			}
 		} else {

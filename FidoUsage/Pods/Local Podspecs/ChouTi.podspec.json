@@ -83,7 +83,7 @@
         },
         {
           "name": "Utility",
-          "summary": "Handy utility functions",
+          "summary": "Handy utility functions/constants",
           "source_files": "Source/iOS/Utility/*.*",
           "frameworks": "UIKit"
         }

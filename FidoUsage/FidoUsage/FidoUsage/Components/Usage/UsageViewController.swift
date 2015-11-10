@@ -13,7 +13,7 @@ import Client
 class UsageViewController : UIViewController {
 	
     var sectionTitle: String
-    
+	
 	let tableView = UITableView(frame: CGRectZero, style: .Plain)
 	
 	var data: [String: AnyObject]?
@@ -54,7 +54,7 @@ class UsageViewController : UIViewController {
 		UsageDetailCell.registerInTableView(tableView)
 		BillingCycleDetailCell.registerInTableView(tableView)
 		SeparatorCell.registerInTableView(tableView)
-		
+
 		setupConstraints()
 	}
 	
@@ -138,44 +138,50 @@ extension UsageViewController : UITableViewDataSource {
 			
         case let cell as UsageDetailCell:
 			guard
-				let usageMeterSection = data?[FidoHTMLParser.usageMeterKey]?[indexPath.section]?[FidoHTMLParser.usageMeterUsageMeterSectionKey],
-				let usageTextSection = data?[FidoHTMLParser.usageMeterKey]?[indexPath.section]?[FidoHTMLParser.usageMeterUsageTextSectionKey] else {
+			let usageMeterSection = ((data?[FidoHTMLParser.usageMeterKey] as? [AnyObject])?[indexPath.section] as? [String : AnyObject])?[FidoHTMLParser.usageMeterUsageMeterSectionKey] as? [String : String],
+			let usageTextSection = ((data?[FidoHTMLParser.usageMeterKey] as? [AnyObject])?[indexPath.section] as? [String : AnyObject])?[FidoHTMLParser.usageMeterUsageTextSectionKey] as? [String : String] else {
 					break
 			}
 			
-			cell.usageMeterView.minLabel.text = usageMeterSection?[FidoHTMLParser.usageMeterMinKey] as? String
-			cell.usageMeterView.maxLabel.text = usageMeterSection?[FidoHTMLParser.usageMeterMaxKey] as? String
-			cell.usageMeterView.currentLabel.text = usageMeterSection?[FidoHTMLParser.usageMeterUsedKey] as? String
-			if let percentString = usageMeterSection?[FidoHTMLParser.usageMeterUsagePercentKey] as? String {
-				cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
-			} else {
-				cell.usageMeterView.progressBarView.percent = 0.0
-			}
+			cell.usageMeterView.minLabel.text = usageMeterSection[FidoHTMLParser.usageMeterMinKey]
+			cell.usageMeterView.maxLabel.text = usageMeterSection[FidoHTMLParser.usageMeterMaxKey]
+			cell.usageMeterView.currentLabel.text = usageMeterSection[FidoHTMLParser.usageMeterUsedKey]
 			
-			cell.titleLabel.text = usageTextSection?[FidoHTMLParser.usageMeterUsageTitleKey] as? String
-			cell.includedPairView.contentLabel.text = usageTextSection?[FidoHTMLParser.usageMeterIncludedKey] as? String
-			cell.usedPairView.contentLabel.text = usageTextSection?[FidoHTMLParser.usageMeterUsedKey] as? String
-			cell.remainingPairView.contentLabel.text = usageTextSection?[FidoHTMLParser.usageMeterRemainingKey] as? String
+			delay(seconds: 0.1, completion: { () -> () in
+				if let percentString = usageMeterSection[FidoHTMLParser.usageMeterUsagePercentKey] {
+					cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
+				} else {
+					cell.usageMeterView.progressBarView.percent = 0.0
+				}
+			})
+			
+			cell.titleLabel.text = usageTextSection[FidoHTMLParser.usageMeterUsageTitleKey]
+			cell.includedPairView.contentLabel.text = usageTextSection[FidoHTMLParser.usageMeterIncludedKey]
+			cell.usedPairView.contentLabel.text = usageTextSection[FidoHTMLParser.usageMeterUsedKey]
+			cell.remainingPairView.contentLabel.text = usageTextSection[FidoHTMLParser.usageMeterRemainingKey]
 			
         case let cell as BillingCycleDetailCell:
 			guard
-				let billingMeterSection = data?[FidoHTMLParser.usageMeterKey]?[indexPath.section]?[FidoHTMLParser.usageMeterBillingCycleMeterSectionKey],
-				let billingTextSection = data?[FidoHTMLParser.usageMeterKey]?[indexPath.section]?[FidoHTMLParser.usageMeterBillingCycleTextSectionKey] else {
+			let billingMeterSection = ((data?[FidoHTMLParser.usageMeterKey] as? [AnyObject])?[indexPath.section] as? [String : AnyObject])?[FidoHTMLParser.usageMeterBillingCycleMeterSectionKey] as? [String : String],
+				let billingTextSection = ((data?[FidoHTMLParser.usageMeterKey] as? [AnyObject])?[indexPath.section] as? [String : AnyObject])?[FidoHTMLParser.usageMeterBillingCycleTextSectionKey] as? [String : String] else {
 					break
 			}
 			
-			cell.usageMeterView.minLabel.text = billingMeterSection?[FidoHTMLParser.usageMeterBillingCycleBeginKey] as? String
-			cell.usageMeterView.maxLabel.text = billingMeterSection?[FidoHTMLParser.usageMeterBillingCycleEndKey] as? String
-			cell.usageMeterView.currentLabel.text = billingMeterSection?[FidoHTMLParser.usageMeterBillingCycleTodayKey] as? String
-			if let percentString = billingMeterSection?[FidoHTMLParser.usageMeterBillingCyclePassedPercentKey] as? String {
-				cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
-			} else {
-				cell.usageMeterView.progressBarView.percent = 0.0
-			}
+			cell.usageMeterView.minLabel.text = billingMeterSection[FidoHTMLParser.usageMeterBillingCycleBeginKey]
+			cell.usageMeterView.maxLabel.text = billingMeterSection[FidoHTMLParser.usageMeterBillingCycleEndKey]
+			cell.usageMeterView.currentLabel.text = billingMeterSection[FidoHTMLParser.usageMeterBillingCycleTodayKey]
 			
-			cell.titleLabel.text = billingTextSection?[FidoHTMLParser.usageMeterBillingCycleTitleKey] as? String
-			cell.daysInPairView.contentLabel.text = billingTextSection?[FidoHTMLParser.usageMeterBillingCycleDaysIntoCycleKey] as? String
-			cell.remainingPairView.contentLabel.text = billingTextSection?[FidoHTMLParser.usageMeterBillingCycleDaysRemainingKey] as? String
+			delay(seconds: 0.1, completion: { () -> () in
+				if let percentString = billingMeterSection[FidoHTMLParser.usageMeterBillingCyclePassedPercentKey] {
+					cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
+				} else {
+					cell.usageMeterView.progressBarView.percent = 0.0
+				}
+			})
+			
+			cell.titleLabel.text = billingTextSection[FidoHTMLParser.usageMeterBillingCycleTitleKey]
+			cell.daysInPairView.contentLabel.text = billingTextSection[FidoHTMLParser.usageMeterBillingCycleDaysIntoCycleKey]
+			cell.remainingPairView.contentLabel.text = billingTextSection[FidoHTMLParser.usageMeterBillingCycleDaysRemainingKey]
 			
         default:
             break
@@ -196,7 +202,7 @@ extension UsageViewController : UITableViewDelegate {
 	}
 	
 	func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-		return 71
+		return 80
 	}
 	
 	func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -205,7 +211,7 @@ extension UsageViewController : UITableViewDelegate {
 		
 		view.layoutMargins = UIEdgeInsets(top: 22, left: 8, bottom: 22, right: 8)
 		
-		if let data = data?[FidoHTMLParser.usageTableKey]?[section] as? [String : String] {
+		if let data = (data?[FidoHTMLParser.usageTableKey] as? [AnyObject])?[section] as? [String : String] {
 			let summaryView = UsageSummaryView(data: data)
 			summaryView.translatesAutoresizingMaskIntoConstraints = false
 			view.addSubview(summaryView)
