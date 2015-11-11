@@ -96,11 +96,18 @@
     {
       "name": "UI",
       "summary": "UI Views & ViewControllers",
+      "source_files": "Source/iOS/UI/*.*",
       "subspecs": [
         {
           "name": "AutoLinesLabel",
           "summary": "UILabel with contentInset and probide auto lines on iOS7",
           "source_files": "Source/iOS/UI/AutoLinesLabel/*.*",
+          "frameworks": "UIKit"
+        },
+        {
+          "name": "UITableViewCell",
+          "summary": "Customized UITableViewCells",
+          "source_files": "Source/iOS/UI/UITableViewCell/*.*",
           "frameworks": "UIKit"
         },
         {
@@ -114,6 +121,17 @@
           "summary": "PageViewController with header titles",
           "source_files": "Source/iOS/UI/MenuPageViewController/*.*",
           "frameworks": "UIKit"
+        },
+        {
+          "name": "LoadingMorphingLabel",
+          "summary": "Showing a list of text in loop",
+          "source_files": "Source/iOS/UI/LoadingMorphingLabel/*.*",
+          "frameworks": "UIKit",
+          "dependencies": {
+            "LTMorphingLabel": [
+              "~> 0.0.8"
+            ]
+          }
         }
       ]
     },

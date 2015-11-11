@@ -8,9 +8,11 @@
 
 import UIKit
 import ChouTi
+import DGElasticPullToRefresh
 
 class UsageContainerViewController : UIViewController {
 	
+	let loadingView = DGElasticPullToRefreshLoadingViewCircle()
 	var usageViewControllers = [UsageViewController]()
 	
 	// MARK: - UI
@@ -37,7 +39,6 @@ class UsageContainerViewController : UIViewController {
 	
 	private func commonInit() {
 		menuPageViewController.menuView.setHidden(true)
-		
 		menuPageViewController.delegate = self
 		menuPageViewController.dataSource = self
 	}
@@ -79,6 +80,8 @@ class UsageContainerViewController : UIViewController {
 		// Put underscore image below
 		underscoreImageView.center = CGPoint(x: menuPageViewController.menuView.bounds.width / 2.0, y: 15)
 		
+		menuPageViewController.view.setHidden(true)
+		
 		// Number button
 		guard let leftNavigationBarBackgroundView = addLeftNavigationBarBackgroundView() else {
 			log.error("leftNavigationBarBackgroundView is nil")
@@ -97,6 +100,13 @@ class UsageContainerViewController : UIViewController {
 		numberButton.translatesAutoresizingMaskIntoConstraints = false
 		leftNavigationBarBackgroundView.addSubview(numberButton)
 		numberButton.fullSizeInSuperview()
+		
+		// Loading view
+		loadingView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(loadingView)
+		loadingView.tintColor = UIColor.fidoTealColor()
+		loadingView.circleLineWidth = 3
+		loadingView.setHidden(true)
 	}
 	
 	func setupConstraints() {
@@ -109,27 +119,42 @@ class UsageContainerViewController : UIViewController {
 		} else {
 		    // Fallback on earlier versions
 		}
+		
+		loadingView.constraintToSize(CGSize(width: 44, height: 44))
+		loadingView.centerInSuperview()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		loadingView.setHidden(false)
+		loadingView.startAnimating()
+		
 		log.info("Requesting sections ...")
 		Locator.client.gotoViewUsagePage({ (succeed, sections) -> Void in
-			if let sections = Locator.client.usageSections {
-				log.info("Got sections: \(sections)")
+			if !succeed {
 				
-				self.updateSections(sections)
-				if let dataIndex = sections.indexOf("Data") {
-					self.menuPageViewController.selectedIndex = dataIndex
-				} else {
-					self.menuPageViewController.selectedIndex = sections.count / 2
+			} else {
+				if let sections = Locator.client.usageSections {
+					log.info("Got sections: \(sections)")
+					
+					self.menuPageViewController.view.setHidden(false, animated: true, duration: 0.5)
+					
+					self.updateSections(sections)
+					if let dataIndex = sections.indexOf("Data") {
+						self.menuPageViewController.selectedIndex = dataIndex
+					} else {
+						self.menuPageViewController.selectedIndex = sections.count / 2
+					}
+					
+					let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
+					self.numberButton.setTitle(number, forState: .Normal)
+					
+					self.numberButton.setHidden(false, animated: true, duration: 0.5)
+					
+					self.loadingView.stopLoading()
+					self.loadingView.setHidden(true, animated: true, duration: 0.5)
 				}
-				
-				let number = "\(Locator.client.numberString!)\n\(Locator.client.accountHolderName!)"
-				self.numberButton.setTitle(number, forState: .Normal)
-				
-				self.numberButton.setHidden(false, animated: true, duration: 0.5)
 			}
 		})
 	}

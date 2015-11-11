@@ -30,6 +30,8 @@ target 'FidoUsage' do
 
 	# UI
 	pod "DGElasticPullToRefresh", :git => 'https://github.com/honghaoz/DGElasticPullToRefresh.git'
+	pod 'LTMorphingLabel', '~> 0.0.8'
+	
 	# Analytics
 	# pod 'Google/Analytics'
 

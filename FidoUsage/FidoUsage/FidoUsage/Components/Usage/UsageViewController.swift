@@ -59,10 +59,11 @@ class UsageViewController : UIViewController {
 		let circleLoadingView = DGElasticPullToRefreshLoadingViewCircle()
 		circleLoadingView.tintColor = UIColor.fidoTealColor()
 		circleLoadingView.circleLineWidth = 1.5
-				
+		
 		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-			self?.updateData()
-			self?.tableView.dg_stopLoading()
+			self?.updateData({ _ -> Void in
+				self?.tableView.dg_stopLoading()
+			})
 			}, loadingView: circleLoadingView)
 		tableView.dg_setPullToRefreshFillColor(UIColor.fidoYellowColor())
 		tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
@@ -90,7 +91,7 @@ class UsageViewController : UIViewController {
 		tableView.dg_removePullToRefresh()
 	}
 	
-	func updateData() {
+	func updateData(completion: ((Bool) -> Void)? = nil) {
 		if !isRequesting {
 			isRequesting = true
 			
@@ -110,9 +111,11 @@ class UsageViewController : UIViewController {
 					
 					self.data = table
 					self.tableView.reloadData()
-					
+
 					self.tableView.setHidden(false, animated: true, duration: 0.5)
+					completion?(true)
 				} else {
+					completion?(false)
 					log.error("Requesting \(self.sectionTitle) failed")
 				}
 				
