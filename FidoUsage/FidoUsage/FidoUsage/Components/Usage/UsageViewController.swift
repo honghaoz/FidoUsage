@@ -9,6 +9,7 @@
 import UIKit
 import ChouTi
 import Client
+import DGElasticPullToRefresh
 
 class UsageViewController : UIViewController {
 	
@@ -55,6 +56,17 @@ class UsageViewController : UIViewController {
 		BillingCycleDetailCell.registerInTableView(tableView)
 		SeparatorCell.registerInTableView(tableView)
 
+		let circleLoadingView = DGElasticPullToRefreshLoadingViewCircle()
+		circleLoadingView.tintColor = UIColor.fidoTealColor()
+		circleLoadingView.circleLineWidth = 1.5
+				
+		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+			self?.updateData()
+			self?.tableView.dg_stopLoading()
+			}, loadingView: circleLoadingView)
+		tableView.dg_setPullToRefreshFillColor(UIColor.fidoYellowColor())
+		tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+		
 		setupConstraints()
 	}
 	
@@ -71,7 +83,14 @@ class UsageViewController : UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		
+		updateData()
+	}
+	
+	deinit {
+		tableView.dg_removePullToRefresh()
+	}
+	
+	func updateData() {
 		if !isRequesting {
 			isRequesting = true
 			
@@ -81,17 +100,17 @@ class UsageViewController : UIViewController {
 			
 			client.showViewUsgaeForSection(sectionTitle, completion: { (succeed, table) in
 				if succeed {
-//					let existedSections = NSIndexSet(indexesInRange: NSRange(location: 0, length: self.tableView.numberOfSections))
-//					self.data = [:]
-//					self.tableView.deleteSections(existedSections, withRowAnimation: .None)
-//					
-//					self.data = table
-//
-//					self.tableView.insertSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: table?[FidoHTMLParser.usageTableKey]?.count ?? 0)), withRowAnimation: .None)
+					//	let existedSections = NSIndexSet(indexesInRange: NSRange(location: 0, length: self.tableView.numberOfSections))
+					//	self.data = [:]
+					//	self.tableView.deleteSections(existedSections, withRowAnimation: .None)
+					//
+					//	self.data = table
+					//
+					//	self.tableView.insertSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: table?[FidoHTMLParser.usageTableKey]?.count ?? 0)), withRowAnimation: .None)
 					
 					self.data = table
 					self.tableView.reloadData()
-
+					
 					self.tableView.setHidden(false, animated: true, duration: 0.5)
 				} else {
 					log.error("Requesting \(self.sectionTitle) failed")

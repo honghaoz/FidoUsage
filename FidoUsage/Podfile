@@ -28,6 +28,8 @@ target 'FidoUsage' do
 	pod 'Parse'
 	pod 'Watchdog'
 
+	# UI
+	pod "DGElasticPullToRefresh", :git => 'https://github.com/honghaoz/DGElasticPullToRefresh.git'
 	# Analytics
 	# pod 'Google/Analytics'
 
