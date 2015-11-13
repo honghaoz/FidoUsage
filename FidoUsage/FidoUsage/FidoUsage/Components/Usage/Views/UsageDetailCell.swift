@@ -49,6 +49,9 @@ class UsageDetailCell: UITableViewCell {
 		}
 		
 		usageMeterView.currentLabel.textColor = UIColor.fidoTealColor()
+		usageMeterView.peacefulColor = UIColor.fidoTealColor()
+		usageMeterView.mediateColor = UIColor.usageMidYelloColor()
+		usageMeterView.criticalColor = UIColor.usageMaxRedColor()
 		
 		[includedPairView, usedPairView, remainingPairView].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false

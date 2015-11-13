@@ -12,7 +12,7 @@ import DGElasticPullToRefresh
 
 class UsageContainerViewController : UIViewController {
 	
-	let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+	let loadingView = LoadingMorphingLabel()
 	var usageViewControllers = [UsageViewController]()
 	
 	// MARK: - UI
@@ -104,8 +104,18 @@ class UsageContainerViewController : UIViewController {
 		// Loading view
 		loadingView.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(loadingView)
-		loadingView.tintColor = UIColor.fidoTealColor()
-		loadingView.circleLineWidth = 3
+		
+		loadingView.loopCount = Int.max
+		loadingView.delayDuration = 1.5
+		loadingView.morphingEffect = .Scale
+		loadingView.morphingDuration = 1.0
+		if #available(iOS 8.2, *) {
+			loadingView.morphingLabel.font = UIFont.systemFontOfSize(20, weight: UIFontWeightRegular)
+		} else {
+			loadingView.morphingLabel.font = UIFont.helveticaNeueLightFont(20)!
+		}
+		
+		loadingView.texts = ["Loading...", "Usage Sections..."]
 		loadingView.setHidden(true)
 	}
 	
@@ -120,7 +130,6 @@ class UsageContainerViewController : UIViewController {
 		    // Fallback on earlier versions
 		}
 		
-		loadingView.constraintToSize(CGSize(width: 44, height: 44))
 		loadingView.centerInSuperview()
 	}
 	
@@ -128,7 +137,7 @@ class UsageContainerViewController : UIViewController {
 		super.viewWillAppear(animated)
 		
 		loadingView.setHidden(false)
-		loadingView.startAnimating()
+		loadingView.startLoop()
 		
 		log.info("Requesting sections ...")
 		Locator.client.gotoViewUsagePage({ (succeed, sections) -> Void in
@@ -152,7 +161,7 @@ class UsageContainerViewController : UIViewController {
 					
 					self.numberButton.setHidden(false, animated: true, duration: 0.5)
 					
-					self.loadingView.stopLoading()
+					self.loadingView.endLoop()
 					self.loadingView.setHidden(true, animated: true, duration: 0.5)
 				}
 			}

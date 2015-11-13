@@ -39,7 +39,7 @@ end
 
 post_install do |installer|
 	installer.pods_project.targets.each do |target|
-		if target.name == 'Alamofire' or target.name == 'Ji' or target.name == 'Loggerithm' or target.name == 'ChouTi'
+		if target.name == 'Alamofire' or target.name == 'Ji' or target.name == 'Loggerithm' or target.name == 'ChouTi' or target.name == 'LTMorphingLabel'
 			target.build_configurations.each do |config|
 				config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'YES'
 			end

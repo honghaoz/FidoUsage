@@ -16,6 +16,11 @@ class UsageMeterView: UIView {
 	
 	let progressBarView = ProgressBarView()
 	
+	var shouldShowDifferentColor: Bool = true
+	var criticalColor: UIColor = UIColor.redColor()
+	var mediateColor: UIColor = UIColor.yellowColor()
+	var peacefulColor: UIColor = UIColor.greenColor()
+	
 	private var currentLabelHorizontalPositionConstraint: NSLayoutConstraint!
 	
 	override init(frame: CGRect) {
@@ -81,7 +86,7 @@ class UsageMeterView: UIView {
 		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[maxLabel]-(vertical_spacing)-[progressBarView]", options: [.AlignAllTrailing], metrics: metrics, views: views)
 		constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:[progressBarView]-(vertical_spacing)-[currentLabel]-|", options: [], metrics: metrics, views: views)
 		
-		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: progressBarView, attribute: .Trailing, multiplier: progressBarView.percent, constant: 0.0)
+		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: progressBarView, attribute: .Trailing, multiplier: progressBarView.percent.safeMulpilter(), constant: 0.0)
 		currentLabelHorizontalPositionConstraint.priority = 750
 		
 		// Constraints avoids exceeding bounds
@@ -100,14 +105,33 @@ extension UsageMeterView : ProgressBarViewDelegate {
 	}
 	
 	func progressBarView(progressBarView: ProgressBarView, didSetToPercent percent: CGFloat) {
+		let newColor: UIColor
+		
+		if shouldShowDifferentColor {
+			switch percent {
+			case 0 ..< 0.7:
+				newColor = peacefulColor
+			case 0.7 ..< 0.9:
+				newColor = mediateColor
+			case 0.9 ... 1.0:
+				newColor = criticalColor
+			default:
+				newColor = peacefulColor
+			}
+		} else {
+			newColor = peacefulColor
+		}
+		
 		currentLabelHorizontalPositionConstraint.active = false
-		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: progressBarView, attribute: .Trailing, multiplier: percent, constant: 0.0)
+		currentLabelHorizontalPositionConstraint = NSLayoutConstraint(item: currentLabel, attribute: .CenterX, relatedBy: .Equal, toItem: progressBarView, attribute: .Trailing, multiplier: percent.safeMulpilter(), constant: 0.0)
 		currentLabelHorizontalPositionConstraint.priority = 750
 		currentLabelHorizontalPositionConstraint.active = true
 		
-		if isVisible {
+		if isVisible && progressBarView.animated {
 			UIView.animateWithDuration(progressBarView.animationDuration) { () -> Void in
 				self.layoutIfNeeded()
+				self.progressBarView.forgroundColor = newColor
+				self.currentLabel.textColor = newColor
 			}
 		} else {
 			self.setNeedsLayout()

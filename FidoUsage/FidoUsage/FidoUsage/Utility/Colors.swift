@@ -28,4 +28,12 @@ extension UIColor {
 	class func fidoDarkGreyColor() -> UIColor {
 		return UIColor(red:91/255.0, green:103/255.0, blue:112/255.0, alpha:255/255.0)
 	}
+	
+	class func usageMidYelloColor() -> UIColor {
+		return UIColor(red:250/255.0, green:177/255.0, blue:45/255.0, alpha:255/255.0)
+	}
+	
+	class func usageMaxRedColor() -> UIColor {
+		return UIColor(red:219/255.0, green:32/255.0, blue:40/255.0, alpha:255/255.0)
+	}
 }

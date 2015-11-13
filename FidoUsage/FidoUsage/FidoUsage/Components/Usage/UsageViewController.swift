@@ -16,10 +16,13 @@ class UsageViewController : UIViewController {
     var sectionTitle: String
 	
 	let tableView = UITableView(frame: CGRectZero, style: .Plain)
+	var loadingView: LoadingMorphingLabel?
 	
 	var data: [String: AnyObject]?
 	
 	private var isRequesting: Bool = false
+	
+	private var viewHasAppeared: Bool = false
 	
     init(sectionTitle: String) {
 		self.sectionTitle = sectionTitle
@@ -37,6 +40,7 @@ class UsageViewController : UIViewController {
     }
 	
 	private func setupViews() {
+		// Table View
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(tableView)
 		
@@ -68,23 +72,40 @@ class UsageViewController : UIViewController {
 		tableView.dg_setPullToRefreshFillColor(UIColor.fidoYellowColor())
 		tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
 		
+		// Loading view
+		loadingView = LoadingMorphingLabel()
+		loadingView!.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(loadingView!)
+		
+		loadingView!.loopCount = Int.max
+		loadingView!.delayDuration = 1.5
+		loadingView!.morphingEffect = .Scale
+		loadingView!.morphingDuration = 1.0
+		
+		if #available(iOS 8.2, *) {
+			loadingView!.morphingLabel.font = UIFont.systemFontOfSize(20, weight: UIFontWeightRegular)
+		} else {
+			loadingView!.morphingLabel.font = UIFont.helveticaNeueLightFont(20)!
+		}
+		
+		loadingView!.texts = ["Loading...", "\(sectionTitle) Usage..."]
+		loadingView!.setHidden(true)
+		
 		setupConstraints()
 	}
 	
 	private func setupConstraints() {
-		if #available(iOS 9.0, *) {
-		    tableView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-			tableView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-			tableView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-			tableView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-		} else {
-		    // Fallback on earlier versions
-		}
+		tableView.fullSizeInSuperview()
+		loadingView?.centerInSuperview()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		updateData()
+		
+		if !viewHasAppeared {
+			updateData()
+			viewHasAppeared = true
+		}
 	}
 	
 	deinit {
@@ -96,6 +117,11 @@ class UsageViewController : UIViewController {
 			isRequesting = true
 			
 			let client = Locator.client
+			
+			loadingView?.texts = ["Loading...", "\(sectionTitle) Usage..."]
+			loadingView?.currentTextIndex = 1
+			loadingView?.setHidden(false, animated: true, duration: 0.5)
+			loadingView?.startLoop()
 			
 			log.info("Requesting \(self.sectionTitle) ...")
 			
@@ -113,8 +139,20 @@ class UsageViewController : UIViewController {
 					self.tableView.reloadData()
 
 					self.tableView.setHidden(false, animated: true, duration: 0.5)
+					
+					self.loadingView?.endLoop()
+					self.loadingView?.setHidden(true, animated: true, duration: 0.5, completion: { _ in
+						self.loadingView?.removeFromSuperview()
+						self.loadingView = nil
+					})
+					
 					completion?(true)
 				} else {
+					self.view.insertSubview(self.loadingView!, aboveSubview: self.tableView)
+					self.tableView.setHidden(false, animated: true, duration: 0.5)
+					self.loadingView?.currentTextIndex = 0
+					self.loadingView?.texts = ["Loading \(self.sectionTitle) Usage Failed!", "Pull To Refresh..."]
+				
 					completion?(false)
 					log.error("Requesting \(self.sectionTitle) failed")
 				}
@@ -169,7 +207,18 @@ extension UsageViewController : UITableViewDataSource {
 			cell.usageMeterView.maxLabel.text = usageMeterSection[FidoHTMLParser.usageMeterMaxKey]
 			cell.usageMeterView.currentLabel.text = usageMeterSection[FidoHTMLParser.usageMeterUsedKey]
 			
+			// Only enabel red progress bar for non-unlimited 
+			let summaryData = (data?[FidoHTMLParser.usageTableKey] as? [AnyObject])?[indexPath.section] as? [String : String]
+			if let includedString = summaryData?[FidoHTMLParser.usageTableIncludedKey] where includedString == "Unlimited" {
+				cell.usageMeterView.shouldShowDifferentColor = false
+			} else {
+				cell.usageMeterView.shouldShowDifferentColor = true
+			}
+			
+			cell.usageMeterView.progressBarView.setPercent(0.0, animated: false)
+			
 			delay(seconds: 0.1, completion: { () -> () in
+				cell.usageMeterView.progressBarView.animated = true
 				if let percentString = usageMeterSection[FidoHTMLParser.usageMeterUsagePercentKey] {
 					cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
 				} else {
@@ -193,7 +242,10 @@ extension UsageViewController : UITableViewDataSource {
 			cell.usageMeterView.maxLabel.text = billingMeterSection[FidoHTMLParser.usageMeterBillingCycleEndKey]
 			cell.usageMeterView.currentLabel.text = billingMeterSection[FidoHTMLParser.usageMeterBillingCycleTodayKey]
 			
+			cell.usageMeterView.progressBarView.setPercent(0.0, animated: false)
+			
 			delay(seconds: 0.1, completion: { () -> () in
+				cell.usageMeterView.progressBarView.animated = true
 				if let percentString = billingMeterSection[FidoHTMLParser.usageMeterBillingCyclePassedPercentKey] {
 					cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
 				} else {

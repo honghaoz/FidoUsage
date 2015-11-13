@@ -48,6 +48,9 @@ class BillingCycleDetailCell: UITableViewCell {
 		}
 		
 		usageMeterView.currentLabel.textColor = UIColor.blackColor()
+		usageMeterView.peacefulColor = UIColor.blackColor()
+		usageMeterView.mediateColor = UIColor.blackColor()
+		usageMeterView.criticalColor = UIColor.blackColor()
 		
 		[daysInPairView, remainingPairView].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false

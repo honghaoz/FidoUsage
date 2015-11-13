@@ -30,21 +30,6 @@ class LoginViewController: UIViewController {
 	private func setupViews() {
 		numberField.keyboardType = .PhonePad
 		passwordField.secureTextEntry = true
-		
-		let label = LoadingMorphingLabel()
-		
-		label.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(label)
-		
-		label.loopCount = Int.max
-		label.delayDuration = 0.5
-		label.centerInSuperview()
-		label.morphingLabel.morphingEffect = .Fall
-		
-		label.texts = ["春眠不觉晓", "处处蚊子咬", "问君何所去", "撕🐑是傻逼", "是呆逼"]
-		
-//		label123.text = "123"
-		
 	}
 	
 	private func loadFromUser() {

@@ -46,8 +46,8 @@ class UsageSummaryView: UIView {
 			tableCollectionView.titleFont = UIFont.systemFontOfSize(15, weight: UIFontWeightRegular)
 			tableCollectionView.contentFont = UIFont.systemFontOfSize(14, weight: UIFontWeightThin)
 		} else {
-			tableCollectionView.titleFont = UIFont.helveticaNeueLightFont(17)
-			tableCollectionView.contentFont = UIFont.helveticaNenueThinFont(17)
+			tableCollectionView.titleFont = UIFont.helveticaNeueLightFont(15)!
+			tableCollectionView.contentFont = UIFont.helveticaNenueThinFont(14)!
 		}
 		
 		tableCollectionView.translatesAutoresizingMaskIntoConstraints = false
