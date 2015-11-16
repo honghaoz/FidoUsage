@@ -13,6 +13,7 @@ class RootViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		addUsageContainerViewController()
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -21,12 +22,15 @@ class RootViewController: UIViewController {
 		let user = Locator.user
 		if user.isLoggedIn == false {
 			let loginVC = Locator.loginViewController
-			presentViewController(loginVC, animated: true, completion: nil)
+			loginVC.modalPresentationStyle = .Custom
+			loginVC.transitioningDelegate = loginVC
+			
+			let usageContainerVC = Locator.usageContainerViewController
+			usageContainerVC.presentViewController(loginVC, animated: true, completion: nil)
 		}
 	}
 	
-	func showUsageViewController() {
-		
+	func addUsageContainerViewController() {
 		let usageContainerNavigationController = Locator.usageContainerNavigationController
 		addChildViewController(usageContainerNavigationController)
 		view.addSubview(usageContainerNavigationController.view)

@@ -13,23 +13,56 @@ import LTMorphingLabel
 
 class LoginViewController: UIViewController {
 
-	@IBOutlet weak var numberField: UITextField!
-	@IBOutlet weak var passwordField: UITextField!
-	@IBOutlet weak var rememberSwitch: UISwitch!
+	@IBOutlet weak var numberField: TextField!
+	@IBOutlet weak var passwordField: TextField!
 	@IBOutlet weak var loginButton: UIButton!
+	@IBOutlet weak var separatorView: UIView!
+	
+	@IBOutlet weak var separatorViewHeightConstraint: NSLayoutConstraint!
 	
 	let user = Locator.user
 	
+	let animator = DropPresentingAnimator()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		setupViews()
 		
+		animator.animationDuration = 0.75
+		animator.presentingViewSize = CGSize(width: ceil(screenWidth * 0.7), height: 160)
+		
+		setupViews()
 		loadFromUser()
     }
 	
 	private func setupViews() {
+		view.layer.cornerRadius = 10.0
+		
+		numberField.layer.cornerRadius = 4.0
+		numberField.textHorizontalPadding = 10.0
+		numberField.textVerticalPadding = 10.0
+		passwordField.layer.cornerRadius = 4.0
+		passwordField.textHorizontalPadding = 10.0
+		passwordField.textVerticalPadding = 10.0
+		
+		view.clipsToBounds = false
+		view.layer.shadowColor = UIColor.blackColor().CGColor
+		view.layer.shadowOffset = CGSizeZero
+		view.layer.shadowRadius = 15.0
+		view.layer.shadowOpacity = 0.8
+		
 		numberField.keyboardType = .PhonePad
 		passwordField.secureTextEntry = true
+		
+		separatorViewHeightConstraint.constant = 0.5
+		separatorView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+		
+		view.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		view.layer.shadowPath = UIBezierPath(rect: view.bounds).CGPath
 	}
 	
 	private func loadFromUser() {
@@ -37,12 +70,6 @@ class LoginViewController: UIViewController {
 			numberField.text = user.number
 			passwordField.text = user.password
 		}
-		
-		user.isRemembered = rememberSwitch.on
-	}
-	
-	@IBAction func rememberSwitchTapped(sender: UISwitch) {
-		user.isRemembered = rememberSwitch.on
 	}
 	
 	@IBAction func loginButtonTapped(sender: UIButton) {
@@ -62,12 +89,23 @@ class LoginViewController: UIViewController {
 				self.user.save()
 		
 				self.dismissViewControllerAnimated(true, completion: {_ in
-					Locator.rootViewController.showUsageViewController()
+					Locator.usageContainerViewController.loadData()
 				})
-				
 			} else {
 				log.error("Login failed")
 			}
 		}
+	}
+}
+
+extension LoginViewController : UIViewControllerTransitioningDelegate {
+	func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		animator.presenting = true
+		return animator
+	}
+	
+	func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		animator.presenting = false
+		return animator
 	}
 }

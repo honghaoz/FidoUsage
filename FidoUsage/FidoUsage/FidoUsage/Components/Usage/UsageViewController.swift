@@ -127,14 +127,6 @@ class UsageViewController : UIViewController {
 			
 			client.showViewUsgaeForSection(sectionTitle, completion: { (succeed, table) in
 				if succeed {
-					//	let existedSections = NSIndexSet(indexesInRange: NSRange(location: 0, length: self.tableView.numberOfSections))
-					//	self.data = [:]
-					//	self.tableView.deleteSections(existedSections, withRowAnimation: .None)
-					//
-					//	self.data = table
-					//
-					//	self.tableView.insertSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: table?[FidoHTMLParser.usageTableKey]?.count ?? 0)), withRowAnimation: .None)
-					
 					self.data = table
 					self.tableView.reloadData()
 

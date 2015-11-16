@@ -55,7 +55,6 @@ class UsageContainerViewController : UIViewController {
 		navigationItem.titleView = logoImageView
 		
 		self.automaticallyAdjustsScrollViewInsets = false
-		self.navigationController?.navigationBar.hideBottomHairline()
 		
 		// MenuPageViewController
 		menuPageViewController.menuView.menuAlwaysCentered = true
@@ -135,6 +134,15 @@ class UsageContainerViewController : UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		loadData()
+	}
+	
+	func loadData() {
+		if Locator.user.isLoggedIn == false {
+			return
+		}
+		
+		self.navigationController?.navigationBar.hideBottomHairline()
 		
 		loadingView.setHidden(false)
 		loadingView.startLoop()

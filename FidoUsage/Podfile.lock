@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.1.2)
-  - Bolts/Tasks (1.4.0)
+  - Bolts/Tasks (1.5.0)
   - ChouTi/ChouTi (1.0):
     - ChouTi/ChouTi/Animators (= 1.0)
     - ChouTi/ChouTi/CollectionViewLayouts (= 1.0)
@@ -34,7 +34,7 @@ PODS:
     - Ji/Ji-libxml
   - Ji/Ji-libxml (1.2.0)
   - Loggerithm (1.3)
-  - LTMorphingLabel (0.0.8)
+  - LTMorphingLabel (0.0.9)
   - Parse (1.9.1):
     - Bolts/Tasks (>= 1.4.0)
   - Watchdog (1.0.2)
@@ -64,12 +64,12 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
-  Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   ChouTi: b379547c6643fc259e5d518d73e7a9481ef56bd0
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
   Loggerithm: 23ec82a8f7907832758cb93f15c33a85de0ed99b
-  LTMorphingLabel: 0d2c981d47bb3b57dd03b37c5c13d8d71fc1e97e
+  LTMorphingLabel: 4235a403f99f0e0e503389da660e0fec324549d9
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   Watchdog: df151f580ea32831011cef05eda6c42385cd8423
 
