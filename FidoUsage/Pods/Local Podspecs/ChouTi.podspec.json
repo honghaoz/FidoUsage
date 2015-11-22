@@ -21,6 +21,9 @@
   "requires_arc": true,
   "public_header_files": "Source/**/**/*.h",
   "source_files": "Source/iOS/**/",
+  "xcconfig": {
+    "OTHER_SWIFT_FLAGS": "-D DEBUG"
+  },
   "default_subspecs": "All",
   "subspecs": [
     {
@@ -55,8 +58,8 @@
     },
     {
       "name": "ChouTi",
-      "summary": "A Set of Common UI Utilities.",
-      "source_files": "Source/iOS/*.swift",
+      "summary": "Bag of everything.",
+      "source_files": "Source/iOS/*.*",
       "subspecs": [
         {
           "name": "Extensions",
@@ -72,7 +75,7 @@
         },
         {
           "name": "CollectionViewLayouts",
-          "summary": "A collection of UICollectionView Layouts",
+          "summary": "UICollectionView Layouts",
           "source_files": "Source/iOS/CollectionViewLayouts/*/*.*",
           "frameworks": "UIKit"
         },
@@ -83,10 +86,15 @@
           "frameworks": "UIKit"
         },
         {
-          "name": "Utility",
+          "name": "Utilities",
           "summary": "Handy utility functions/constants",
-          "source_files": "Source/iOS/Utility/*.*",
+          "source_files": "Source/iOS/Utilities/*.*",
           "frameworks": "UIKit"
+        },
+        {
+          "name": "CodeSnippets",
+          "summary": "Some useful and handy code snippets",
+          "source_files": "Source/iOS/CodeSnippets/*.*"
         }
       ]
     },

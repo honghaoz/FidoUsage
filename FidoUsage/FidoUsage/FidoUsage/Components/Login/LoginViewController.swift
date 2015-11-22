@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 		
 		animator.animationDuration = 0.75
+		animator.shouldDismissOnTappingOutsideView = false
 		animator.presentingViewSize = CGSize(width: ceil(screenWidth * 0.7), height: 160)
 		
 		setupViews()
@@ -40,6 +41,7 @@ class LoginViewController: UIViewController {
 		numberField.layer.cornerRadius = 4.0
 		numberField.textHorizontalPadding = 10.0
 		numberField.textVerticalPadding = 10.0
+		
 		passwordField.layer.cornerRadius = 4.0
 		passwordField.textHorizontalPadding = 10.0
 		passwordField.textVerticalPadding = 10.0
@@ -51,10 +53,15 @@ class LoginViewController: UIViewController {
 		view.layer.shadowOpacity = 0.8
 		
 		numberField.keyboardType = .PhonePad
+		numberField.font = UIFont.systemFontOfSize(20)
+		
 		passwordField.secureTextEntry = true
+		passwordField.font = UIFont.systemFontOfSize(20)
 		
 		separatorViewHeightConstraint.constant = 0.5
 		separatorView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+		
+		loginButton.titleLabel?.tintColor = UIColor.fidoTealColor()
 		
 		view.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
 	}

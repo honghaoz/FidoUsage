@@ -158,7 +158,7 @@ public struct Loggerithm {
     
     - returns: The string logged out.
     */
-    public func verbose(format: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__, args: CVarArgType...) -> String? {
+    public func verbose(format: String = "", function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__, args: CVarArgType...) -> String? {
         if .Verbose >= logLevel {
             return log(.Verbose, function: function, file: file,  line: line, format: format, args: args)
         }
@@ -360,7 +360,7 @@ public struct Loggerithm {
 //        dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.LogFunction(format: outputString)
 //        })
-		
+        
         return logString
     }
 }
