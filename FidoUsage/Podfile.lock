@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.1.2)
+  - Alamofire (3.1.3)
   - Bolts/Tasks (1.5.0)
   - ChouTi/ChouTi (1.0):
     - ChouTi/ChouTi/Animators (= 1.0)
@@ -65,9 +65,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/honghaoz/DGElasticPullToRefresh.git
 
 SPEC CHECKSUMS:
-  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
-  ChouTi: 302e6b007f8f7192cd9890426ef4e3d5d866b4ce
+  ChouTi: 798d2c8bdcf6beb60570e543f56d4b80d8068de8
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
   Loggerithm: 7166cfb29ed73c595f9e1f2ec7dba65ed5a5b0d0

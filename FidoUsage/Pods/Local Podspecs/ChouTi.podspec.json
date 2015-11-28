@@ -59,7 +59,7 @@
     {
       "name": "ChouTi",
       "summary": "Bag of everything.",
-      "source_files": "Source/iOS/*.*",
+      "source_files": "Source/iOS/*.swift",
       "subspecs": [
         {
           "name": "Extensions",
