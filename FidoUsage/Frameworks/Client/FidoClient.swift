@@ -14,7 +14,8 @@ import Loggerithm
 let log = Loggerithm()
 
 public class FidoClient {
-    static let loginURL = "https://www.fido.ca/web/Fido.portal?_nfpb=true&_windowLabel=FidoSignIn_1_1&FidoSignIn_1_1_actionOverride=%2Fcom%2Ffido%2Fportlets%2Fecare%2Faccount%2Fsignin%2FsignIn"
+//    static let loginURL = "https://www.fido.ca/web/Fido.portal?_nfpb=true&_windowLabel=FidoSignIn_1_1&FidoSignIn_1_1_actionOverride=%2Fcom%2Ffido%2Fportlets%2Fecare%2Faccount%2Fsignin%2FsignIn"
+	static let loginURL = "https://rogers-fido.janraincapture.com/widget/traditional_signin.jsonp"
 	static let viewUsageURL = "https://www.fido.ca/web/page/portal/Fido/Ecare_MSSPostPaid"
 	static let sectionUsageURL = "https://www.fido.ca/web/Fido.portal?_nfpb=true&_windowLabel=mobileSelfServe_1_2&mobileSelfServe_1_2_actionOverride=%2Fcom%2Ffido%2Fportlets%2Fecare%2FmobileSelfServeUsage%2FmanagePostPaidUsage"
     static public let sharedInstance = FidoClient()
@@ -95,6 +96,13 @@ extension FidoClient {
 	- parameter completion: POST status and result html string
 	*/
 	private func POSTLoginWithNumber(number: String, password: String, completion: ((Bool, String?) -> Void)? = nil) {
+//		let parameters = [
+//			"FidoSignIn_1_1{actionForm.fidonumber}": number,
+//			"FidoSignIn_1_1{actionForm.password}": password,
+//			"FidoSignIn_1_1{actionForm.failureFlag}": "false",
+//			"FidoSignIn_1_1{actionForm.loginAsGAM}": "false"
+//		]
+		
 		let parameters = [
 			"FidoSignIn_1_1{actionForm.fidonumber}": number,
 			"FidoSignIn_1_1{actionForm.password}": password,
