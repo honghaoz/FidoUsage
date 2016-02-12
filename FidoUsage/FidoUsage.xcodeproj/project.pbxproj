@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22EA14979512BC2C24BDD4C8 /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8946BD7A5A88D4762253D2F /* Pods_FidoUsage.framework */; };
+		75EDC2B6101EDE24A7C92573 /* Pods_FidoUsage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD8B8FFC3430A36C5218498 /* Pods_FidoUsage.framework */; };
 		E42626F71BEABCAF00D4CD62 /* UsageSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42626F61BEABCAF00D4CD62 /* UsageSummaryView.swift */; };
 		E43C0E9A1BDECE5B00E55BAE /* UsageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C0E991BDECE5B00E55BAE /* UsageContainerViewController.swift */; };
 		E43C0E9C1BDEDD4E00E55BAE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43C0E9B1BDEDD4E00E55BAE /* Alamofire.framework */; };
@@ -149,7 +149,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.debug.xcconfig"; sourceTree = "<group>"; };
+		4BD8B8FFC3430A36C5218498 /* Pods_FidoUsage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FidoUsage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82AE146808D13FA7E98B248A /* Pods-FidoUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.release.xcconfig"; sourceTree = "<group>"; };
+		CF431BE270814B6F69D3424B /* Pods-FidoUsage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.debug.xcconfig"; sourceTree = "<group>"; };
 		E42626F61BEABCAF00D4CD62 /* UsageSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageSummaryView.swift; sourceTree = "<group>"; };
 		E43C0E991BDECE5B00E55BAE /* UsageContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageContainerViewController.swift; sourceTree = "<group>"; };
 		E43C0E9B1BDEDD4E00E55BAE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = SOURCE_ROOT; };
@@ -205,8 +207,6 @@
 		E4BE71681BACA2D200176D77 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		E4BE71701BACA4C200176D77 /* UsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
 		E4BE71731BACA68600176D77 /* UIImage+ImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageAsset.swift"; sourceTree = "<group>"; };
-		F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FidoUsage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage.release.xcconfig"; sourceTree = "<group>"; };
-		F8946BD7A5A88D4762253D2F /* Pods_FidoUsage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FidoUsage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +261,7 @@
 			files = (
 				E4495D7F1BB46AC40052CECE /* User.framework in Frameworks */,
 				E4495D4F1BB3AFA20052CECE /* Client.framework in Frameworks */,
-				22EA14979512BC2C24BDD4C8 /* Pods_FidoUsage.framework in Frameworks */,
+				75EDC2B6101EDE24A7C92573 /* Pods_FidoUsage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +295,7 @@
 				E4495D6B1BB46AC40052CECE /* User */,
 				E4495D791BB46AC40052CECE /* UserTests */,
 				E4495D251BB3AEDF0052CECE /* NotificationCenter.framework */,
-				F8946BD7A5A88D4762253D2F /* Pods_FidoUsage.framework */,
+				4BD8B8FFC3430A36C5218498 /* Pods_FidoUsage.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -375,7 +375,7 @@
 				E4495D271BB3AEDF0052CECE /* FidoUsageTodayExtension */,
 				99C9518EC9F9C11D8B3A2E39 /* Frameworks */,
 				E44DDDB31BAC9E9600870334 /* Products */,
-				FED0B634428961BF3BE9F88C /* Pods */,
+				FF6876B0516C7714D5B42A7E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -521,11 +521,11 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		FED0B634428961BF3BE9F88C /* Pods */ = {
+		FF6876B0516C7714D5B42A7E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */,
-				F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */,
+				CF431BE270814B6F69D3424B /* Pods-FidoUsage.debug.xcconfig */,
+				82AE146808D13FA7E98B248A /* Pods-FidoUsage.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -647,14 +647,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44DDDDD1BAC9E9600870334 /* Build configuration list for PBXNativeTarget "FidoUsage" */;
 			buildPhases = (
-				96B16A7CDFFDA7CE88A4CD4D /* Check Pods Manifest.lock */,
+				0C50CF324AEA66AEB556BDE7 /* Check Pods Manifest.lock */,
 				E44DDDAE1BAC9E9600870334 /* Sources */,
 				E44DDDAF1BAC9E9600870334 /* Frameworks */,
 				E44DDDB01BAC9E9600870334 /* Resources */,
-				7B25C959B398E8C3617FBD96 /* Embed Pods Frameworks */,
-				C532BD92ED67C55CE0824548 /* Copy Pods Resources */,
 				E4495D341BB3AEDF0052CECE /* Embed App Extensions */,
 				E4495D541BB3AFA20052CECE /* Embed Frameworks */,
+				91BD122A52AF403E8B727DF3 /* Embed Pods Frameworks */,
+				6AB1A653C841737D2397FAAC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -847,22 +847,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7B25C959B398E8C3617FBD96 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		96B16A7CDFFDA7CE88A4CD4D /* Check Pods Manifest.lock */ = {
+		0C50CF324AEA66AEB556BDE7 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -877,7 +862,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C532BD92ED67C55CE0824548 /* Copy Pods Resources */ = {
+		6AB1A653C841737D2397FAAC /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -890,6 +875,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91BD122A52AF403E8B727DF3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FidoUsage/Pods-FidoUsage-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1310,7 +1310,7 @@
 		};
 		E44DDDDE1BAC9E9600870334 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59A8A30AD623547073336725 /* Pods-FidoUsage.debug.xcconfig */;
+			baseConfigurationReference = CF431BE270814B6F69D3424B /* Pods-FidoUsage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FidoUsage/FidoUsage/FidoUsage.entitlements;
@@ -1328,7 +1328,7 @@
 		};
 		E44DDDDF1BAC9E9600870334 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F32161DC7F917797A0F50650 /* Pods-FidoUsage.release.xcconfig */;
+			baseConfigurationReference = 82AE146808D13FA7E98B248A /* Pods-FidoUsage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FidoUsage/FidoUsage/FidoUsage.entitlements;

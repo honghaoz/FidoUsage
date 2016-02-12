@@ -196,8 +196,8 @@ extension UsageContainerViewController {
 		menuPageViewController.reload()
 		
 		// Give some delay for menuPage to reload
-		delay(seconds: 0.05) { () -> () in
-			self.animateUnderScore(self.menuPageViewController.selectedIndex)
+		delay(0.05) {
+            self.animateUnderScore(self.menuPageViewController.selectedIndex)
 		}
     }
 	

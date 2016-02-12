@@ -14,11 +14,19 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
+	
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		Parse.enableLocalDatastore()
+		
+		
+		
+//		let loginWebView = WKWebView(frame: <#T##CGRect#>, configuration: <#T##WKWebViewConfiguration#>)
+		
+//
+//		loginWebView.loadRequest(urlRequest)
+//		loginWebView.navigationDelegate = self
 		
 		return true
 	}
@@ -111,4 +119,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 }
-

@@ -108,12 +108,12 @@ class UsageDetailCell: UITableViewCell {
 	}
 }
 
-extension UsageDetailCell : TableViewCellInfo {
+extension UsageDetailCell : TableViewCellRegistrable {
 	static func identifier() -> String {
 		return NSStringFromClass(UsageDetailCell.self)
 	}
 	
-	static func estimatedRowHeight() -> CGFloat {
+	static func estimatedHeight() -> CGFloat {
 		return 184.5
 	}
 	

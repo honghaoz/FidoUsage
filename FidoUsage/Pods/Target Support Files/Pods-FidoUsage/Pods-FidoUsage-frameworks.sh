@@ -85,23 +85,17 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FidoUsage/Alamofire.framework"
-  install_framework "Pods-FidoUsage/Bolts.framework"
   install_framework "Pods-FidoUsage/ChouTi.framework"
   install_framework "Pods-FidoUsage/DGElasticPullToRefresh.framework"
   install_framework "Pods-FidoUsage/Ji.framework"
   install_framework "Pods-FidoUsage/LTMorphingLabel.framework"
   install_framework "Pods-FidoUsage/Loggerithm.framework"
-  install_framework "Pods-FidoUsage/Parse.framework"
-  install_framework "Pods-FidoUsage/Watchdog.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FidoUsage/Alamofire.framework"
-  install_framework "Pods-FidoUsage/Bolts.framework"
   install_framework "Pods-FidoUsage/ChouTi.framework"
   install_framework "Pods-FidoUsage/DGElasticPullToRefresh.framework"
   install_framework "Pods-FidoUsage/Ji.framework"
   install_framework "Pods-FidoUsage/LTMorphingLabel.framework"
   install_framework "Pods-FidoUsage/Loggerithm.framework"
-  install_framework "Pods-FidoUsage/Parse.framework"
-  install_framework "Pods-FidoUsage/Watchdog.framework"
 fi

@@ -39,12 +39,10 @@ class LoginViewController: UIViewController {
 		view.layer.cornerRadius = 10.0
 		
 		numberField.layer.cornerRadius = 4.0
-		numberField.textHorizontalPadding = 10.0
-		numberField.textVerticalPadding = 10.0
+		numberField.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 		
 		passwordField.layer.cornerRadius = 4.0
-		passwordField.textHorizontalPadding = 10.0
-		passwordField.textVerticalPadding = 10.0
+		passwordField.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 		
 		view.clipsToBounds = false
 		view.layer.shadowColor = UIColor.blackColor().CGColor

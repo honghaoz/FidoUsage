@@ -209,14 +209,14 @@ extension UsageViewController : UITableViewDataSource {
 			
 			cell.usageMeterView.progressBarView.setPercent(0.0, animated: false)
 			
-			delay(seconds: 0.1, completion: { () -> () in
+			delay(0.1) {
 				cell.usageMeterView.progressBarView.animated = true
 				if let percentString = usageMeterSection[FidoHTMLParser.usageMeterUsagePercentKey] {
 					cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
 				} else {
 					cell.usageMeterView.progressBarView.percent = 0.0
 				}
-			})
+			}
 			
 			cell.titleLabel.text = usageTextSection[FidoHTMLParser.usageMeterUsageTitleKey]
 			cell.includedPairView.contentLabel.text = usageTextSection[FidoHTMLParser.usageMeterIncludedKey]
@@ -236,14 +236,14 @@ extension UsageViewController : UITableViewDataSource {
 			
 			cell.usageMeterView.progressBarView.setPercent(0.0, animated: false)
 			
-			delay(seconds: 0.1, completion: { () -> () in
+			delay(0.1) {
 				cell.usageMeterView.progressBarView.animated = true
 				if let percentString = billingMeterSection[FidoHTMLParser.usageMeterBillingCyclePassedPercentKey] {
 					cell.usageMeterView.progressBarView.percent = CGFloat(NSNumberFormatter().numberFromString(percentString) ?? 0) / 100.0
 				} else {
 					cell.usageMeterView.progressBarView.percent = 0.0
 				}
-			})
+			}
 			
 			cell.titleLabel.text = billingTextSection[FidoHTMLParser.usageMeterBillingCycleTitleKey]
 			cell.daysInPairView.contentLabel.text = billingTextSection[FidoHTMLParser.usageMeterBillingCycleDaysIntoCycleKey]

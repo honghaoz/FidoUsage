@@ -103,12 +103,12 @@ class BillingCycleDetailCell: UITableViewCell {
 	}
 }
 
-extension BillingCycleDetailCell : TableViewCellInfo {
+extension BillingCycleDetailCell : TableViewCellRegistrable {
 	static func identifier() -> String {
 		return NSStringFromClass(BillingCycleDetailCell.self)
 	}
 	
-	static func estimatedRowHeight() -> CGFloat {
+	static func estimatedHeight() -> CGFloat {
 		return 182.5
 	}
 	
